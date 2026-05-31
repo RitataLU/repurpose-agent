@@ -7,3 +7,4 @@ experiment	timestamp	spearman_r	n_gold	n_orphan	top_scorer	top_by_sim	status	des
 5	2026-05-31T03:31:00	0.523588	18	169	KCNQ1	CRHR1	keep	eQTL × tissue_specificity interaction
 6	2026-05-31T03:31:00	0.53049	18	169	KCNQ1	CRHR1	keep	zero PPI — network degree is noise
 7	2026-05-31T03:31:00	0.367164	18	169	KCNQ1	CRHR1	discard	dominant MR — pure causal genetics
+8	2026-05-31T03:31:00	0.424328	18	169	KCNQ1	CRHR1	discard	causal triad: MR + eQTL + OT
