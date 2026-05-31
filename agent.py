@@ -191,7 +191,7 @@ def save_outputs(rows: list, best: dict):
             "rank":         i,
             "gene":         g,
             "score":        round(s, 4),
-            "hit":          g in best.get("hit_genes", []),
+            "hit":          g in d.GOLD_GENE_SET,
             "disease_area": d.ORPHAN_GENES.get(g, {}).get("disease_area", ""),
             "disease_name": d.ORPHAN_GENES.get(g, {}).get("disease_name", ""),
             "druggability": round(d.ORPHAN_GENES.get(g, {}).get("druggability_score", 0), 2),
@@ -202,6 +202,7 @@ def save_outputs(rows: list, best: dict):
             "source":       d.ORPHAN_GENES.get(g, {}).get("data_source", ""),
         }
         for i, (g, s) in enumerate(best["all_scores"].items(), 1)
+        if g in d.ORPHAN_GENES
     ]
     with open(DOCS_GENES, "w") as f:
         json.dump(genes_out, f, indent=2)
@@ -255,17 +256,17 @@ def main():
     args = parser.parse_args()
 
     import data as d
-    K = min(20, len(d.GOLD_GENE_SET))
+    K = len(d.GOLD_GENE_SET)
     print("=" * 60)
     print("RepurposeAgent — Autoresearch Loop")
     print("=" * 60)
-    print(f"Gold standard (discovered): {len(d.GOLD_STANDARD)} genes")
-    print(f"Orphan candidates:          {len(d.ORPHAN_GENES)} genes")
-    print(f"Metric: recall@{K}")
+    print(f"Gold standard (curated):    {len(d.GOLD_STANDARD)} genes")
+    print(f"Scored pool (orphan+gold):  {len(d.ORPHAN_GENES)} genes")
+    print(f"Metric: recall@{K} (gold genes in top {K})")
     print(f"Experiments: {min(args.max, len(EXPERIMENTS))}")
     print(f"Auto-push: {'off' if args.no_push else 'on → github.com/RitataLU/repurpose-agent'}\n")
 
-    print("Gold standard discovered by API:")
+    print("Gold standard (curated gene-drug pairs):")
     for gene, info in d.GOLD_STANDARD.items():
         print(f"  {gene:<10} {info['disease']:<30} → {info['drug']}")
     print()
@@ -304,7 +305,7 @@ def main():
         except Exception as e:
             shutil.copy(SCORER_BAK, SCORER_FILE)
             empty = {
-                "recall_at_k": 0, "K": K, "n_hits": 0,
+                "recall_at_k": 0.0, "K": K, "n_hits": 0,
                 "n_gold": len(d.GOLD_GENE_SET), "n_orphan": len(d.ORPHAN_GENES),
                 "top_k_genes": [], "hit_genes": [], "all_scores": {},
             }
@@ -315,6 +316,7 @@ def main():
     print(f"Best recall@{K}: {best_recall:.4f}  ({int(best_recall*K)}/{K} hits)")
     if best_result["all_scores"]:
         print(f"Top gene: {list(best_result['all_scores'].keys())[0]}")
+        print(f"Hit genes: {', '.join(best_result.get('hit_genes', []))}")
     print(f"Dashboard: https://ritataLU.github.io/repurpose-agent/")
 
 
