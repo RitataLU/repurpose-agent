@@ -8,3 +8,4 @@ experiment	timestamp	spearman_r	n_gold	n_orphan	top_gene	status	description
 6	2026-05-31T10:45:23	0.8712	13	179	KCNQ1	discard	zero PPI — network degree is noise
 7	2026-05-31T10:45:23	0.8125	13	179	KCNQ1	discard	dominant MR — pure causal genetics
 8	2026-05-31T10:45:23	0.8554	13	179	KCNQ1	discard	causal triad: MR + eQTL + OT
+9	2026-05-31T10:45:23	0.8587	13	179	KCNQ1	discard	boost GWAS replication signal

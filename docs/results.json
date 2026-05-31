@@ -88,5 +88,15 @@
     "top_gene": "KCNQ1",
     "status": "discard",
     "description": "causal triad: MR + eQTL + OT"
+  },
+  {
+    "experiment": 9,
+    "timestamp": "2026-05-31T10:45:23",
+    "spearman_r": 0.8587,
+    "n_gold": 13,
+    "n_orphan": 179,
+    "top_gene": "KCNQ1",
+    "status": "discard",
+    "description": "boost GWAS replication signal"
   }
 ]
