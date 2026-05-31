@@ -32,5 +32,15 @@
       ]
     ],
     "burden_mul": true
+  },
+  {
+    "experiment": 1,
+    "timestamp": "2026-05-31T11:50:03",
+    "spearman_r": 0.4045,
+    "n_gold": 13,
+    "n_orphan": 169,
+    "top_gene": "KCNQ1",
+    "status": "discard",
+    "description": "upweight causal features: MR + druggability"
   }
 ]
