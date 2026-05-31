@@ -21,3 +21,4 @@ experiment	timestamp	recall_at_k	K	n_hits	n_gold	n_orphan	top_gene	hit_genes	sta
 5	2026-05-31T03:22:45	0.0	18	0	18	169	KCNQ1		discard	eQTL × tissue_specificity interaction
 6	2026-05-31T03:22:45	0.0	18	0	18	169	KCNQ1		discard	zero PPI — network degree is noise
 7	2026-05-31T03:22:45	0.0	18	0	18	169	KCNQ1		discard	dominant MR — pure causal genetics
+8	2026-05-31T03:22:45	0.0	18	0	18	169	KCNQ1		discard	causal triad: MR + eQTL + OT
