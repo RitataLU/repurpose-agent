@@ -97,5 +97,16 @@
     "top_by_sim": "CRHR1",
     "status": "discard",
     "description": "causal triad: MR + eQTL + OT"
+  },
+  {
+    "experiment": 9,
+    "timestamp": "2026-05-31T03:31:00",
+    "spearman_r": 0.420539,
+    "n_gold": 18,
+    "n_orphan": 169,
+    "top_scorer": "KCNQ1",
+    "top_by_sim": "CRHR1",
+    "status": "discard",
+    "description": "boost GWAS replication signal"
   }
 ]
