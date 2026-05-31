@@ -92,5 +92,15 @@
     "top_gene": "KCNQ1",
     "status": "discard",
     "description": "zero PPI \u2014 network degree is noise"
+  },
+  {
+    "experiment": 7,
+    "timestamp": "2026-05-31T11:50:03",
+    "spearman_r": 0.2444,
+    "n_gold": 13,
+    "n_orphan": 169,
+    "top_gene": "KCNQ1",
+    "status": "discard",
+    "description": "dominant MR \u2014 pure causal genetics"
   }
 ]
