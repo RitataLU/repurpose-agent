@@ -63,5 +63,18 @@
     "hit_genes": "DRD2|TNF|APOE|PCSK9|LRRK2",
     "status": "discard",
     "description": "add disease burden multiplier"
+  },
+  {
+    "experiment": 5,
+    "timestamp": "2026-05-31T10:29:57",
+    "recall_at_k": 0.2308,
+    "K": 13,
+    "n_hits": 3,
+    "n_gold": 13,
+    "n_orphan": 179,
+    "top_gene": "KCNQ1",
+    "hit_genes": "APOE|DRD2|LRRK2",
+    "status": "discard",
+    "description": "eQTL \u00d7 tissue_specificity interaction"
   }
 ]
