@@ -1,0 +1,74 @@
+[
+  {
+    "gene": "PSEN1",
+    "disease": "Alzheimer's disease",
+    "area": "neurological",
+    "drug": "NIROGACESTAT",
+    "ot_score": 0.8663,
+    "genetics_score": 0.9544
+  },
+  {
+    "gene": "APP",
+    "disease": "Alzheimer's disease",
+    "area": "neurological",
+    "drug": "LECANEMAB",
+    "ot_score": 0.8697,
+    "genetics_score": 0.9237
+  },
+  {
+    "gene": "PSEN2",
+    "disease": "Alzheimer's disease",
+    "area": "neurological",
+    "drug": "NIROGACESTAT HYDROBROMIDE",
+    "ot_score": 0.8165,
+    "genetics_score": 0.9091
+  },
+  {
+    "gene": "GPNMB",
+    "disease": "Parkinson's disease",
+    "area": "neurological",
+    "drug": "GLEMBATUMUMAB VEDOTIN",
+    "ot_score": 0.5288,
+    "genetics_score": 0.8274
+  },
+  {
+    "gene": "MT-ND1",
+    "disease": "Parkinson's disease",
+    "area": "neurological",
+    "drug": "METFORMIN",
+    "ot_score": 0.5351,
+    "genetics_score": 0.7447
+  },
+  {
+    "gene": "NDUFV2",
+    "disease": "Parkinson's disease",
+    "area": "neurological",
+    "drug": "METFORMIN HYDROCHLORIDE",
+    "ot_score": 0.6166,
+    "genetics_score": 0.1824
+  },
+  {
+    "gene": "GCK",
+    "disease": "type 2 diabetes",
+    "area": "metabolic",
+    "drug": "DORZAGLIATIN",
+    "ot_score": 0.8612,
+    "genetics_score": 0.9384
+  },
+  {
+    "gene": "KCNJ11",
+    "disease": "type 2 diabetes",
+    "area": "metabolic",
+    "drug": "GLIPIZIDE",
+    "ot_score": 0.8651,
+    "genetics_score": 0.9357
+  },
+  {
+    "gene": "ABCC8",
+    "disease": "type 2 diabetes",
+    "area": "metabolic",
+    "drug": "TOLBUTAMIDE",
+    "ot_score": 0.8648,
+    "genetics_score": 0.9342
+  }
+]

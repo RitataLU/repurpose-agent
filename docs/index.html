@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RepurposeAgent — Live Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #080c18;
+    --bg2: #0d1322;
+    --bg3: #131928;
+    --teal: #00d4aa;
+    --teal2: #00a882;
+    --text: #cdd6f4;
+    --muted: #6c7a9c;
+    --border: #1e2740;
+    --red: #f38ba8;
+    --green: #a6e3a1;
+    --yellow: #f9e2af;
+    --font-mono: 'IBM Plex Mono', monospace;
+    --font-sans: 'IBM Plex Sans', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 15px; line-height: 1.6; min-height: 100vh; }
+
+  /* Header */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(8,12,24,0.95); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem; height: 56px;
+  }
+  .logo { font-family: var(--font-mono); font-weight: 600; font-size: 1rem; color: var(--teal); letter-spacing: -0.02em; }
+  .logo span { color: var(--text); }
+  nav a {
+    font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted);
+    text-decoration: none; margin-left: 1.5rem; transition: color .2s;
+  }
+  nav a:hover { color: var(--teal); }
+  nav .gh {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--teal); border: 1px solid var(--teal); border-radius: 4px;
+    padding: 4px 12px; font-size: 0.75rem;
+  }
+  nav .gh:hover { background: rgba(0,212,170,.08); }
+
+  /* Layout */
+  main { max-width: 1200px; margin: 0 auto; padding: 2rem 2rem 4rem; }
+
+  /* Stat bar */
+  .stat-bar {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: var(--border);
+    border: 1px solid var(--border); border-radius: 10px;
+    overflow: hidden; margin-bottom: 2.5rem;
+  }
+  .stat {
+    background: var(--bg2); padding: 1.4rem 1.5rem;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .stat-value { font-family: var(--font-mono); font-size: 2rem; font-weight: 600; color: var(--teal); }
+  .stat-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+
+  /* Section */
+  section { margin-bottom: 2.5rem; }
+  .section-title {
+    font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500;
+    color: var(--muted); text-transform: uppercase; letter-spacing: .12em;
+    margin-bottom: 1rem; padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Card */
+  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .card-body { padding: 1.5rem; }
+
+  /* Gold standard table */
+  .data-table { width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: 0.82rem; }
+  .data-table thead th {
+    text-align: left; padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--muted); font-weight: 500; font-size: 0.72rem;
+    text-transform: uppercase; letter-spacing: .08em;
+    background: var(--bg3);
+  }
+  .data-table tbody tr { border-bottom: 1px solid rgba(30,39,64,.6); transition: background .15s; }
+  .data-table tbody tr:last-child { border-bottom: none; }
+  .data-table tbody tr:hover { background: rgba(0,212,170,.04); }
+  .data-table td { padding: 10px 14px; vertical-align: middle; }
+  .gene-badge {
+    display: inline-block; font-weight: 600; color: var(--teal);
+    font-family: var(--font-mono); font-size: 0.85rem;
+  }
+  .area-pill {
+    display: inline-block; font-size: 0.65rem; padding: 2px 8px;
+    border-radius: 20px; text-transform: uppercase; letter-spacing: .06em;
+    font-weight: 500; background: rgba(0,212,170,.1); color: var(--teal); border: 1px solid rgba(0,212,170,.2);
+  }
+  .area-pill.cardiovascular { background: rgba(249,226,175,.08); color: var(--yellow); border-color: rgba(249,226,175,.2); }
+  .area-pill.metabolic      { background: rgba(166,227,161,.08); color: var(--green); border-color: rgba(166,227,161,.2); }
+  .area-pill.psychiatric    { background: rgba(203,166,247,.08); color: #cba6f7; border-color: rgba(203,166,247,.2); }
+  .area-pill.immune         { background: rgba(243,139,168,.08); color: var(--red); border-color: rgba(243,139,168,.2); }
+  .area-pill.neurological   { background: rgba(137,220,235,.08); color: #89dceb; border-color: rgba(137,220,235,.2); }
+  .score-bar-wrap { display: flex; align-items: center; gap: 8px; }
+  .score-bar { height: 4px; background: var(--border); border-radius: 2px; flex: 1; }
+  .score-bar-fill { height: 100%; background: var(--teal); border-radius: 2px; }
+  .score-num { font-size: 0.75rem; color: var(--muted); min-width: 36px; text-align: right; }
+
+  /* Chart */
+  .chart-wrap { position: relative; height: 280px; }
+
+  /* Gene table controls */
+  .table-controls {
+    display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .search-box {
+    flex: 1; min-width: 200px;
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 6px; padding: 7px 12px;
+    font-family: var(--font-mono); font-size: 0.8rem; color: var(--text);
+    outline: none; transition: border-color .2s;
+  }
+  .search-box:focus { border-color: var(--teal); }
+  .search-box::placeholder { color: var(--muted); }
+  .filter-btn {
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 6px; padding: 7px 14px; cursor: pointer;
+    font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted);
+    transition: all .2s;
+  }
+  .filter-btn.active { border-color: var(--teal); color: var(--teal); background: rgba(0,212,170,.06); }
+  .filter-btn:hover { border-color: var(--teal); color: var(--teal); }
+
+  /* Gene rank table */
+  .gene-table-scroll { max-height: 520px; overflow-y: auto; }
+  .gene-table-scroll::-webkit-scrollbar { width: 6px; }
+  .gene-table-scroll::-webkit-scrollbar-track { background: var(--bg); }
+  .gene-table-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  .rank-num { color: var(--muted); font-size: 0.75rem; }
+  .hit-badge {
+    display: inline-block; font-size: 0.65rem; padding: 2px 7px;
+    border-radius: 20px; font-weight: 600;
+    background: rgba(0,212,170,.15); color: var(--teal);
+    border: 1px solid rgba(0,212,170,.3); letter-spacing: .04em;
+  }
+  th.sortable { cursor: pointer; user-select: none; }
+  th.sortable:hover { color: var(--teal); }
+  th.sortable.asc::after  { content: ' ↑'; color: var(--teal); }
+  th.sortable.desc::after { content: ' ↓'; color: var(--teal); }
+
+  /* Accordion */
+  details { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 8px; }
+  details[open] { border-color: rgba(0,212,170,.2); }
+  summary {
+    padding: 1rem 1.25rem; cursor: pointer;
+    font-family: var(--font-mono); font-size: 0.85rem; font-weight: 500;
+    list-style: none; display: flex; align-items: center; justify-content: space-between;
+    background: var(--bg2); border-radius: 8px;
+    transition: background .2s;
+  }
+  summary:hover { background: var(--bg3); }
+  details[open] summary { border-bottom: 1px solid var(--border); border-radius: 8px 8px 0 0; }
+  summary::after { content: '+'; color: var(--teal); font-size: 1rem; }
+  details[open] summary::after { content: '−'; }
+  .accordion-body { padding: 1.25rem; background: var(--bg2); border-radius: 0 0 8px 8px; font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+  .accordion-body ul { padding-left: 1.2rem; }
+  .accordion-body li { margin-bottom: 4px; }
+  .accordion-body code { font-family: var(--font-mono); font-size: 0.8rem; color: var(--teal); background: rgba(0,212,170,.08); padding: 1px 5px; border-radius: 3px; }
+
+  /* Empty state */
+  .empty-state {
+    text-align: center; padding: 4rem 2rem;
+    color: var(--muted); font-family: var(--font-mono); font-size: 0.85rem;
+  }
+  .empty-state .icon { font-size: 2.5rem; margin-bottom: 1rem; opacity: .4; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .stat-bar { grid-template-columns: repeat(2, 1fr); }
+    header { padding: 0 1rem; }
+    main { padding: 1.5rem 1rem 3rem; }
+    nav a:not(.gh) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Repurpose<span>Agent</span></div>
+  <nav>
+    <a href="#gold">Gold Standard</a>
+    <a href="#trace">Experiments</a>
+    <a href="#genes">Genes</a>
+    <a href="https://github.com/RitataLU/repurpose-agent" target="_blank" class="gh">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      GitHub
+    </a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- Stat bar -->
+  <div class="stat-bar" id="stat-bar">
+    <div class="stat"><div class="stat-value" id="s-recall">—</div><div class="stat-label">Best Recall@K</div></div>
+    <div class="stat"><div class="stat-value" id="s-exps">—</div><div class="stat-label">Experiments</div></div>
+    <div class="stat"><div class="stat-value" id="s-topgene">—</div><div class="stat-label">Top Gene</div></div>
+    <div class="stat"><div class="stat-value" id="s-orphans">—</div><div class="stat-label">Orphan Candidates</div></div>
+  </div>
+
+  <!-- Gold standard panel -->
+  <section id="gold">
+    <div class="section-title">Gold Standard — Discovered from Open Targets API</div>
+    <div class="card">
+      <div id="gold-wrap"></div>
+    </div>
+  </section>
+
+  <!-- Experiment trace -->
+  <section id="trace">
+    <div class="section-title">Experiment Trace — recall@K over iterations</div>
+    <div class="card">
+      <div class="card-body">
+        <div class="chart-wrap">
+          <canvas id="trace-chart"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ranked gene table -->
+  <section id="genes">
+    <div class="section-title">Ranked Candidate Genes</div>
+    <div class="table-controls">
+      <input class="search-box" id="gene-search" type="text" placeholder="Search gene...">
+      <button class="filter-btn active" data-area="all">All</button>
+      <button class="filter-btn" data-area="neurological">Neuro</button>
+      <button class="filter-btn" data-area="cardiovascular">Cardio</button>
+      <button class="filter-btn" data-area="metabolic">Metabolic</button>
+      <button class="filter-btn" data-area="psychiatric">Psych</button>
+      <button class="filter-btn" data-area="immune">Immune</button>
+    </div>
+    <div class="card">
+      <div id="gene-wrap"></div>
+    </div>
+  </section>
+
+  <!-- Methodology -->
+  <section id="method">
+    <div class="section-title">Methodology</div>
+    <details>
+      <summary>Phase 1 — Gold Standard Discovery (Open Targets)</summary>
+      <div class="accordion-body">
+        For each of 6 diseases, the Open Targets GraphQL API is queried for gene-disease associations.
+        Genes with <code>genetic_association</code> or <code>genetic_literature</code> evidence AND
+        an approved drug (<code>maxClinicalStage == APPROVAL</code>) are selected.
+        The top 2–3 per disease by genetics evidence score form the gold standard ground truth.
+        <strong>Nothing is hardcoded</strong> — the gold standard is fully discovered at runtime.
+      </div>
+    </details>
+    <details>
+      <summary>Phase 2 — Orphan Gene Discovery (GWAS Catalog)</summary>
+      <div class="accordion-body">
+        GWAS Catalog is queried for genome-wide significant associations (p &lt; 5×10⁻⁸) per disease.
+        Gene symbols are extracted from <code>authorReportedGenes</code> in each locus.
+        Any gene already in the gold standard is excluded. Up to 30 orphan genes per disease
+        (no approved drug, but GWAS signal) are retained.
+      </div>
+    </details>
+    <details>
+      <summary>Phase 3 — Feature Enrichment (Open Targets + PubMed)</summary>
+      <div class="accordion-body">
+        Each orphan gene is enriched with:
+        <ul>
+          <li><code>open_targets_score</code> — max association score across top 3 diseases</li>
+          <li><code>druggability_score</code> — SM tractability tier from Open Targets</li>
+          <li><code>pubmed_count_5yr</code> — PubMed publication count (last 5 years)</li>
+          <li><code>eqtl_effect</code> — proxy: (gwas_p/50)×0.5 + ot_score×0.5</li>
+          <li><code>mr_z_score</code> — proxy: (gwas_p/10)×(1+n_studies/20)</li>
+          <li><code>tissue_specificity</code> — disease-area lookup</li>
+          <li><code>ppi_degree</code> — binned from PubMed count</li>
+        </ul>
+      </div>
+    </details>
+    <details>
+      <summary>Autoresearch Loop (agent.py)</summary>
+      <div class="accordion-body">
+        <code>agent.py</code> runs 10 pre-defined experiments. Each experiment rewrites
+        <code>scorer.py</code> with new feature weights and interaction terms,
+        evaluates recall@K against the discovered gold standard, and keeps
+        the change only if recall improves. Results and scorer snapshots are
+        committed to GitHub after every iteration.
+      </div>
+    </details>
+  </section>
+
+</main>
+
+<script>
+// ── Data loading ────────────────────────────────────────────────────────────
+async function load(path) {
+  try {
+    const r = await fetch(path);
+    if (!r.ok) return null;
+    return await r.json();
+  } catch { return null; }
+}
+
+// ── Render ──────────────────────────────────────────────────────────────────
+let allGenes = [];
+let currentArea = 'all';
+let sortCol = 'rank';
+let sortDir = 'asc';
+
+function areaClass(area) {
+  const m = {neurological:'neurological',cardiovascular:'cardiovascular',metabolic:'metabolic',psychiatric:'psychiatric',immune:'immune'};
+  return m[area] || '';
+}
+
+function renderGold(gold) {
+  if (!gold || !gold.length) {
+    document.getElementById('gold-wrap').innerHTML = '<div class="empty-state"><div class="icon">🔬</div>Run discover.py to populate gold standard</div>';
+    return;
+  }
+  const rows = gold.map(g => `
+    <tr>
+      <td><span class="gene-badge">${g.gene}</span></td>
+      <td>${g.disease || ''}</td>
+      <td>${g.drug || ''}</td>
+      <td><span class="area-pill ${areaClass(g.area)}">${g.area || ''}</span></td>
+      <td>
+        <div class="score-bar-wrap">
+          <div class="score-bar"><div class="score-bar-fill" style="width:${Math.round((g.genetics_score||0)*100)}%"></div></div>
+          <span class="score-num">${(g.genetics_score||0).toFixed(3)}</span>
+        </div>
+      </td>
+    </tr>`).join('');
+  document.getElementById('gold-wrap').innerHTML = `
+    <table class="data-table">
+      <thead><tr>
+        <th>Gene</th><th>Disease</th><th>Drug</th><th>Area</th><th>Genetics Score</th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+}
+
+function renderTrace(results) {
+  const ctx = document.getElementById('trace-chart').getContext('2d');
+  if (!results || !results.length) {
+    ctx.fillStyle = '#6c7a9c';
+    ctx.font = '14px IBM Plex Mono';
+    ctx.textAlign = 'center';
+    ctx.fillText('No experiment data yet — run agent.py', ctx.canvas.width/2, 140);
+    return;
+  }
+  const labels = results.map(r => `Exp ${r.experiment}`);
+  const vals   = results.map(r => r.recall_at_k);
+  const colors = results.map(r => r.status === 'keep' ? '#a6e3a1' : r.status === 'crash' ? '#f38ba8' : '#f38ba8');
+  const pts    = results.map(r => r.status === 'keep' ? 7 : 5);
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        data: vals,
+        borderColor: '#00d4aa',
+        borderWidth: 2,
+        pointBackgroundColor: colors,
+        pointBorderColor: colors,
+        pointRadius: pts,
+        pointHoverRadius: 9,
+        tension: 0.3,
+        fill: true,
+        backgroundColor: 'rgba(0,212,170,0.06)',
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#0d1322',
+          borderColor: '#1e2740',
+          borderWidth: 1,
+          titleColor: '#00d4aa',
+          bodyColor: '#cdd6f4',
+          titleFont: { family: 'IBM Plex Mono', size: 12 },
+          bodyFont:  { family: 'IBM Plex Mono', size: 11 },
+          callbacks: {
+            title: (items) => labels[items[0].dataIndex],
+            label: (item) => {
+              const r = results[item.dataIndex];
+              return [`recall@K: ${r.recall_at_k}`, `status: ${r.status}`, r.description ? r.description.slice(0,50) : ''];
+            }
+          }
+        }
+      },
+      scales: {
+        x: { grid: { color: '#1e2740' }, ticks: { color: '#6c7a9c', font: { family: 'IBM Plex Mono', size: 10 } } },
+        y: {
+          min: 0, max: 1,
+          grid: { color: '#1e2740' },
+          ticks: { color: '#6c7a9c', font: { family: 'IBM Plex Mono', size: 10 },
+                   callback: v => (v*100).toFixed(0)+'%' }
+        }
+      }
+    }
+  });
+}
+
+function renderGeneTable(genes) {
+  const wrap = document.getElementById('gene-wrap');
+  if (!genes || !genes.length) {
+    wrap.innerHTML = '<div class="empty-state"><div class="icon">🧬</div>No gene data yet — run agent.py</div>';
+    return;
+  }
+
+  function filtered() {
+    let g = genes;
+    const q = document.getElementById('gene-search').value.trim().toUpperCase();
+    if (q) g = g.filter(x => x.gene.toUpperCase().includes(q) || (x.disease_name||'').toUpperCase().includes(q));
+    if (currentArea !== 'all') g = g.filter(x => x.disease_area === currentArea);
+    return g;
+  }
+
+  function sorted(g) {
+    return [...g].sort((a,b) => {
+      let av = a[sortCol], bv = b[sortCol];
+      if (typeof av === 'string') av = av.toLowerCase(), bv = (bv||'').toLowerCase();
+      if (av === undefined) av = 0;
+      if (bv === undefined) bv = 0;
+      return sortDir === 'asc' ? (av > bv ? 1 : av < bv ? -1 : 0) : (av < bv ? 1 : av > bv ? -1 : 0);
+    });
+  }
+
+  function draw() {
+    const data = sorted(filtered());
+    const rows = data.slice(0, 200).map(g => `
+      <tr>
+        <td class="rank-num">${g.rank}</td>
+        <td><span class="gene-badge">${g.gene}</span>${g.hit ? ' <span class="hit-badge">GOLD</span>' : ''}</td>
+        <td><span class="area-pill ${areaClass(g.disease_area)}">${g.disease_area||''}</span></td>
+        <td>${(g.disease_name||'').replace('disease','dis.')}</td>
+        <td class="rank-num">${(g.score||0).toFixed(4)}</td>
+        <td class="rank-num">${(g.druggability||0).toFixed(2)}</td>
+        <td class="rank-num">${(g.mr_z||0).toFixed(2)}</td>
+        <td class="rank-num">${(g.ot_score||0).toFixed(2)}</td>
+        <td class="rank-num">${g.pubmed||0}</td>
+      </tr>`).join('');
+
+    function th(col, label) {
+      let cls = 'sortable';
+      if (sortCol === col) cls += ' ' + sortDir;
+      return `<th class="${cls}" data-col="${col}">${label}</th>`;
+    }
+
+    wrap.innerHTML = `
+      <div class="gene-table-scroll">
+      <table class="data-table" id="gene-table">
+        <thead><tr>
+          ${th('rank','#')}
+          ${th('gene','Gene')}
+          <th>Area</th>
+          <th>Disease</th>
+          ${th('score','Score')}
+          ${th('druggability','Drug.')}
+          ${th('mr_z','MR-z')}
+          ${th('ot_score','OT')}
+          ${th('pubmed','PubMed')}
+        </tr></thead>
+        <tbody>${rows || '<tr><td colspan="9" style="text-align:center;color:var(--muted);padding:2rem">No matches</td></tr>'}</tbody>
+      </table>
+      </div>`;
+
+    wrap.querySelectorAll('th.sortable').forEach(th => {
+      th.addEventListener('click', () => {
+        const col = th.dataset.col;
+        if (sortCol === col) sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+        else { sortCol = col; sortDir = col === 'rank' ? 'asc' : 'desc'; }
+        draw();
+      });
+    });
+  }
+
+  draw();
+
+  document.getElementById('gene-search').addEventListener('input', draw);
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentArea = btn.dataset.area;
+      draw();
+    });
+  });
+}
+
+function updateStats(results, genes) {
+  if (results && results.length) {
+    const best = Math.max(...results.map(r => r.recall_at_k));
+    const K = results[results.length-1]?.K || 0;
+    document.getElementById('s-recall').textContent = (best*100).toFixed(1)+'%';
+    document.getElementById('s-exps').textContent = results.length;
+  } else {
+    document.getElementById('s-recall').textContent = '—';
+    document.getElementById('s-exps').textContent = '0';
+  }
+  if (genes && genes.length) {
+    const top = genes.find(g => g.rank === 1);
+    document.getElementById('s-topgene').textContent = top ? top.gene : '—';
+    document.getElementById('s-orphans').textContent = genes.length;
+  } else {
+    document.getElementById('s-topgene').textContent = '—';
+    document.getElementById('s-orphans').textContent = '—';
+  }
+}
+
+// ── Init ────────────────────────────────────────────────────────────────────
+(async () => {
+  const [results, genes, gold] = await Promise.all([
+    load('./results.json'),
+    load('./genes.json'),
+    load('./gold.json'),
+  ]);
+  updateStats(results, genes);
+  renderGold(gold);
+  renderTrace(results);
+  allGenes = genes || [];
+  renderGeneTable(allGenes);
+})();
+</script>
+</body>
+</html>
