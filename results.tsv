@@ -17,3 +17,4 @@ experiment	timestamp	recall_at_k	K	n_hits	n_gold	n_orphan	top_gene	hit_genes	sta
 1	2026-05-31T03:22:45	0.0	18	0	18	169	KCNQ1		discard	upweight causal features: MR + druggability
 2	2026-05-31T03:22:45	0.0	18	0	18	169	KCNQ1		discard	MR × druggability interaction term
 3	2026-05-31T03:22:45	0.0	18	0	18	169	KCNQ1		discard	zero pubmed — remove popularity bias
+4	2026-05-31T03:22:45	0.0	18	0	18	169	KCNQ1		discard	add disease burden multiplier
