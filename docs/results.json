@@ -38,5 +38,15 @@
     "top_gene": "KCNQ1",
     "status": "discard",
     "description": "zero pubmed \u2014 remove popularity bias"
+  },
+  {
+    "experiment": 4,
+    "timestamp": "2026-05-31T10:45:23",
+    "spearman_r": 0.8722,
+    "n_gold": 13,
+    "n_orphan": 179,
+    "top_gene": "KCNQ1",
+    "status": "keep",
+    "description": "add disease burden multiplier"
   }
 ]

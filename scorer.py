@@ -1,4 +1,4 @@
-"""scorer.py — MR × druggability interaction term — auto-written by agent.py"""
+"""scorer.py — add disease burden multiplier — auto-written by agent.py"""
 
 WEIGHTS = {
     "mr_z_score": 2.5,
@@ -6,12 +6,12 @@ WEIGHTS = {
     "open_targets_score": 2.0,
     "gwas_pval_log10": 1.5,
     "n_gwas_studies": 1.0,
-    "tissue_specificity": 1.0,
+    "tissue_specificity": 1.2,
     "ppi_degree": 0.5,
-    "pubmed_count_5yr": 0.3,
-    "eqtl_effect": 1.5
+    "pubmed_count_5yr": 0.0,
+    "eqtl_effect": 1.8
 }
-BURDEN_MULTIPLIER = False
+BURDEN_MULTIPLIER = True
 INTERACTION_TERMS = [('mr_z_score', 'druggability_score', 4.0)]
 
 def score_gene(features: dict) -> float:
