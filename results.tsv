@@ -1,3 +1,4 @@
 experiment	timestamp	spearman_r	n_gold	n_orphan	top_gene	status	description
 0	2026-05-31T10:45:23	0.8712	13	179	KCNQ1	keep	baseline: equal weights
 1	2026-05-31T10:45:23	0.8695	13	179	KCNQ1	discard	upweight causal features: MR + druggability
+2	2026-05-31T10:45:23	0.8721	13	179	KCNQ1	keep	MR × druggability interaction term
