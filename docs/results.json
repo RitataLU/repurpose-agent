@@ -53,5 +53,16 @@
     "top_by_sim": "CRHR1",
     "status": "keep",
     "description": "add disease burden multiplier"
+  },
+  {
+    "experiment": 5,
+    "timestamp": "2026-05-31T03:31:00",
+    "spearman_r": 0.523588,
+    "n_gold": 18,
+    "n_orphan": 169,
+    "top_scorer": "KCNQ1",
+    "top_by_sim": "CRHR1",
+    "status": "keep",
+    "description": "eQTL \u00d7 tissue_specificity interaction"
   }
 ]
