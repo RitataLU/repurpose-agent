@@ -52,5 +52,15 @@
     "top_gene": "KCNQ1",
     "status": "discard",
     "description": "MR \u00d7 druggability interaction term"
+  },
+  {
+    "experiment": 3,
+    "timestamp": "2026-05-31T11:50:03",
+    "spearman_r": 0.4402,
+    "n_gold": 13,
+    "n_orphan": 169,
+    "top_gene": "KCNQ1",
+    "status": "discard",
+    "description": "zero pubmed \u2014 remove popularity bias"
   }
 ]
