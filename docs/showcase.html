@@ -98,6 +98,7 @@ h3{font-size:1.05rem;font-weight:600;margin-bottom:.4rem}
 .scale-bar{height:14px;border-radius:7px;background:linear-gradient(90deg,#f87171 0%,#fcd34d 35%,#86efac 60%,#00966d 100%);position:relative;margin-bottom:.35rem}
 .scale-ticks{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted)}
 #gold-section{background:var(--surf)}
+#features{background:var(--bg)}
 .gold-table{width:100%;border-collapse:collapse;font-size:.875rem}
 .gold-table th{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid var(--border);padding:.5rem .75rem;text-align:left}
 .gold-table td{padding:.65rem .75rem;border-bottom:1px solid var(--border)}
@@ -159,6 +160,16 @@ h3{font-size:1.05rem;font-weight:600;margin-bottom:.4rem}
     <a href="results.html" class="cta-btn">View Results →</a>
   </nav>
 </header>
+<div style="background:#f0ede6;border-bottom:1px solid #e0dbd0;padding:.6rem 2rem;font-size:.78rem;color:#999;display:flex;gap:.5rem;flex-wrap:wrap;align-items:center">
+  <span style="color:#00966d;font-weight:600">Story</span>
+  <span>The gap →</span>
+  <span>Gold standard →</span>
+  <span>3-phase pipeline →</span>
+  <span>9 biological features →</span>
+  <span>The metric →</span>
+  <span>Agent loop →</span>
+  <span>Results</span>
+</div>
 
 <section id="hero">
   <div class="inner hero-inner">
@@ -259,6 +270,89 @@ h3{font-size:1.05rem;font-weight:600;margin-bottom:.4rem}
         <h3>Build biological profiles</h3>
         <p>Each orphan gene gets 9 features: Open Targets association score and druggability tractability, PubMed publication count (5 years), plus proxy features for eQTL effect size and Mendelian randomization z-score derived from GWAS evidence depth.</p>
         <ul><li>Open Targets GraphQL v4</li><li>PubMed E-utilities esearch</li><li>9 biological features per gene</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="inner">
+    <span class="tag">The 9 biological features</span>
+    <h2>What we measure — and why it matters</h2>
+    <p class="lead">Every gene gets 9 numbers pulled from public databases. Together they answer one question: does this gene look like the kind of gene that becomes a drug target?</p>
+
+    <p style="font-size:.85rem;color:var(--muted);margin-bottom:1.5rem;max-width:680px;line-height:1.7">
+      The features fall into three groups. <strong style="color:var(--text)">Genetic causality</strong> answers: is this gene actually causing the disease, or just nearby? <strong style="color:var(--text)">Biological context</strong> answers: is it active in the right place, and how well studied is it? <strong style="color:var(--text)">Druggability</strong> answers: can we actually make a medicine for it?
+    </p>
+
+    <!-- Group 1 -->
+    <div style="margin-bottom:2rem">
+      <div style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.85rem">Group 1 — Genetic causality</div>
+      <div class="phase-cards">
+        <div class="phase-card">
+          <div class="phase-num">gwas_pval_log10</div>
+          <h3>GWAS signal strength</h3>
+          <p>The strength of the genetic association, expressed as −log₁₀(p-value). A value of 8 means p = 10⁻⁸ — the standard genome-wide significance threshold. Values of 20–30 indicate very strong, highly replicated signals. <strong>Plain English:</strong> how confidently does genetic variation at this gene predict disease risk?</p>
+        </div>
+        <div class="phase-card">
+          <div class="phase-num">n_gwas_studies</div>
+          <h3>Replication count</h3>
+          <p>How many independent GWAS studies have implicated this gene at genome-wide significance. One study could be a false positive. Ten studies from different populations mean the signal is real. <strong>Plain English:</strong> has this finding been repeated by multiple independent groups?</p>
+        </div>
+        <div class="phase-card">
+          <div class="phase-num">mr_z_score</div>
+          <h3>Mendelian randomization</h3>
+          <p>A z-score estimating whether the gene is <em>causally upstream</em> of the disease — not just correlated with it. MR uses genetic variants as natural experiments to test directionality. Higher score = stronger causal evidence. <strong>Plain English:</strong> does changing this gene's activity actually cause disease, or is the association coincidental?</p>
+        </div>
+        <div class="phase-card">
+          <div class="phase-num">eqtl_effect</div>
+          <h3>eQTL effect size</h3>
+          <p>Expression quantitative trait locus effect — does the genetic variant that hits this gene also change how much of the protein the cell makes? A high eQTL effect means the GWAS signal likely acts through gene expression, which is often easier to drug. <strong>Plain English:</strong> does the disease-linked variant work by turning this gene up or down?</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Group 2 -->
+    <div style="margin-bottom:2rem">
+      <div style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.85rem">Group 2 — Biological context</div>
+      <div class="phase-cards">
+        <div class="phase-card">
+          <div class="phase-num">tissue_specificity</div>
+          <h3>Tissue specificity</h3>
+          <p>Is this gene particularly active in the tissue most relevant to the disease? A neurological disease gene that is highly expressed in brain tissue is a more plausible therapeutic target than one expressed everywhere equally. Values range 0 (ubiquitous) to 1 (highly specific). <strong>Plain English:</strong> is this gene doing its work in the right organ?</p>
+        </div>
+        <div class="phase-card">
+          <div class="phase-num">ppi_degree</div>
+          <h3>Protein interaction degree</h3>
+          <p>How many other proteins does this gene's protein physically interact with? Hub proteins (high degree) sit at the center of biological networks — biologically important, but harder to drug without side effects. Low-degree proteins are more tractable targets. <strong>Plain English:</strong> how connected is this protein in the cell's machinery?</p>
+        </div>
+        <div class="phase-card">
+          <div class="phase-num">pubmed_count_5yr</div>
+          <h3>Recent publication count</h3>
+          <p>Number of PubMed papers mentioning this gene in the last 5 years. Highly published genes are better understood — but may also be more competitive commercially. Very low counts may signal an underexplored opportunity. <strong>Plain English:</strong> how much scientific attention has this gene received recently?</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Group 3 -->
+    <div>
+      <div style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.85rem">Group 3 — Druggability</div>
+      <div class="phase-cards">
+        <div class="phase-card">
+          <div class="phase-num">druggability_score</div>
+          <h3>Small-molecule tractability</h3>
+          <p>From Open Targets tractability data. Does this protein have a binding pocket that a small molecule could fit into? Ranges from 0.35 (no evidence of druggability) to 0.90 (an approved small-molecule drug already exists for it). <strong>Plain English:</strong> could a pill be made to hit this target?</p>
+        </div>
+        <div class="phase-card">
+          <div class="phase-num">open_targets_score</div>
+          <h3>Open Targets composite score</h3>
+          <p>A 0–1 aggregate score from Open Targets Platform, combining genetic association evidence, somatic mutations, animal models, literature mining, and functional genomics data across all diseases. <strong>Plain English:</strong> across all the evidence types Open Targets tracks, how well-supported is this gene as a disease target overall?</p>
+        </div>
+        <div class="phase-card" style="background:var(--surf2);border-style:dashed">
+          <div class="phase-num">burden_daly_m</div>
+          <h3>Disease burden (DALYs)</h3>
+          <p>Not a gene feature — a disease-level weight. DALYs (disability-adjusted life years) from GBD 2021 measure how much suffering a disease causes globally. Used optionally as a score multiplier so genes in high-burden diseases rank higher all else equal. <strong>Plain English:</strong> how much does this disease matter to the world?</p>
+        </div>
       </div>
     </div>
   </div>

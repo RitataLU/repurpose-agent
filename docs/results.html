@@ -133,7 +133,7 @@ main{max-width:1080px;margin:0 auto;padding:3rem 1.5rem 6rem}
 .drug-mono{font-family:var(--mono);color:var(--teal)}
 
 /* ── Feature legend ─────────────────────────────── */
-.feat-legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.85rem;margin-top:1.25rem}
+.feat-legend{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.85rem;margin-top:1rem}
 .feat-box{background:var(--surf2);border:1px solid var(--border);border-radius:8px;padding:1rem}
 .feat-box h4{font-size:.85rem;font-weight:600;color:var(--teal);margin-bottom:.35rem;font-family:var(--mono)}
 .feat-box p{font-size:.79rem;color:var(--muted);line-height:1.6}
@@ -167,6 +167,19 @@ main{max-width:1080px;margin:0 auto;padding:3rem 1.5rem 6rem}
 </header>
 
 <main>
+
+<!-- Storyline -->
+<div style="background:var(--surf2);border:1px solid var(--border);border-radius:8px;padding:1rem 1.25rem;margin-bottom:2rem;display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center">
+  <span style="font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);white-space:nowrap">Reading guide</span>
+  <span style="font-size:.83rem;color:var(--muted);line-height:1.6">
+    <strong style="color:var(--text)">Start here →</strong> understand the question and method (§00) →
+    see how the experiments performed (§01 trace, §02 table) →
+    learn which biological features drove the best score (§03 weights + feature guide) →
+    explore the top candidate genes (§04) →
+    check the gold standard template (§05) →
+    see how all genes distribute (§06 histogram).
+  </span>
+</div>
 
 <!-- Hero -->
 <div class="hero">
@@ -258,18 +271,63 @@ main{max-width:1080px;margin:0 auto;padding:3rem 1.5rem 6rem}
   <div class="card">
     <div class="chart-wrap" id="weights-wrap"><canvas id="weights-chart"></canvas></div>
   </div>
-  <div class="feat-legend" id="feat-legend">
-    <div class="feat-box">
-      <h4>mr_z_score</h4>
-      <p>Mendelian randomization z-score — evidence that the gene is causally upstream of the disease, not just correlated. Higher = stronger causal signal. Derived from GWAS p-value and study count.</p>
+  <div style="margin-top:2rem">
+    <p style="font-size:.85rem;color:var(--muted);max-width:700px;line-height:1.7;margin-bottom:1.5rem">
+      Each bar above shows how much weight the best experiment gave to that feature. Below is what every feature actually measures — grouped by what biological question it answers.
+    </p>
+
+    <div style="margin-bottom:1.75rem">
+      <div style="font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:.75rem">Group 1 — Genetic causality: is this gene actually causing disease?</div>
+      <div class="feat-legend">
+        <div class="feat-box">
+          <h4>gwas_pval_log10</h4>
+          <p><strong style="color:var(--text)">GWAS signal strength.</strong> −log₁₀(p-value) of the strongest GWAS association. 8 = genome-wide significance threshold. 20–30 = very strong, highly replicated signal. Higher = more confident genetic link to disease.</p>
+        </div>
+        <div class="feat-box">
+          <h4>n_gwas_studies</h4>
+          <p><strong style="color:var(--text)">Replication count.</strong> How many independent GWAS studies found this gene at genome-wide significance. One hit could be noise. Ten independent hits across different populations means the signal is real and robust.</p>
+        </div>
+        <div class="feat-box">
+          <h4>mr_z_score</h4>
+          <p><strong style="color:var(--text)">Mendelian randomization z-score.</strong> Estimates whether the gene is <em>causally upstream</em> of disease — not just correlated. Uses genetic variants as natural experiments to test directionality. Higher = stronger causal evidence. This is the most important feature for target validation.</p>
+        </div>
+        <div class="feat-box">
+          <h4>eqtl_effect</h4>
+          <p><strong style="color:var(--text)">eQTL effect size.</strong> Does the disease-linked variant also change how much of this protein the cell makes? A high eQTL effect means the GWAS signal acts through gene expression — making the mechanism clearer and the target more interpretable.</p>
+        </div>
+      </div>
     </div>
-    <div class="feat-box">
-      <h4>druggability_score</h4>
-      <p>Open Targets small-molecule tractability: does this gene's protein have a druggable binding pocket? Ranges 0.35 (no evidence) to 0.90 (approved SM drug). Genes with an approved drug score 0.90.</p>
+
+    <div style="margin-bottom:1.75rem">
+      <div style="font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:.75rem">Group 2 — Biological context: is this gene in the right place doing the right thing?</div>
+      <div class="feat-legend">
+        <div class="feat-box">
+          <h4>tissue_specificity</h4>
+          <p><strong style="color:var(--text)">Tissue specificity.</strong> Is this gene particularly active in the disease-relevant tissue (e.g. brain for neurological diseases)? A gene expressed everywhere is a harder target — more side effects. A gene expressed mainly where you need it is more tractable.</p>
+        </div>
+        <div class="feat-box">
+          <h4>ppi_degree</h4>
+          <p><strong style="color:var(--text)">Protein interaction degree.</strong> How many other proteins does this protein physically touch? Hub proteins are biologically central but often too connected to drug safely. Peripheral proteins with focused roles make cleaner targets.</p>
+        </div>
+        <div class="feat-box">
+          <h4>pubmed_count_5yr</h4>
+          <p><strong style="color:var(--text)">Recent publication count.</strong> Papers mentioning this gene in PubMed over the last 5 years. Proxy for scientific momentum. Very high counts mean competitive space; very low counts may signal an underexplored opportunity.</p>
+        </div>
+      </div>
     </div>
-    <div class="feat-box">
-      <h4>open_targets_score</h4>
-      <p>Composite evidence score from Open Targets aggregating genetic, literature, and functional evidence across all diseases. Higher = more established biology, easier to publish on and fund.</p>
+
+    <div>
+      <div style="font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:.75rem">Group 3 — Druggability: can we actually make a medicine for this gene?</div>
+      <div class="feat-legend">
+        <div class="feat-box">
+          <h4>druggability_score</h4>
+          <p><strong style="color:var(--text)">Small-molecule tractability.</strong> Does this protein have a binding pocket a drug can fit into? From Open Targets tractability assessment. 0.35 = no evidence. 0.70 = advanced clinical candidate. 0.90 = approved drug already exists for this protein.</p>
+        </div>
+        <div class="feat-box">
+          <h4>open_targets_score</h4>
+          <p><strong style="color:var(--text)">Open Targets composite score.</strong> A 0–1 aggregate combining genetic associations, somatic mutations, animal models, literature mining, and functional genomics across all diseases. The broadest single measure of how well-supported this gene is as a target.</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
