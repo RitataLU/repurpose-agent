@@ -128,5 +128,18 @@
     "hit_genes": "",
     "status": "discard",
     "description": "boost GWAS replication signal"
+  },
+  {
+    "experiment": 10,
+    "timestamp": "2026-05-31T03:22:45",
+    "recall_at_k": 0.0,
+    "K": 18,
+    "n_hits": 0,
+    "n_gold": 18,
+    "n_orphan": 169,
+    "top_gene": "KCNQ1",
+    "hit_genes": "",
+    "status": "discard",
+    "description": "fine-tune: OT score boost"
   }
 ]
