@@ -2,7 +2,7 @@
   {
     "rank": 1,
     "gene": "KCNQ1",
-    "score": 14.6712,
+    "score": 14.6828,
     "gold_sim": 0.8568,
     "disease_area": "metabolic",
     "disease_name": "type 2 diabetes",
@@ -16,7 +16,7 @@
   {
     "rank": 2,
     "gene": "PLG",
-    "score": 11.9431,
+    "score": 11.9909,
     "gold_sim": 0.8958,
     "disease_area": "cardiovascular",
     "disease_name": "coronary artery disease",
@@ -30,7 +30,7 @@
   {
     "rank": 3,
     "gene": "FTO",
-    "score": 11.8185,
+    "score": 11.8286,
     "gold_sim": 0.7228,
     "disease_area": "metabolic",
     "disease_name": "type 2 diabetes",
@@ -44,7 +44,7 @@
   {
     "rank": 4,
     "gene": "MTNR1B",
-    "score": 11.4954,
+    "score": 11.5042,
     "gold_sim": 0.8787,
     "disease_area": "metabolic",
     "disease_name": "type 2 diabetes",
@@ -58,7 +58,7 @@
   {
     "rank": 5,
     "gene": "CRHR1",
-    "score": 9.9447,
+    "score": 9.9503,
     "gold_sim": 0.9098,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -72,7 +72,7 @@
   {
     "rank": 6,
     "gene": "APOE",
-    "score": 9.5253,
+    "score": 9.532,
     "gold_sim": 0.7063,
     "disease_area": "neurological",
     "disease_name": "Alzheimer's disease",
@@ -86,7 +86,7 @@
   {
     "rank": 7,
     "gene": "LRRK2",
-    "score": 9.1079,
+    "score": 9.1143,
     "gold_sim": 0.7628,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -100,7 +100,7 @@
   {
     "rank": 8,
     "gene": "SNCA",
-    "score": 8.9918,
+    "score": 8.9981,
     "gold_sim": 0.7608,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -128,7 +128,7 @@
   {
     "rank": 10,
     "gene": "MAPT",
-    "score": 8.7189,
+    "score": 8.725,
     "gold_sim": 0.7044,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -142,7 +142,7 @@
   {
     "rank": 11,
     "gene": "BIN1",
-    "score": 8.7078,
+    "score": 8.7139,
     "gold_sim": 0.7785,
     "disease_area": "neurological",
     "disease_name": "Alzheimer's disease",
@@ -156,7 +156,7 @@
   {
     "rank": 12,
     "gene": "CDKN2A",
-    "score": 8.3633,
+    "score": 8.3724,
     "gold_sim": 0.5927,
     "disease_area": "metabolic",
     "disease_name": "type 2 diabetes",
@@ -170,7 +170,7 @@
   {
     "rank": 13,
     "gene": "FLT1",
-    "score": 8.1273,
+    "score": 8.1604,
     "gold_sim": 0.8946,
     "disease_area": "cardiovascular",
     "disease_name": "coronary artery disease",
@@ -184,7 +184,7 @@
   {
     "rank": 14,
     "gene": "APOC2",
-    "score": 8.0793,
+    "score": 8.085,
     "gold_sim": 0.7834,
     "disease_area": "neurological",
     "disease_name": "Alzheimer's disease",
@@ -198,7 +198,7 @@
   {
     "rank": 15,
     "gene": "KANSL1",
-    "score": 7.9202,
+    "score": 7.9257,
     "gold_sim": 0.7813,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -212,7 +212,7 @@
   {
     "rank": 16,
     "gene": "ADAR",
-    "score": 7.8372,
+    "score": 7.8426,
     "gold_sim": 0.7481,
     "disease_area": "neurological",
     "disease_name": "Alzheimer's disease",
@@ -226,7 +226,7 @@
   {
     "rank": 17,
     "gene": "LPA",
-    "score": 7.7393,
+    "score": 7.778,
     "gold_sim": 0.607,
     "disease_area": "cardiovascular",
     "disease_name": "coronary artery disease",
@@ -240,7 +240,7 @@
   {
     "rank": 18,
     "gene": "CCND2",
-    "score": 7.6686,
+    "score": 7.677,
     "gold_sim": 0.6605,
     "disease_area": "metabolic",
     "disease_name": "type 2 diabetes",
@@ -254,7 +254,7 @@
   {
     "rank": 19,
     "gene": "ALDH2",
-    "score": 7.5519,
+    "score": 7.5845,
     "gold_sim": 0.8863,
     "disease_area": "cardiovascular",
     "disease_name": "coronary artery disease",
@@ -268,7 +268,7 @@
   {
     "rank": 20,
     "gene": "NR",
-    "score": 7.5112,
+    "score": 7.5165,
     "gold_sim": 0.5363,
     "disease_area": "neurological",
     "disease_name": "Alzheimer's disease",
@@ -282,7 +282,7 @@
   {
     "rank": 21,
     "gene": "TCF7L2",
-    "score": 7.3259,
+    "score": 7.3339,
     "gold_sim": 0.6424,
     "disease_area": "metabolic",
     "disease_name": "type 2 diabetes",
@@ -296,7 +296,7 @@
   {
     "rank": 22,
     "gene": "IL6R",
-    "score": 7.2546,
+    "score": 7.2597,
     "gold_sim": 0.7436,
     "disease_area": "neurological",
     "disease_name": "Alzheimer's disease",
@@ -310,7 +310,7 @@
   {
     "rank": 23,
     "gene": "LDLR",
-    "score": 7.2136,
+    "score": 7.2496,
     "gold_sim": 0.6233,
     "disease_area": "cardiovascular",
     "disease_name": "coronary artery disease",
@@ -324,7 +324,7 @@
   {
     "rank": 24,
     "gene": "SLC30A8",
-    "score": 7.1679,
+    "score": 7.1757,
     "gold_sim": 0.6542,
     "disease_area": "metabolic",
     "disease_name": "type 2 diabetes",
@@ -338,7 +338,7 @@
   {
     "rank": 25,
     "gene": "RELB",
-    "score": 7.1634,
+    "score": 7.1684,
     "gold_sim": 0.7608,
     "disease_area": "neurological",
     "disease_name": "Alzheimer's disease",
@@ -352,7 +352,7 @@
   {
     "rank": 26,
     "gene": "PHACTR1",
-    "score": 7.1085,
+    "score": 7.144,
     "gold_sim": 0.6923,
     "disease_area": "cardiovascular",
     "disease_name": "coronary artery disease",
@@ -366,7 +366,7 @@
   {
     "rank": 27,
     "gene": "CEACAM16",
-    "score": 7.0763,
+    "score": 7.0813,
     "gold_sim": 0.7721,
     "disease_area": "neurological",
     "disease_name": "Alzheimer's disease",
@@ -380,7 +380,7 @@
   {
     "rank": 28,
     "gene": "PAX4",
-    "score": 6.8786,
+    "score": 6.8861,
     "gold_sim": 0.6531,
     "disease_area": "metabolic",
     "disease_name": "type 2 diabetes",
@@ -394,7 +394,7 @@
   {
     "rank": 29,
     "gene": "APOC1",
-    "score": 6.8709,
+    "score": 6.8757,
     "gold_sim": 0.73,
     "disease_area": "neurological",
     "disease_name": "Alzheimer's disease",
@@ -408,7 +408,7 @@
   {
     "rank": 30,
     "gene": "CDKAL1",
-    "score": 6.8441,
+    "score": 6.8516,
     "gold_sim": 0.6441,
     "disease_area": "metabolic",
     "disease_name": "type 2 diabetes",
@@ -422,7 +422,7 @@
   {
     "rank": 31,
     "gene": "EXOC3L2",
-    "score": 6.8405,
+    "score": 6.8453,
     "gold_sim": 0.7658,
     "disease_area": "neurological",
     "disease_name": "Alzheimer's disease",
@@ -436,7 +436,7 @@
   {
     "rank": 32,
     "gene": "BCL3",
-    "score": 6.8382,
+    "score": 6.843,
     "gold_sim": 0.7307,
     "disease_area": "neurological",
     "disease_name": "Alzheimer's disease",
@@ -450,7 +450,7 @@
   {
     "rank": 33,
     "gene": "NSF",
-    "score": 6.7666,
+    "score": 6.7713,
     "gold_sim": 0.6558,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -464,7 +464,7 @@
   {
     "rank": 34,
     "gene": "TMEM175",
-    "score": 6.7608,
+    "score": 6.7655,
     "gold_sim": 0.7632,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -478,7 +478,7 @@
   {
     "rank": 35,
     "gene": "IGF2BP2",
-    "score": 6.7062,
+    "score": 6.7135,
     "gold_sim": 0.6011,
     "disease_area": "metabolic",
     "disease_name": "type 2 diabetes",
@@ -506,7 +506,7 @@
   {
     "rank": 37,
     "gene": "MARK4",
-    "score": 6.6196,
+    "score": 6.6242,
     "gold_sim": 0.7482,
     "disease_area": "neurological",
     "disease_name": "Alzheimer's disease",
@@ -520,7 +520,7 @@
   {
     "rank": 38,
     "gene": "CDKN2B",
-    "score": 6.5798,
+    "score": 6.587,
     "gold_sim": 0.6289,
     "disease_area": "metabolic",
     "disease_name": "type 2 diabetes",
@@ -548,7 +548,7 @@
   {
     "rank": 40,
     "gene": "LEP",
-    "score": 6.3166,
+    "score": 6.3235,
     "gold_sim": 0.618,
     "disease_area": "metabolic",
     "disease_name": "type 2 diabetes",
@@ -576,7 +576,7 @@
   {
     "rank": 42,
     "gene": "TOMM40",
-    "score": 6.2923,
+    "score": 6.2967,
     "gold_sim": 0.6773,
     "disease_area": "neurological",
     "disease_name": "Alzheimer's disease",
@@ -590,7 +590,7 @@
   {
     "rank": 43,
     "gene": "PVR",
-    "score": 6.2887,
+    "score": 6.2931,
     "gold_sim": 0.6072,
     "disease_area": "neurological",
     "disease_name": "Alzheimer's disease",
@@ -604,7 +604,7 @@
   {
     "rank": 44,
     "gene": "HHEX",
-    "score": 6.2756,
+    "score": 6.2824,
     "gold_sim": 0.6233,
     "disease_area": "metabolic",
     "disease_name": "type 2 diabetes",
@@ -618,7 +618,7 @@
   {
     "rank": 45,
     "gene": "JAZF1",
-    "score": 6.2704,
+    "score": 6.2773,
     "gold_sim": 0.6355,
     "disease_area": "metabolic",
     "disease_name": "type 2 diabetes",
@@ -632,7 +632,7 @@
   {
     "rank": 46,
     "gene": "GEMIN7",
-    "score": 6.2489,
+    "score": 6.2533,
     "gold_sim": 0.7467,
     "disease_area": "neurological",
     "disease_name": "Alzheimer's disease",
@@ -646,7 +646,7 @@
   {
     "rank": 47,
     "gene": "IGSF23",
-    "score": 6.2464,
+    "score": 6.2507,
     "gold_sim": 0.7352,
     "disease_area": "neurological",
     "disease_name": "Alzheimer's disease",
@@ -659,6 +659,34 @@
   },
   {
     "rank": 48,
+    "gene": "INTERGENIC",
+    "score": 6.2203,
+    "gold_sim": 0.4781,
+    "disease_area": "cardiovascular",
+    "disease_name": "coronary artery disease",
+    "druggability": 0.35,
+    "mr_z": 8.0,
+    "ot_score": 0.3,
+    "gwas_p": 50,
+    "pubmed": 4146,
+    "source": "live_api"
+  },
+  {
+    "rank": 49,
+    "gene": "DYNC2H1",
+    "score": 6.2019,
+    "gold_sim": 0.7087,
+    "disease_area": "cardiovascular",
+    "disease_name": "coronary artery disease",
+    "druggability": 0.35,
+    "mr_z": 5.09,
+    "ot_score": 0.86,
+    "gwas_p": 42.4,
+    "pubmed": 67,
+    "source": "live_api"
+  },
+  {
+    "rank": 50,
     "gene": "SLC35D1",
     "score": 6.1913,
     "gold_sim": 0.6083,
@@ -672,37 +700,9 @@
     "source": "live_api"
   },
   {
-    "rank": 49,
-    "gene": "INTERGENIC",
-    "score": 6.1894,
-    "gold_sim": 0.4781,
-    "disease_area": "cardiovascular",
-    "disease_name": "coronary artery disease",
-    "druggability": 0.35,
-    "mr_z": 8.0,
-    "ot_score": 0.3,
-    "gwas_p": 50,
-    "pubmed": 4146,
-    "source": "live_api"
-  },
-  {
-    "rank": 50,
-    "gene": "DYNC2H1",
-    "score": 6.171,
-    "gold_sim": 0.7087,
-    "disease_area": "cardiovascular",
-    "disease_name": "coronary artery disease",
-    "druggability": 0.35,
-    "mr_z": 5.09,
-    "ot_score": 0.86,
-    "gwas_p": 42.4,
-    "pubmed": 67,
-    "source": "live_api"
-  },
-  {
     "rank": 51,
     "gene": "PVRL2",
-    "score": 6.139,
+    "score": 6.1433,
     "gold_sim": 0.676,
     "disease_area": "neurological",
     "disease_name": "Alzheimer's disease",
@@ -716,7 +716,7 @@
   {
     "rank": 52,
     "gene": "MCCC1",
-    "score": 6.1213,
+    "score": 6.1256,
     "gold_sim": 0.792,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -744,7 +744,7 @@
   {
     "rank": 54,
     "gene": "BCAM",
-    "score": 6.0905,
+    "score": 6.0948,
     "gold_sim": 0.6767,
     "disease_area": "neurological",
     "disease_name": "Alzheimer's disease",
@@ -758,7 +758,7 @@
   {
     "rank": 55,
     "gene": "CDC123",
-    "score": 6.0455,
+    "score": 6.0521,
     "gold_sim": 0.6121,
     "disease_area": "metabolic",
     "disease_name": "type 2 diabetes",
@@ -786,7 +786,7 @@
   {
     "rank": 57,
     "gene": "ARHGAP27",
-    "score": 6.0044,
+    "score": 6.0086,
     "gold_sim": 0.7492,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -814,7 +814,7 @@
   {
     "rank": 59,
     "gene": "CELSR2",
-    "score": 5.9613,
+    "score": 5.9911,
     "gold_sim": 0.6894,
     "disease_area": "cardiovascular",
     "disease_name": "coronary artery disease",
@@ -828,7 +828,7 @@
   {
     "rank": 60,
     "gene": "CBLC",
-    "score": 5.9516,
+    "score": 5.9558,
     "gold_sim": 0.7167,
     "disease_area": "neurological",
     "disease_name": "Alzheimer's disease",
@@ -842,7 +842,7 @@
   {
     "rank": 61,
     "gene": "CLPTM1",
-    "score": 5.9431,
+    "score": 5.9472,
     "gold_sim": 0.6781,
     "disease_area": "neurological",
     "disease_name": "Alzheimer's disease",
@@ -884,7 +884,7 @@
   {
     "rank": 64,
     "gene": "IDE",
-    "score": 5.7997,
+    "score": 5.806,
     "gold_sim": 0.4653,
     "disease_area": "metabolic",
     "disease_name": "type 2 diabetes",
@@ -898,7 +898,7 @@
   {
     "rank": 65,
     "gene": "DGKQ",
-    "score": 5.7752,
+    "score": 5.7792,
     "gold_sim": 0.7262,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -912,7 +912,7 @@
   {
     "rank": 66,
     "gene": "SLC22A3",
-    "score": 5.7431,
+    "score": 5.7718,
     "gold_sim": 0.6844,
     "disease_area": "cardiovascular",
     "disease_name": "coronary artery disease",
@@ -925,36 +925,8 @@
   },
   {
     "rank": 67,
-    "gene": "IRS1",
-    "score": 5.7415,
-    "gold_sim": 0.6061,
-    "disease_area": "metabolic",
-    "disease_name": "type 2 diabetes",
-    "druggability": 0.35,
-    "mr_z": 6.86,
-    "ot_score": 0.56,
-    "gwas_p": 45.7,
-    "pubmed": 1366,
-    "source": "live_api"
-  },
-  {
-    "rank": 68,
-    "gene": "SHE",
-    "score": 5.7381,
-    "gold_sim": 0.5982,
-    "disease_area": "neurological",
-    "disease_name": "Alzheimer's disease",
-    "druggability": 0.35,
-    "mr_z": 5.25,
-    "ot_score": 0.39,
-    "gwas_p": 50,
-    "pubmed": 79524,
-    "source": "live_api"
-  },
-  {
-    "rank": 69,
     "gene": "MIA3",
-    "score": 5.728,
+    "score": 5.7566,
     "gold_sim": 0.6797,
     "disease_area": "cardiovascular",
     "disease_name": "coronary artery disease",
@@ -966,7 +938,49 @@
     "source": "live_api"
   },
   {
+    "rank": 68,
+    "gene": "IRS1",
+    "score": 5.7477,
+    "gold_sim": 0.6061,
+    "disease_area": "metabolic",
+    "disease_name": "type 2 diabetes",
+    "druggability": 0.35,
+    "mr_z": 6.86,
+    "ot_score": 0.56,
+    "gwas_p": 45.7,
+    "pubmed": 1366,
+    "source": "live_api"
+  },
+  {
+    "rank": 69,
+    "gene": "SHE",
+    "score": 5.7421,
+    "gold_sim": 0.5982,
+    "disease_area": "neurological",
+    "disease_name": "Alzheimer's disease",
+    "druggability": 0.35,
+    "mr_z": 5.25,
+    "ot_score": 0.39,
+    "gwas_p": 50,
+    "pubmed": 79524,
+    "source": "live_api"
+  },
+  {
     "rank": 70,
+    "gene": "APOC1P1",
+    "score": 5.7138,
+    "gold_sim": 0.6795,
+    "disease_area": "neurological",
+    "disease_name": "Alzheimer's disease",
+    "druggability": 0.35,
+    "mr_z": 7.25,
+    "ot_score": 0.3,
+    "gwas_p": 50,
+    "pubmed": 6,
+    "source": "live_api"
+  },
+  {
+    "rank": 71,
     "gene": "IRF1",
     "score": 5.7101,
     "gold_sim": 0.5631,
@@ -980,23 +994,9 @@
     "source": "live_api"
   },
   {
-    "rank": 71,
-    "gene": "APOC1P1",
-    "score": 5.7098,
-    "gold_sim": 0.6795,
-    "disease_area": "neurological",
-    "disease_name": "Alzheimer's disease",
-    "druggability": 0.35,
-    "mr_z": 7.25,
-    "ot_score": 0.3,
-    "gwas_p": 50,
-    "pubmed": 6,
-    "source": "live_api"
-  },
-  {
     "rank": 72,
     "gene": "PPP1R37",
-    "score": 5.6929,
+    "score": 5.6968,
     "gold_sim": 0.7063,
     "disease_area": "neurological",
     "disease_name": "Alzheimer's disease",
@@ -1009,22 +1009,8 @@
   },
   {
     "rank": 73,
-    "gene": "APOC4",
-    "score": 5.5932,
-    "gold_sim": 0.6797,
-    "disease_area": "neurological",
-    "disease_name": "Alzheimer's disease",
-    "druggability": 0.35,
-    "mr_z": 7.0,
-    "ot_score": 0.3,
-    "gwas_p": 50,
-    "pubmed": 24,
-    "source": "live_api"
-  },
-  {
-    "rank": 74,
     "gene": "PSRC1",
-    "score": 5.589,
+    "score": 5.6169,
     "gold_sim": 0.6697,
     "disease_area": "cardiovascular",
     "disease_name": "coronary artery disease",
@@ -1036,9 +1022,23 @@
     "source": "live_api"
   },
   {
+    "rank": 74,
+    "gene": "APOC4",
+    "score": 5.5971,
+    "gold_sim": 0.6797,
+    "disease_area": "neurological",
+    "disease_name": "Alzheimer's disease",
+    "druggability": 0.35,
+    "mr_z": 7.0,
+    "ot_score": 0.3,
+    "gwas_p": 50,
+    "pubmed": 24,
+    "source": "live_api"
+  },
+  {
     "rank": 75,
     "gene": "CLASRP",
-    "score": 5.4766,
+    "score": 5.4804,
     "gold_sim": 0.6796,
     "disease_area": "neurological",
     "disease_name": "Alzheimer's disease",
@@ -1051,22 +1051,8 @@
   },
   {
     "rank": 76,
-    "gene": "CKM",
-    "score": 5.4122,
-    "gold_sim": 0.6611,
-    "disease_area": "neurological",
-    "disease_name": "Alzheimer's disease",
-    "druggability": 0.35,
-    "mr_z": 5.5,
-    "ot_score": 0.35,
-    "gwas_p": 50,
-    "pubmed": 1109,
-    "source": "live_api"
-  },
-  {
-    "rank": 77,
     "gene": "ADAMTS7",
-    "score": 5.4065,
+    "score": 5.4335,
     "gold_sim": 0.7058,
     "disease_area": "cardiovascular",
     "disease_name": "coronary artery disease",
@@ -1078,9 +1064,23 @@
     "source": "live_api"
   },
   {
+    "rank": 77,
+    "gene": "CKM",
+    "score": 5.416,
+    "gold_sim": 0.6611,
+    "disease_area": "neurological",
+    "disease_name": "Alzheimer's disease",
+    "druggability": 0.35,
+    "mr_z": 5.5,
+    "ot_score": 0.35,
+    "gwas_p": 50,
+    "pubmed": 1109,
+    "source": "live_api"
+  },
+  {
     "rank": 78,
     "gene": "DUSP9",
-    "score": 5.3446,
+    "score": 5.3504,
     "gold_sim": 0.6276,
     "disease_area": "metabolic",
     "disease_name": "type 2 diabetes",
@@ -1094,7 +1094,7 @@
   {
     "rank": 79,
     "gene": "CDKN2B-AS1",
-    "score": 5.2885,
+    "score": 5.3149,
     "gold_sim": 0.5856,
     "disease_area": "cardiovascular",
     "disease_name": "coronary artery disease",
@@ -1108,7 +1108,7 @@
   {
     "rank": 80,
     "gene": "APOB",
-    "score": 5.2693,
+    "score": 5.2957,
     "gold_sim": 0.5731,
     "disease_area": "cardiovascular",
     "disease_name": "coronary artery disease",
@@ -1122,7 +1122,7 @@
   {
     "rank": 81,
     "gene": "NKPD1",
-    "score": 5.2434,
+    "score": 5.247,
     "gold_sim": 0.678,
     "disease_area": "neurological",
     "disease_name": "Alzheimer's disease",
@@ -1136,7 +1136,7 @@
   {
     "rank": 82,
     "gene": "GAK",
-    "score": 5.242,
+    "score": 5.2456,
     "gold_sim": 0.7417,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -1150,7 +1150,7 @@
   {
     "rank": 83,
     "gene": "SND1",
-    "score": 5.2189,
+    "score": 5.2245,
     "gold_sim": 0.6282,
     "disease_area": "metabolic",
     "disease_name": "type 2 diabetes",
@@ -1164,7 +1164,7 @@
   {
     "rank": 84,
     "gene": "CAMK1D",
-    "score": 5.1743,
+    "score": 5.18,
     "gold_sim": 0.5991,
     "disease_area": "metabolic",
     "disease_name": "type 2 diabetes",
@@ -1178,7 +1178,7 @@
   {
     "rank": 85,
     "gene": "STH",
-    "score": 5.1522,
+    "score": 5.1558,
     "gold_sim": 0.6391,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -1192,7 +1192,7 @@
   {
     "rank": 86,
     "gene": "TRAPPC6A",
-    "score": 5.1268,
+    "score": 5.1303,
     "gold_sim": 0.6766,
     "disease_area": "neurological",
     "disease_name": "Alzheimer's disease",
@@ -1206,7 +1206,7 @@
   {
     "rank": 87,
     "gene": "GPRIN3",
-    "score": 5.0704,
+    "score": 5.0739,
     "gold_sim": 0.6879,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -1220,7 +1220,7 @@
   {
     "rank": 88,
     "gene": "SPPL2C",
-    "score": 5.0578,
+    "score": 5.0613,
     "gold_sim": 0.6936,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -1234,7 +1234,7 @@
   {
     "rank": 89,
     "gene": "TDRD10",
-    "score": 5.0439,
+    "score": 5.0474,
     "gold_sim": 0.6924,
     "disease_area": "neurological",
     "disease_name": "Alzheimer's disease",
@@ -1248,7 +1248,7 @@
   {
     "rank": 90,
     "gene": "HNF1B",
-    "score": 5.0265,
+    "score": 5.032,
     "gold_sim": 0.5286,
     "disease_area": "metabolic",
     "disease_name": "type 2 diabetes",
@@ -1276,7 +1276,7 @@
   {
     "rank": 92,
     "gene": "SMARCA4",
-    "score": 4.834,
+    "score": 4.8582,
     "gold_sim": 0.6693,
     "disease_area": "cardiovascular",
     "disease_name": "coronary artery disease",
@@ -1290,7 +1290,7 @@
   {
     "rank": 93,
     "gene": "UBE2Q1",
-    "score": 4.8324,
+    "score": 4.8358,
     "gold_sim": 0.6746,
     "disease_area": "neurological",
     "disease_name": "Alzheimer's disease",
@@ -1318,7 +1318,7 @@
   {
     "rank": 95,
     "gene": "KRTCAP2",
-    "score": 4.7769,
+    "score": 4.7803,
     "gold_sim": 0.6694,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -1332,7 +1332,7 @@
   {
     "rank": 96,
     "gene": "STK39",
-    "score": 4.7626,
+    "score": 4.766,
     "gold_sim": 0.7641,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -1373,6 +1373,20 @@
   },
   {
     "rank": 99,
+    "gene": "LPAL2",
+    "score": 4.638,
+    "gold_sim": 0.592,
+    "disease_area": "cardiovascular",
+    "disease_name": "coronary artery disease",
+    "druggability": 0.35,
+    "mr_z": 6.82,
+    "ot_score": 0.3,
+    "gwas_p": 48.7,
+    "pubmed": 8,
+    "source": "live_api"
+  },
+  {
+    "rank": 100,
     "gene": "C1ORF141",
     "score": 4.6171,
     "gold_sim": 0.5594,
@@ -1386,23 +1400,9 @@
     "source": "live_api"
   },
   {
-    "rank": 100,
-    "gene": "LPAL2",
-    "score": 4.6149,
-    "gold_sim": 0.592,
-    "disease_area": "cardiovascular",
-    "disease_name": "coronary artery disease",
-    "druggability": 0.35,
-    "mr_z": 6.82,
-    "ot_score": 0.3,
-    "gwas_p": 48.7,
-    "pubmed": 8,
-    "source": "live_api"
-  },
-  {
     "rank": 101,
     "gene": "ACAD10",
-    "score": 4.4915,
+    "score": 4.5139,
     "gold_sim": 0.6225,
     "disease_area": "cardiovascular",
     "disease_name": "coronary artery disease",
@@ -1416,7 +1416,7 @@
   {
     "rank": 102,
     "gene": "B",
-    "score": 4.4902,
+    "score": 4.495,
     "gold_sim": 0.3504,
     "disease_area": "metabolic",
     "disease_name": "type 2 diabetes",
@@ -1472,7 +1472,7 @@
   {
     "rank": 106,
     "gene": "CDKN2BAS",
-    "score": 4.3468,
+    "score": 4.3685,
     "gold_sim": 0.5886,
     "disease_area": "cardiovascular",
     "disease_name": "coronary artery disease",
@@ -1486,7 +1486,7 @@
   {
     "rank": 107,
     "gene": "HLA-DQB1",
-    "score": 4.2488,
+    "score": 4.2534,
     "gold_sim": 0.4876,
     "disease_area": "metabolic",
     "disease_name": "type 2 diabetes",
@@ -1500,7 +1500,7 @@
   {
     "rank": 108,
     "gene": "FES",
-    "score": 4.2148,
+    "score": 4.2358,
     "gold_sim": 0.5362,
     "disease_area": "cardiovascular",
     "disease_name": "coronary artery disease",
@@ -1528,7 +1528,7 @@
   {
     "rank": 110,
     "gene": "HIP1R",
-    "score": 4.1795,
+    "score": 4.1824,
     "gold_sim": 0.7507,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -1542,7 +1542,7 @@
   {
     "rank": 111,
     "gene": "MORF4L1",
-    "score": 3.9999,
+    "score": 4.0199,
     "gold_sim": 0.6687,
     "disease_area": "cardiovascular",
     "disease_name": "coronary artery disease",
@@ -1556,7 +1556,7 @@
   {
     "rank": 112,
     "gene": "9P21",
-    "score": 3.9969,
+    "score": 4.0169,
     "gold_sim": 0.5815,
     "disease_area": "cardiovascular",
     "disease_name": "coronary artery disease",
@@ -1570,7 +1570,7 @@
   {
     "rank": 113,
     "gene": "GCC1",
-    "score": 3.9902,
+    "score": 3.9945,
     "gold_sim": 0.5273,
     "disease_area": "metabolic",
     "disease_name": "type 2 diabetes",
@@ -1584,7 +1584,7 @@
   {
     "rank": 114,
     "gene": "TCF2",
-    "score": 3.9902,
+    "score": 3.9945,
     "gold_sim": 0.5273,
     "disease_area": "metabolic",
     "disease_name": "type 2 diabetes",
@@ -1598,7 +1598,7 @@
   {
     "rank": 115,
     "gene": "PTPN22",
-    "score": 3.9902,
+    "score": 3.9945,
     "gold_sim": 0.5273,
     "disease_area": "metabolic",
     "disease_name": "type 2 diabetes",
@@ -1612,7 +1612,7 @@
   {
     "rank": 116,
     "gene": "CDKN2A/2B",
-    "score": 3.9902,
+    "score": 3.9945,
     "gold_sim": 0.5273,
     "disease_area": "metabolic",
     "disease_name": "type 2 diabetes",
@@ -1654,7 +1654,7 @@
   {
     "rank": 119,
     "gene": "XMHC",
-    "score": 3.7014,
+    "score": 3.7024,
     "gold_sim": 0.6587,
     "disease_area": "psychiatric",
     "disease_name": "schizophrenia",
@@ -1682,7 +1682,7 @@
   {
     "rank": 121,
     "gene": "GBA",
-    "score": 3.6389,
+    "score": 3.6414,
     "gold_sim": 0.5183,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -1752,7 +1752,7 @@
   {
     "rank": 126,
     "gene": "LOC105369980",
-    "score": 3.501,
+    "score": 3.5185,
     "gold_sim": 0.5846,
     "disease_area": "cardiovascular",
     "disease_name": "coronary artery disease",
@@ -1766,7 +1766,7 @@
   {
     "rank": 127,
     "gene": "TARID",
-    "score": 3.4774,
+    "score": 3.4948,
     "gold_sim": 0.5924,
     "disease_area": "cardiovascular",
     "disease_name": "coronary artery disease",
@@ -1780,7 +1780,7 @@
   {
     "rank": 128,
     "gene": "BST1",
-    "score": 3.4127,
+    "score": 3.4151,
     "gold_sim": 0.7526,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -1793,22 +1793,8 @@
   },
   {
     "rank": 129,
-    "gene": "ZKSCAN3",
-    "score": 3.2961,
-    "gold_sim": 0.669,
-    "disease_area": "psychiatric",
-    "disease_name": "schizophrenia",
-    "druggability": 0.35,
-    "mr_z": 5.29,
-    "ot_score": 0.3,
-    "gwas_p": 35.3,
-    "pubmed": 35,
-    "source": "live_api"
-  },
-  {
-    "rank": 130,
     "gene": "CDKN2A/B",
-    "score": 3.2889,
+    "score": 3.3054,
     "gold_sim": 0.5756,
     "disease_area": "cardiovascular",
     "disease_name": "coronary artery disease",
@@ -1817,6 +1803,20 @@
     "ot_score": 0.3,
     "gwas_p": 44.1,
     "pubmed": 569,
+    "source": "live_api"
+  },
+  {
+    "rank": 130,
+    "gene": "ZKSCAN3",
+    "score": 3.297,
+    "gold_sim": 0.669,
+    "disease_area": "psychiatric",
+    "disease_name": "schizophrenia",
+    "druggability": 0.35,
+    "mr_z": 5.29,
+    "ot_score": 0.3,
+    "gwas_p": 35.3,
+    "pubmed": 35,
     "source": "live_api"
   },
   {
@@ -1836,7 +1836,7 @@
   {
     "rank": 132,
     "gene": "NUCKS1",
-    "score": 3.2459,
+    "score": 3.2481,
     "gold_sim": 0.7375,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -1850,7 +1850,7 @@
   {
     "rank": 133,
     "gene": "SYT11",
-    "score": 3.1933,
+    "score": 3.1955,
     "gold_sim": 0.7338,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -1864,7 +1864,7 @@
   {
     "rank": 134,
     "gene": "ZSCAN23",
-    "score": 3.1302,
+    "score": 3.131,
     "gold_sim": 0.6661,
     "disease_area": "psychiatric",
     "disease_name": "schizophrenia",
@@ -1878,7 +1878,7 @@
   {
     "rank": 135,
     "gene": "MIR4693",
-    "score": 3.0497,
+    "score": 3.0649,
     "gold_sim": 0.5911,
     "disease_area": "cardiovascular",
     "disease_name": "coronary artery disease",
@@ -1892,7 +1892,7 @@
   {
     "rank": 136,
     "gene": "MAPT-AS1",
-    "score": 2.9917,
+    "score": 2.9938,
     "gold_sim": 0.6465,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -1906,7 +1906,7 @@
   {
     "rank": 137,
     "gene": "MAP3K14",
-    "score": 2.9051,
+    "score": 2.9072,
     "gold_sim": 0.7211,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -1920,7 +1920,7 @@
   {
     "rank": 138,
     "gene": "LRRC37A3",
-    "score": 2.5849,
+    "score": 2.5867,
     "gold_sim": 0.6646,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -1934,7 +1934,7 @@
   {
     "rank": 139,
     "gene": "ZNF323",
-    "score": 2.5473,
+    "score": 2.548,
     "gold_sim": 0.6405,
     "disease_area": "psychiatric",
     "disease_name": "schizophrenia",
@@ -1948,7 +1948,7 @@
   {
     "rank": 140,
     "gene": "CCNT2",
-    "score": 2.4255,
+    "score": 2.4272,
     "gold_sim": 0.6944,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -1962,7 +1962,7 @@
   {
     "rank": 141,
     "gene": "TMEM163",
-    "score": 2.4215,
+    "score": 2.4232,
     "gold_sim": 0.6991,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -1976,7 +1976,7 @@
   {
     "rank": 142,
     "gene": "TRIM27",
-    "score": 2.3247,
+    "score": 2.3254,
     "gold_sim": 0.6893,
     "disease_area": "psychiatric",
     "disease_name": "schizophrenia",
@@ -1990,7 +1990,7 @@
   {
     "rank": 143,
     "gene": "SLC2A13",
-    "score": 2.1558,
+    "score": 2.1573,
     "gold_sim": 0.6667,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -2004,7 +2004,7 @@
   {
     "rank": 144,
     "gene": "SLC41A1",
-    "score": 2.1399,
+    "score": 2.1414,
     "gold_sim": 0.6744,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -2018,7 +2018,7 @@
   {
     "rank": 145,
     "gene": "ZSCAN31",
-    "score": 2.0567,
+    "score": 2.0572,
     "gold_sim": 0.6327,
     "disease_area": "psychiatric",
     "disease_name": "schizophrenia",
@@ -2032,7 +2032,7 @@
   {
     "rank": 146,
     "gene": "OR12D3",
-    "score": 2.0071,
+    "score": 2.0077,
     "gold_sim": 0.6301,
     "disease_area": "psychiatric",
     "disease_name": "schizophrenia",
@@ -2046,7 +2046,7 @@
   {
     "rank": 147,
     "gene": "INPP5F",
-    "score": 1.9762,
+    "score": 1.9776,
     "gold_sim": 0.6213,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -2060,7 +2060,7 @@
   {
     "rank": 148,
     "gene": "ZNF311",
-    "score": 1.9399,
+    "score": 1.9404,
     "gold_sim": 0.6266,
     "disease_area": "psychiatric",
     "disease_name": "schizophrenia",
@@ -2074,7 +2074,7 @@
   {
     "rank": 149,
     "gene": "PGBD1",
-    "score": 1.9399,
+    "score": 1.9404,
     "gold_sim": 0.6266,
     "disease_area": "psychiatric",
     "disease_name": "schizophrenia",
@@ -2088,7 +2088,7 @@
   {
     "rank": 150,
     "gene": "ZSCAN26",
-    "score": 1.9399,
+    "score": 1.9404,
     "gold_sim": 0.6266,
     "disease_area": "psychiatric",
     "disease_name": "schizophrenia",
@@ -2102,7 +2102,7 @@
   {
     "rank": 151,
     "gene": "OR14J1",
-    "score": 1.9399,
+    "score": 1.9404,
     "gold_sim": 0.6266,
     "disease_area": "psychiatric",
     "disease_name": "schizophrenia",
@@ -2116,7 +2116,7 @@
   {
     "rank": 152,
     "gene": "OR2J2",
-    "score": 1.9399,
+    "score": 1.9404,
     "gold_sim": 0.6266,
     "disease_area": "psychiatric",
     "disease_name": "schizophrenia",
@@ -2130,7 +2130,7 @@
   {
     "rank": 153,
     "gene": "OR5V1",
-    "score": 1.9399,
+    "score": 1.9404,
     "gold_sim": 0.6266,
     "disease_area": "psychiatric",
     "disease_name": "schizophrenia",
@@ -2144,7 +2144,7 @@
   {
     "rank": 154,
     "gene": "HCG14",
-    "score": 1.8771,
+    "score": 1.8776,
     "gold_sim": 0.6229,
     "disease_area": "psychiatric",
     "disease_name": "schizophrenia",
@@ -2158,7 +2158,7 @@
   {
     "rank": 155,
     "gene": "LINC01556",
-    "score": 1.8771,
+    "score": 1.8776,
     "gold_sim": 0.6229,
     "disease_area": "psychiatric",
     "disease_name": "schizophrenia",
@@ -2172,7 +2172,7 @@
   {
     "rank": 156,
     "gene": "LOC100129636",
-    "score": 1.8771,
+    "score": 1.8776,
     "gold_sim": 0.6229,
     "disease_area": "psychiatric",
     "disease_name": "schizophrenia",
@@ -2186,7 +2186,7 @@
   {
     "rank": 157,
     "gene": "OR2B3",
-    "score": 1.8771,
+    "score": 1.8776,
     "gold_sim": 0.6229,
     "disease_area": "psychiatric",
     "disease_name": "schizophrenia",
@@ -2200,7 +2200,7 @@
   {
     "rank": 158,
     "gene": "OR2J3",
-    "score": 1.8771,
+    "score": 1.8776,
     "gold_sim": 0.6229,
     "disease_area": "psychiatric",
     "disease_name": "schizophrenia",
@@ -2214,7 +2214,7 @@
   {
     "rank": 159,
     "gene": "OR2W1",
-    "score": 1.8771,
+    "score": 1.8776,
     "gold_sim": 0.6229,
     "disease_area": "psychiatric",
     "disease_name": "schizophrenia",
@@ -2228,7 +2228,7 @@
   {
     "rank": 160,
     "gene": "MAS1L",
-    "score": 1.8771,
+    "score": 1.8776,
     "gold_sim": 0.6229,
     "disease_area": "psychiatric",
     "disease_name": "schizophrenia",
@@ -2242,7 +2242,7 @@
   {
     "rank": 161,
     "gene": "OR10C1",
-    "score": 1.8771,
+    "score": 1.8776,
     "gold_sim": 0.6229,
     "disease_area": "psychiatric",
     "disease_name": "schizophrenia",
@@ -2256,7 +2256,7 @@
   {
     "rank": 162,
     "gene": "LINC01623",
-    "score": 1.8144,
+    "score": 1.8149,
     "gold_sim": 0.6189,
     "disease_area": "psychiatric",
     "disease_name": "schizophrenia",
@@ -2270,7 +2270,7 @@
   {
     "rank": 163,
     "gene": "OR11A1",
-    "score": 1.8144,
+    "score": 1.8149,
     "gold_sim": 0.6189,
     "disease_area": "psychiatric",
     "disease_name": "schizophrenia",
@@ -2284,7 +2284,7 @@
   {
     "rank": 164,
     "gene": "HLA-DRB5",
-    "score": 1.763,
+    "score": 1.7642,
     "gold_sim": 0.5912,
     "disease_area": "neurological",
     "disease_name": "Parkinson's disease",
@@ -2298,7 +2298,7 @@
   {
     "rank": 165,
     "gene": "GPX5",
-    "score": 1.7471,
+    "score": 1.7476,
     "gold_sim": 0.6141,
     "disease_area": "psychiatric",
     "disease_name": "schizophrenia",
@@ -2312,7 +2312,7 @@
   {
     "rank": 166,
     "gene": "GPX6",
-    "score": 1.7471,
+    "score": 1.7476,
     "gold_sim": 0.6141,
     "disease_area": "psychiatric",
     "disease_name": "schizophrenia",
@@ -2326,7 +2326,7 @@
   {
     "rank": 167,
     "gene": "ZBED9",
-    "score": 1.7471,
+    "score": 1.7476,
     "gold_sim": 0.6141,
     "disease_area": "psychiatric",
     "disease_name": "schizophrenia",
@@ -2340,7 +2340,7 @@
   {
     "rank": 168,
     "gene": "ZSCAN12",
-    "score": 1.7471,
+    "score": 1.7476,
     "gold_sim": 0.6141,
     "disease_area": "psychiatric",
     "disease_name": "schizophrenia",
@@ -2354,7 +2354,7 @@
   {
     "rank": 169,
     "gene": "OR2G1P",
-    "score": 1.6772,
+    "score": 1.6777,
     "gold_sim": 0.6006,
     "disease_area": "psychiatric",
     "disease_name": "schizophrenia",

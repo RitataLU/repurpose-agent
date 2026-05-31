@@ -1,4 +1,4 @@
-"""scorer.py — zero pubmed — remove popularity bias — auto-written by agent.py"""
+"""scorer.py — add disease burden multiplier — auto-written by agent.py"""
 
 WEIGHTS = {
     "mr_z_score": 2.5,
@@ -11,7 +11,7 @@ WEIGHTS = {
     "pubmed_count_5yr": 0.0,
     "eqtl_effect": 1.8
 }
-BURDEN_MULTIPLIER = False
+BURDEN_MULTIPLIER = True
 INTERACTION_TERMS = [('mr_z_score', 'druggability_score', 4.0)]
 
 def score_gene(features: dict) -> float:

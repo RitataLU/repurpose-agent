@@ -42,5 +42,16 @@
     "top_by_sim": "CRHR1",
     "status": "keep",
     "description": "zero pubmed \u2014 remove popularity bias"
+  },
+  {
+    "experiment": 4,
+    "timestamp": "2026-05-31T03:31:00",
+    "spearman_r": 0.423921,
+    "n_gold": 18,
+    "n_orphan": 169,
+    "top_scorer": "KCNQ1",
+    "top_by_sim": "CRHR1",
+    "status": "keep",
+    "description": "add disease burden multiplier"
   }
 ]
