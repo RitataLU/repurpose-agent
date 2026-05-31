@@ -63,5 +63,18 @@
     "hit_genes": "",
     "status": "discard",
     "description": "add disease burden multiplier"
+  },
+  {
+    "experiment": 5,
+    "timestamp": "2026-05-31T03:22:45",
+    "recall_at_k": 0.0,
+    "K": 18,
+    "n_hits": 0,
+    "n_gold": 18,
+    "n_orphan": 169,
+    "top_gene": "KCNQ1",
+    "hit_genes": "",
+    "status": "discard",
+    "description": "eQTL \u00d7 tissue_specificity interaction"
   }
 ]
