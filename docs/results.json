@@ -48,5 +48,15 @@
     "top_gene": "KCNQ1",
     "status": "keep",
     "description": "add disease burden multiplier"
+  },
+  {
+    "experiment": 5,
+    "timestamp": "2026-05-31T10:45:23",
+    "spearman_r": 0.8799,
+    "n_gold": 13,
+    "n_orphan": 179,
+    "top_gene": "KCNQ1",
+    "status": "keep",
+    "description": "eQTL \u00d7 tissue_specificity interaction"
   }
 ]

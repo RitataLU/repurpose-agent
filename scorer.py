@@ -1,18 +1,18 @@
-"""scorer.py — add disease burden multiplier — auto-written by agent.py"""
+"""scorer.py — eQTL × tissue_specificity interaction — auto-written by agent.py"""
 
 WEIGHTS = {
     "mr_z_score": 2.5,
     "druggability_score": 2.5,
     "open_targets_score": 2.0,
     "gwas_pval_log10": 1.5,
-    "n_gwas_studies": 1.0,
-    "tissue_specificity": 1.2,
+    "n_gwas_studies": 1.2,
+    "tissue_specificity": 1.0,
     "ppi_degree": 0.5,
     "pubmed_count_5yr": 0.0,
-    "eqtl_effect": 1.8
+    "eqtl_effect": 1.0
 }
 BURDEN_MULTIPLIER = True
-INTERACTION_TERMS = [('mr_z_score', 'druggability_score', 4.0)]
+INTERACTION_TERMS = [('mr_z_score', 'druggability_score', 4.0), ('eqtl_effect', 'tissue_specificity', 2.5)]
 
 def score_gene(features: dict) -> float:
     score = sum(WEIGHTS.get(k,0)*v for k,v in features.items()
