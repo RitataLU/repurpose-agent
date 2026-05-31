@@ -9,5 +9,16 @@
     "top_by_sim": "CRHR1",
     "status": "keep",
     "description": "baseline: equal weights"
+  },
+  {
+    "experiment": 1,
+    "timestamp": "2026-05-31T03:31:00",
+    "spearman_r": 0.393082,
+    "n_gold": 18,
+    "n_orphan": 169,
+    "top_scorer": "KCNQ1",
+    "top_by_sim": "CRHR1",
+    "status": "keep",
+    "description": "upweight causal features: MR + druggability"
   }
 ]
