@@ -1,170 +1,170 @@
 rank	gene	score	hit	disease_area	druggability	mr_z
-1	APOE	6.1931	False	neurological	0.35	8.0
-2	MAPT	5.6455	False	neurological	0.35	7.5
-3	NR	5.5442	False	neurological	0.35	8.0
-4	KCNQ1	5.4848	False	metabolic	0.9	8.0
-5	LRRK2	5.4703	False	neurological	0.35	8.0
-6	SNCA	5.4373	False	neurological	0.35	8.0
-7	FTO	5.4168	False	metabolic	0.7	8.0
-8	CDKN2A	5.1325	False	metabolic	0.35	8.0
-9	BIN1	5.0412	False	neurological	0.35	8.0
-10	PLG	5.027	False	cardiovascular	0.9	5.75
-11	ADAR	4.9289	False	neurological	0.35	5.25
-12	LPA	4.8931	False	cardiovascular	0.35	8.0
-13	NSF	4.7436	False	neurological	0.35	5.5
-14	IL6R	4.627	False	neurological	0.35	5.25
-15	APOC2	4.5916	False	neurological	0.35	7.0
-16	LDLR	4.5878	False	cardiovascular	0.35	6.45
-17	KANSL1	4.5424	False	neurological	0.35	6.25
-18	CRHR1	4.4283	False	neurological	0.7	6.5
-19	PVR	4.4204	False	neurological	0.35	6.75
-20	SHE	4.3467	False	neurological	0.35	5.25
-21	RELB	4.2701	False	neurological	0.35	7.0
-22	INTERGENIC	4.2667	False	cardiovascular	0.35	8.0
-23	B	4.2055	False	metabolic	0.35	5.75
-24	CCND2	4.1776	False	metabolic	0.35	7.75
-25	IL13	4.1285	False	immune	0.35	5.25
-26	TCF7L2	4.0952	False	metabolic	0.35	8.0
-27	CEACAM16	4.0935	False	neurological	0.35	6.5
-28	EXOC3L2	3.9712	False	neurological	0.35	6.5
-29	APOC1	3.9436	False	neurological	0.35	8.0
-30	TMEM175	3.9301	False	neurological	0.35	6.5
-31	IGF2BP2	3.9299	False	metabolic	0.35	8.0
-32	BCL3	3.9075	False	neurological	0.35	8.0
-33	MTNR1B	3.9023	False	metabolic	0.9	7.19
-34	IL5	3.8815	False	immune	0.35	5.25
-35	MARK4	3.8345	False	neurological	0.35	7.0
-36	PHACTR1	3.8168	False	cardiovascular	0.35	8.0
-37	LEP	3.8099	False	metabolic	0.35	5.5
-38	IDE	3.7919	False	metabolic	0.35	8.0
-39	SLC30A8	3.7828	False	metabolic	0.35	8.0
-40	TOMM40	3.707	False	neurological	0.35	8.0
-41	GEMIN7	3.6757	False	neurological	0.35	6.25
-42	CKM	3.6605	False	neurological	0.35	5.5
-43	IGSF23	3.6519	False	neurological	0.35	6.75
-44	FLT1	3.6494	False	cardiovascular	0.9	4.53
-45	APOB	3.6373	False	cardiovascular	0.35	3.94
-46	CDKAL1	3.6275	False	metabolic	0.35	8.0
-47	ALDH2	3.6211	False	cardiovascular	0.9	3.88
-48	PAX4	3.6142	False	metabolic	0.35	7.75
-49	CDKN2B	3.6129	False	metabolic	0.35	8.0
-50	ARHGAP27	3.5935	False	neurological	0.35	5.25
-51	PVRL2	3.5786	False	neurological	0.35	8.0
-52	SLC22A5	3.5368	False	immune	0.35	5.5
-53	MCCC1	3.5361	False	neurological	0.35	4.93
-54	BCAM	3.5305	False	neurological	0.35	8.0
-55	STH	3.5259	False	neurological	0.35	5.5
-56	CBLC	3.4994	False	neurological	0.35	6.75
-57	CLPTM1	3.4499	False	neurological	0.35	7.75
-58	INPP5E	3.4413	False	immune	0.35	5.5
-59	DGKQ	3.4411	False	neurological	0.35	6.0
-60	IRF1	3.437	False	immune	0.35	5.5
-61	IRS1	3.4143	False	metabolic	0.35	6.86
-62	DYNC2H1	3.3772	False	cardiovascular	0.35	5.09
-63	PPP1R37	3.376	False	neurological	0.35	6.5
-64	PTGER4	3.3726	False	immune	0.9	5.25
-65	APOC1P1	3.3513	False	neurological	0.35	7.25
-66	SLC35D1	3.3127	False	immune	0.35	5.25
-67	HHEX	3.3093	False	metabolic	0.35	8.0
-68	APOC4	3.302	False	neurological	0.35	7.0
-69	CELSR2	3.281	False	cardiovascular	0.35	6.25
-70	JAZF1	3.2771	False	metabolic	0.35	8.0
-71	IL23R	3.2557	False	immune	0.35	5.75
-72	CARD9	3.2529	False	immune	0.35	5.5
-73	CLASRP	3.2527	False	neurological	0.35	6.75
-74	PMPCA	3.2129	False	immune	0.35	5.5
-75	IL4	3.1876	False	immune	0.35	5.25
-76	CDC123	3.1793	False	metabolic	0.35	8.0
-77	NKPD1	3.1541	False	neurological	0.35	6.25
-78	SLC22A3	3.1429	False	cardiovascular	0.35	6.57
-79	GAK	3.1059	False	neurological	0.35	6.02
-80	TRAPPC6A	3.1048	False	neurological	0.35	6.0
-81	SPPL2C	3.1026	False	neurological	0.35	5.25
-82	MIA3	3.1002	False	cardiovascular	0.35	7.09
-83	GPRIN3	3.098	False	neurological	0.35	5.5
-84	TDRD10	3.0955	False	neurological	0.35	5.25
-85	FES	3.0806	False	cardiovascular	0.35	4.21
-86	PSRC1	3.0768	False	cardiovascular	0.35	6.5
-87	SMARCA4	3.0334	False	cardiovascular	0.35	4.13
-88	GBA	3.0093	False	neurological	0.35	4.66
-89	UBE2Q1	2.9857	False	neurological	0.35	5.25
-90	KRTCAP2	2.957	False	neurological	0.35	5.25
-91	ADAMTS7	2.9274	False	cardiovascular	0.35	6.51
-92	DUSP9	2.8968	False	metabolic	0.35	6.0
-93	MST1R	2.8645	False	immune	0.5	4.94
-94	STK39	2.8639	False	neurological	0.35	5.01
-95	CDKN2B-AS1	2.8582	False	cardiovascular	0.35	8.0
-96	SND1	2.8542	False	metabolic	0.35	5.5
-97	HNF1B	2.8075	False	metabolic	0.35	7.75
-98	CAMK1D	2.775	False	metabolic	0.35	6.75
-99	CSF2	2.728	False	immune	0.35	5.5
-100	HLA-DQB1	2.7244	False	metabolic	0.35	5.75
-101	NKX2-3	2.6321	False	immune	0.35	5.5
-102	HIP1R	2.5885	False	neurological	0.35	4.07
-103	ACAD10	2.5522	False	cardiovascular	0.35	5.5
-104	SERBP1	2.5488	False	immune	0.35	5.25
-105	LPAL2	2.5464	False	cardiovascular	0.35	6.82
-106	IL12RB2	2.5314	False	immune	0.35	5.5
-107	C1ORF141	2.4964	False	immune	0.35	5.25
-108	CDKN2BAS	2.4549	False	cardiovascular	0.35	6.0
-109	PDLIM4	2.4001	False	immune	0.35	5.5
-110	SLC22A4	2.3911	False	immune	0.35	5.5
-111	XMHC	2.3083	False	psychiatric	0.35	4.59
-112	9P21	2.3075	False	cardiovascular	0.35	5.25
-113	SGIP1	2.277	False	immune	0.35	5.25
-114	MORF4L1	2.2639	False	cardiovascular	0.35	4.99
-115	IL3	2.2142	False	immune	0.35	5.5
-116	PTPN22	2.206	False	metabolic	0.35	5.75
-117	CDKN2A/2B	2.2057	False	metabolic	0.35	5.75
-118	GCC1	2.2055	False	metabolic	0.35	5.75
-119	TCF2	2.2055	False	metabolic	0.35	5.75
-120	BST1	2.136	False	neurological	0.35	3.6
-121	ACSL6	2.1214	False	immune	0.35	5.5
-122	CDKN2A/B	2.071	False	cardiovascular	0.35	4.63
-123	NUCKS1	2.0527	False	neurological	0.35	3.77
-124	SYT11	2.0478	False	neurological	0.35	3.19
-125	LOC105369980	2.0358	False	cardiovascular	0.35	4.87
-126	SDCCAG3	2.0063	False	immune	0.35	5.5
-127	ZKSCAN3	2.0001	False	psychiatric	0.35	5.29
-128	TARID	1.9972	False	cardiovascular	0.35	5.14
-129	MAPT-AS1	1.9799	False	neurological	0.35	3.89
-130	MIER1	1.9695	False	immune	0.35	5.25
-131	INSL5	1.957	False	immune	0.35	5.25
-132	WDR78	1.957	False	immune	0.35	5.25
-133	TCTEX1D1	1.957	False	immune	0.35	5.25
-134	ZSCAN23	1.9284	False	psychiatric	0.35	4.94
-135	MAP3K14	1.8926	False	neurological	0.35	2.74
-136	PFKFB4	1.7781	False	immune	0.35	5.17
-137	MIR4693	1.777	False	cardiovascular	0.35	4.66
-138	LRRC37A3	1.747	False	neurological	0.35	3.3
-139	ZNF323	1.6767	False	psychiatric	0.35	3.71
-140	CCNT2	1.6317	False	neurological	0.35	2.43
-141	TMEM163	1.618	False	neurological	0.35	2.77
-142	SLC2A13	1.4954	False	neurological	0.35	2.77
-143	TRIM27	1.4834	False	psychiatric	0.35	4.0
-144	SLC41A1	1.4795	False	neurological	0.35	2.53
-145	INPP5F	1.4117	False	neurological	0.35	3.05
-146	ZSCAN31	1.339	False	psychiatric	0.35	4.19
-147	OR12D3	1.3131	False	psychiatric	0.35	4.14
-148	HLA-DRB5	1.2944	False	neurological	0.35	3.12
-149	PGBD1	1.2836	False	psychiatric	0.35	4.0
-150	OR2J2	1.2836	False	psychiatric	0.35	4.0
-151	ZNF311	1.2836	False	psychiatric	0.35	4.0
-152	OR14J1	1.2836	False	psychiatric	0.35	4.0
-153	OR5V1	1.2836	False	psychiatric	0.35	4.0
-154	ZSCAN26	1.2836	False	psychiatric	0.35	4.0
-155	OR2W1	1.2558	False	psychiatric	0.35	3.87
-156	MAS1L	1.2558	False	psychiatric	0.35	3.87
-157	HCG14	1.2558	False	psychiatric	0.35	3.87
-158	LINC01556	1.2558	False	psychiatric	0.35	3.87
-159	OR2B3	1.2558	False	psychiatric	0.35	3.87
-160	OR2J3	1.2558	False	psychiatric	0.35	3.87
-161	LOC100129636	1.2558	False	psychiatric	0.35	3.87
-162	OR10C1	1.2558	False	psychiatric	0.35	3.87
-163	OR11A1	1.2281	False	psychiatric	0.35	3.74
-164	LINC01623	1.2281	False	psychiatric	0.35	3.74
-165	OR2G1P	1.2012	False	psychiatric	0.35	3.04
-166	GPX5	1.1986	False	psychiatric	0.35	3.6
-167	GPX6	1.1986	False	psychiatric	0.35	3.6
-168	ZSCAN12	1.1985	False	psychiatric	0.35	3.6
-169	ZBED9	1.1985	False	psychiatric	0.35	3.6
+1	APOE	6.1931		neurological	0.35	8.0
+2	MAPT	5.6455		neurological	0.35	7.5
+3	NR	5.5442		neurological	0.35	8.0
+4	KCNQ1	5.4848		metabolic	0.9	8.0
+5	LRRK2	5.4703		neurological	0.35	8.0
+6	SNCA	5.4373		neurological	0.35	8.0
+7	FTO	5.4168		metabolic	0.7	8.0
+8	CDKN2A	5.1325		metabolic	0.35	8.0
+9	BIN1	5.0412		neurological	0.35	8.0
+10	PLG	5.027		cardiovascular	0.9	5.75
+11	ADAR	4.9289		neurological	0.35	5.25
+12	LPA	4.8931		cardiovascular	0.35	8.0
+13	NSF	4.7436		neurological	0.35	5.5
+14	IL6R	4.627		neurological	0.35	5.25
+15	APOC2	4.5916		neurological	0.35	7.0
+16	LDLR	4.5878		cardiovascular	0.35	6.45
+17	KANSL1	4.5424		neurological	0.35	6.25
+18	CRHR1	4.4283		neurological	0.7	6.5
+19	PVR	4.4204		neurological	0.35	6.75
+20	SHE	4.3467		neurological	0.35	5.25
+21	RELB	4.2701		neurological	0.35	7.0
+22	INTERGENIC	4.2667		cardiovascular	0.35	8.0
+23	B	4.2055		metabolic	0.35	5.75
+24	CCND2	4.1776		metabolic	0.35	7.75
+25	IL13	4.1285		immune	0.35	5.25
+26	TCF7L2	4.0952		metabolic	0.35	8.0
+27	CEACAM16	4.0935		neurological	0.35	6.5
+28	EXOC3L2	3.9712		neurological	0.35	6.5
+29	APOC1	3.9436		neurological	0.35	8.0
+30	TMEM175	3.9301		neurological	0.35	6.5
+31	IGF2BP2	3.9299		metabolic	0.35	8.0
+32	BCL3	3.9075		neurological	0.35	8.0
+33	MTNR1B	3.9023		metabolic	0.9	7.19
+34	IL5	3.8815		immune	0.35	5.25
+35	MARK4	3.8345		neurological	0.35	7.0
+36	PHACTR1	3.8168		cardiovascular	0.35	8.0
+37	LEP	3.8099		metabolic	0.35	5.5
+38	IDE	3.7919		metabolic	0.35	8.0
+39	SLC30A8	3.7828		metabolic	0.35	8.0
+40	TOMM40	3.707		neurological	0.35	8.0
+41	GEMIN7	3.6757		neurological	0.35	6.25
+42	CKM	3.6605		neurological	0.35	5.5
+43	IGSF23	3.6519		neurological	0.35	6.75
+44	FLT1	3.6494		cardiovascular	0.9	4.53
+45	APOB	3.6373		cardiovascular	0.35	3.94
+46	CDKAL1	3.6275		metabolic	0.35	8.0
+47	ALDH2	3.6211		cardiovascular	0.9	3.88
+48	PAX4	3.6142		metabolic	0.35	7.75
+49	CDKN2B	3.6129		metabolic	0.35	8.0
+50	ARHGAP27	3.5935		neurological	0.35	5.25
+51	PVRL2	3.5786		neurological	0.35	8.0
+52	SLC22A5	3.5368		immune	0.35	5.5
+53	MCCC1	3.5361		neurological	0.35	4.93
+54	BCAM	3.5305		neurological	0.35	8.0
+55	STH	3.5259		neurological	0.35	5.5
+56	CBLC	3.4994		neurological	0.35	6.75
+57	CLPTM1	3.4499		neurological	0.35	7.75
+58	INPP5E	3.4413		immune	0.35	5.5
+59	DGKQ	3.4411		neurological	0.35	6.0
+60	IRF1	3.437		immune	0.35	5.5
+61	IRS1	3.4143		metabolic	0.35	6.86
+62	DYNC2H1	3.3772		cardiovascular	0.35	5.09
+63	PPP1R37	3.376		neurological	0.35	6.5
+64	PTGER4	3.3726		immune	0.9	5.25
+65	APOC1P1	3.3513		neurological	0.35	7.25
+66	SLC35D1	3.3127		immune	0.35	5.25
+67	HHEX	3.3093		metabolic	0.35	8.0
+68	APOC4	3.302		neurological	0.35	7.0
+69	CELSR2	3.281		cardiovascular	0.35	6.25
+70	JAZF1	3.2771		metabolic	0.35	8.0
+71	IL23R	3.2557		immune	0.35	5.75
+72	CARD9	3.2529		immune	0.35	5.5
+73	CLASRP	3.2527		neurological	0.35	6.75
+74	PMPCA	3.2129		immune	0.35	5.5
+75	IL4	3.1876		immune	0.35	5.25
+76	CDC123	3.1793		metabolic	0.35	8.0
+77	NKPD1	3.1541		neurological	0.35	6.25
+78	SLC22A3	3.1429		cardiovascular	0.35	6.57
+79	GAK	3.1059		neurological	0.35	6.02
+80	TRAPPC6A	3.1048		neurological	0.35	6.0
+81	SPPL2C	3.1026		neurological	0.35	5.25
+82	MIA3	3.1002		cardiovascular	0.35	7.09
+83	GPRIN3	3.098		neurological	0.35	5.5
+84	TDRD10	3.0955		neurological	0.35	5.25
+85	FES	3.0806		cardiovascular	0.35	4.21
+86	PSRC1	3.0768		cardiovascular	0.35	6.5
+87	SMARCA4	3.0334		cardiovascular	0.35	4.13
+88	GBA	3.0093		neurological	0.35	4.66
+89	UBE2Q1	2.9857		neurological	0.35	5.25
+90	KRTCAP2	2.957		neurological	0.35	5.25
+91	ADAMTS7	2.9274		cardiovascular	0.35	6.51
+92	DUSP9	2.8968		metabolic	0.35	6.0
+93	MST1R	2.8645		immune	0.5	4.94
+94	STK39	2.8639		neurological	0.35	5.01
+95	CDKN2B-AS1	2.8582		cardiovascular	0.35	8.0
+96	SND1	2.8542		metabolic	0.35	5.5
+97	HNF1B	2.8075		metabolic	0.35	7.75
+98	CAMK1D	2.775		metabolic	0.35	6.75
+99	CSF2	2.728		immune	0.35	5.5
+100	HLA-DQB1	2.7244		metabolic	0.35	5.75
+101	NKX2-3	2.6321		immune	0.35	5.5
+102	HIP1R	2.5885		neurological	0.35	4.07
+103	ACAD10	2.5522		cardiovascular	0.35	5.5
+104	SERBP1	2.5488		immune	0.35	5.25
+105	LPAL2	2.5464		cardiovascular	0.35	6.82
+106	IL12RB2	2.5314		immune	0.35	5.5
+107	C1ORF141	2.4964		immune	0.35	5.25
+108	CDKN2BAS	2.4549		cardiovascular	0.35	6.0
+109	PDLIM4	2.4001		immune	0.35	5.5
+110	SLC22A4	2.3911		immune	0.35	5.5
+111	XMHC	2.3083		psychiatric	0.35	4.59
+112	9P21	2.3075		cardiovascular	0.35	5.25
+113	SGIP1	2.277		immune	0.35	5.25
+114	MORF4L1	2.2639		cardiovascular	0.35	4.99
+115	IL3	2.2142		immune	0.35	5.5
+116	PTPN22	2.206		metabolic	0.35	5.75
+117	CDKN2A/2B	2.2057		metabolic	0.35	5.75
+118	GCC1	2.2055		metabolic	0.35	5.75
+119	TCF2	2.2055		metabolic	0.35	5.75
+120	BST1	2.136		neurological	0.35	3.6
+121	ACSL6	2.1214		immune	0.35	5.5
+122	CDKN2A/B	2.071		cardiovascular	0.35	4.63
+123	NUCKS1	2.0527		neurological	0.35	3.77
+124	SYT11	2.0478		neurological	0.35	3.19
+125	LOC105369980	2.0358		cardiovascular	0.35	4.87
+126	SDCCAG3	2.0063		immune	0.35	5.5
+127	ZKSCAN3	2.0001		psychiatric	0.35	5.29
+128	TARID	1.9972		cardiovascular	0.35	5.14
+129	MAPT-AS1	1.9799		neurological	0.35	3.89
+130	MIER1	1.9695		immune	0.35	5.25
+131	INSL5	1.957		immune	0.35	5.25
+132	WDR78	1.957		immune	0.35	5.25
+133	TCTEX1D1	1.957		immune	0.35	5.25
+134	ZSCAN23	1.9284		psychiatric	0.35	4.94
+135	MAP3K14	1.8926		neurological	0.35	2.74
+136	PFKFB4	1.7781		immune	0.35	5.17
+137	MIR4693	1.777		cardiovascular	0.35	4.66
+138	LRRC37A3	1.747		neurological	0.35	3.3
+139	ZNF323	1.6767		psychiatric	0.35	3.71
+140	CCNT2	1.6317		neurological	0.35	2.43
+141	TMEM163	1.618		neurological	0.35	2.77
+142	SLC2A13	1.4954		neurological	0.35	2.77
+143	TRIM27	1.4834		psychiatric	0.35	4.0
+144	SLC41A1	1.4795		neurological	0.35	2.53
+145	INPP5F	1.4117		neurological	0.35	3.05
+146	ZSCAN31	1.339		psychiatric	0.35	4.19
+147	OR12D3	1.3131		psychiatric	0.35	4.14
+148	HLA-DRB5	1.2944		neurological	0.35	3.12
+149	PGBD1	1.2836		psychiatric	0.35	4.0
+150	OR2J2	1.2836		psychiatric	0.35	4.0
+151	ZNF311	1.2836		psychiatric	0.35	4.0
+152	OR14J1	1.2836		psychiatric	0.35	4.0
+153	OR5V1	1.2836		psychiatric	0.35	4.0
+154	ZSCAN26	1.2836		psychiatric	0.35	4.0
+155	OR2W1	1.2558		psychiatric	0.35	3.87
+156	MAS1L	1.2558		psychiatric	0.35	3.87
+157	HCG14	1.2558		psychiatric	0.35	3.87
+158	LINC01556	1.2558		psychiatric	0.35	3.87
+159	OR2B3	1.2558		psychiatric	0.35	3.87
+160	OR2J3	1.2558		psychiatric	0.35	3.87
+161	LOC100129636	1.2558		psychiatric	0.35	3.87
+162	OR10C1	1.2558		psychiatric	0.35	3.87
+163	OR11A1	1.2281		psychiatric	0.35	3.74
+164	LINC01623	1.2281		psychiatric	0.35	3.74
+165	OR2G1P	1.2012		psychiatric	0.35	3.04
+166	GPX5	1.1986		psychiatric	0.35	3.6
+167	GPX6	1.1986		psychiatric	0.35	3.6
+168	ZSCAN12	1.1985		psychiatric	0.35	3.6
+169	ZBED9	1.1985		psychiatric	0.35	3.6
