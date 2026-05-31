@@ -212,7 +212,7 @@ main{max-width:1080px;margin:0 auto;padding:3rem 1.5rem 6rem}
     <div class="explainer">
       <div class="explainer-icon">⚙️</div>
       <h3>The method</h3>
-      <p>13 gold-standard gene-drug pairs (GWAS-confirmed + approved drug for the same disease) define a reference centroid in 9-dimensional feature space. Each orphan gene's cosine similarity to that centroid is its "ground-truth" score. The agent optimises a weighted linear formula to reproduce that ordering.</p>
+      <p>13 gold-standard gene-drug pairs (GWAS-confirmed + approved drug for the same disease) define a reference centroid in 10-dimensional feature space. Each orphan gene's cosine similarity to that centroid is its "ground-truth" score. The agent optimises a weighted linear formula to reproduce that ordering.</p>
     </div>
     <div class="explainer">
       <div class="explainer-icon">📐</div>
@@ -221,7 +221,7 @@ main{max-width:1080px;margin:0 auto;padding:3rem 1.5rem 6rem}
     </div>
   </div>
   <div class="method-steps">
-    <div class="step"><div class="step-num">STEP 1</div><h4>Feature enrichment</h4><p>Each gene gets 9 features from Open Targets (OT score, druggability, tractability), GWAS Catalog (p-value, study count), and PubMed (publication count). Gold genes use the same pipeline.</p></div>
+    <div class="step"><div class="step-num">STEP 1</div><h4>Feature enrichment</h4><p>Each gene gets 10 features from Open Targets (OT score, druggability, tractability), GWAS Catalog (p-value, study count), and PubMed (publication count). Gold genes use the same pipeline.</p></div>
     <div class="step"><div class="step-num">STEP 2</div><h4>Gold centroid</h4><p>The 13 gold genes are normalized together with orphan genes and averaged to a centroid vector. This centroid encodes what "approved drug target" looks like biologically.</p></div>
     <div class="step"><div class="step-num">STEP 3</div><h4>Cosine similarity</h4><p>Each orphan gene's normalized vector is compared to the centroid. The resulting similarity score is the ground-truth ranking the agent tries to reproduce.</p></div>
     <div class="step"><div class="step-num">STEP 4</div><h4>Agent loop</h4><p>The agent tries 10 weight configurations. After each, Spearman r is measured between the scorer ranking and cosine-similarity ranking. Better formulas are kept.</p></div>

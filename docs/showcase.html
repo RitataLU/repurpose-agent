@@ -165,7 +165,7 @@ h3{font-size:1.05rem;font-weight:600;margin-bottom:.4rem}
   <span>The gap →</span>
   <span>Gold standard →</span>
   <span>3-phase pipeline →</span>
-  <span>9 biological features →</span>
+  <span>10 biological features →</span>
   <span>The metric →</span>
   <span>Agent loop →</span>
   <span>Results</span>
@@ -176,7 +176,7 @@ h3{font-size:1.05rem;font-weight:600;margin-bottom:.4rem}
     <div class="hero-text">
       <span class="tag">Autonomous drug repurposing</span>
       <h1>Finding the next drug targets in human genetics</h1>
-      <p>Most genes implicated by GWAS studies have no approved drug. An autonomous agent searches for which of these "orphan" genes most closely resemble proven drug targets — using only public APIs and 9 biological features.</p>
+      <p>Most genes implicated by GWAS studies have no approved drug. An autonomous agent searches for which of these "orphan" genes most closely resemble proven drug targets — using only public APIs and 10 biological features.</p>
       <div class="hero-btns">
         <a href="results.html" class="btn-primary">Explore results →</a>
         <a href="index.html" class="btn-secondary">Live dashboard</a>
@@ -238,7 +238,7 @@ h3{font-size:1.05rem;font-weight:600;margin-bottom:.4rem}
   <div class="inner">
     <span class="tag">Gold standard</span>
     <h2>13 curated gene-drug pairs</h2>
-    <p class="lead">Each pair requires: (1) genome-wide significant GWAS association for the disease, and (2) an approved drug targeting the gene for that specific indication. These 13 genes define what a successful drug target looks like in our 9-dimensional feature space.</p>
+    <p class="lead">Each pair requires: (1) genome-wide significant GWAS association for the disease, and (2) an approved drug targeting the gene for that specific indication. These 13 genes define what a successful drug target looks like in our 10-dimensional feature space.</p>
     <div style="overflow-x:auto;border-radius:10px;border:1px solid var(--border)">
       <table class="gold-table">
         <thead><tr><th>Gene</th><th>Disease</th><th>Approved Drug</th><th>Area</th><th>Genetics score</th></tr></thead>
@@ -257,7 +257,7 @@ h3{font-size:1.05rem;font-weight:600;margin-bottom:.4rem}
       <div class="phase-card">
         <div class="phase-num">Phase 1 — Gold standard</div>
         <h3>Curate the template</h3>
-        <p>13 gene-drug pairs are curated where the gene has genome-wide significant GWAS associations and an approved drug for the same disease. These 13 genes are enriched with real biological features from Open Targets and PubMed APIs to define a reference centroid in 9-dimensional feature space.</p>
+        <p>13 gene-drug pairs are curated where the gene has genome-wide significant GWAS associations and an approved drug for the same disease. These 13 genes are enriched with real biological features from Open Targets and PubMed APIs to define a reference centroid in 10-dimensional feature space.</p>
       </div>
       <div class="phase-card">
         <div class="phase-num">Phase 2 — GWAS discovery</div>
@@ -268,8 +268,8 @@ h3{font-size:1.05rem;font-weight:600;margin-bottom:.4rem}
       <div class="phase-card">
         <div class="phase-num">Phase 3 — Feature enrichment</div>
         <h3>Build biological profiles</h3>
-        <p>Each orphan gene gets 9 features: Open Targets association score and druggability tractability, PubMed publication count (5 years), plus proxy features for eQTL effect size and Mendelian randomization z-score derived from GWAS evidence depth.</p>
-        <ul><li>Open Targets GraphQL v4</li><li>PubMed E-utilities esearch</li><li>9 biological features per gene</li></ul>
+        <p>Each orphan gene gets 10 features: Open Targets association score and druggability tractability, PubMed publication count (5 years), plus proxy features for eQTL effect size and Mendelian randomization z-score derived from GWAS evidence depth.</p>
+        <ul><li>Open Targets GraphQL v4</li><li>PubMed E-utilities esearch</li><li>10 biological features per gene</li></ul>
       </div>
     </div>
   </div>
@@ -277,9 +277,9 @@ h3{font-size:1.05rem;font-weight:600;margin-bottom:.4rem}
 
 <section id="features">
   <div class="inner">
-    <span class="tag">The 9 biological features</span>
+    <span class="tag">The 10 biological features</span>
     <h2>What we measure — and why it matters</h2>
-    <p class="lead">Every gene gets 9 numbers pulled from public databases. Together they answer one question: does this gene look like the kind of gene that becomes a drug target?</p>
+    <p class="lead">Every gene gets 10 numbers pulled from public databases. Together they answer one question: does this gene look like the kind of gene that becomes a drug target?</p>
 
     <p style="font-size:.85rem;color:var(--muted);margin-bottom:1.5rem;max-width:680px;line-height:1.7">
       The features fall into three groups. <strong style="color:var(--text)">Genetic causality</strong> answers: is this gene actually causing the disease, or just nearby? <strong style="color:var(--text)">Biological context</strong> answers: is it active in the right place, and how well studied is it? <strong style="color:var(--text)">Druggability</strong> answers: can we actually make a medicine for it?
@@ -367,7 +367,7 @@ h3{font-size:1.05rem;font-weight:600;margin-bottom:.4rem}
         The metric is the <strong style="color:var(--text)">Spearman rank correlation</strong> between two rankings of orphan genes: (1) the scorer's ranking from the weighted formula, and (2) the cosine similarity ranking to the gold standard centroid. A perfect scorer would rank orphan genes in exactly the same order as their biological distance to proven drug targets.
       </p>
       <div class="metric-steps">
-        <div class="ms"><div class="ms-num">Step 1</div><h4>Normalize features</h4><p>Orphan + gold gene features are min-max normalized together so all genes share the same scale across all 9 features.</p></div>
+        <div class="ms"><div class="ms-num">Step 1</div><h4>Normalize features</h4><p>Orphan + gold gene features are min-max normalized together so all genes share the same scale across all 10 features.</p></div>
         <div class="ms"><div class="ms-num">Step 2</div><h4>Compute gold centroid</h4><p>The 13 normalized gold gene vectors are averaged to one centroid — the "ideal drug target profile" in feature space.</p></div>
         <div class="ms"><div class="ms-num">Step 3</div><h4>Cosine similarity</h4><p>Each orphan gene's similarity to the centroid is computed. This is the ground truth the agent tries to reproduce.</p></div>
         <div class="ms"><div class="ms-num">Step 4</div><h4>Spearman correlation</h4><p>Spearman r measures whether the scorer ranking agrees with the cosine-similarity ranking. Higher r = better formula.</p></div>

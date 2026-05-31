@@ -369,7 +369,8 @@ def write_data_py(gold_standard, gold_features, orphan_genes):
         "FEATURE_KEYS = [",
         '    "gwas_pval_log10", "n_gwas_studies", "tissue_specificity",',
         '    "ppi_degree", "pubmed_count_5yr", "eqtl_effect",',
-        '    "druggability_score", "mr_z_score", "open_targets_score"',
+        '    "druggability_score", "mr_z_score", "open_targets_score",',
+        '    "burden_daly_m"',
         "]",
         "",
     ]
