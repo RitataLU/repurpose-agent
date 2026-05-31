@@ -164,11 +164,11 @@ def score_gene(features: dict) -> float:
         f.write(code)
 
 
-def git_push(exp_num: int, recall: float, no_push: bool):
+def git_push(exp_num: int, spearman: float, no_push: bool):
     files = [RESULTS_TSV, TOP_GENES_TSV, DOCS_RESULTS, DOCS_GENES, SCORER_FILE]
     try:
         subprocess.run(["git", "add"] + files, check=True, capture_output=True)
-        msg = f"exp {exp_num}: recall@K={recall:.4f} [{datetime.now().strftime('%Y-%m-%d %H:%M')}]"
+        msg = f"exp {exp_num}: spearman_r={spearman:.4f} [{datetime.now().strftime('%Y-%m-%d %H:%M')}]"
         r = subprocess.run(["git", "commit", "-m", msg], capture_output=True, text=True)
         if "nothing to commit" in r.stdout:
             return
@@ -186,11 +186,13 @@ def save_outputs(rows: list, best: dict):
     with open(DOCS_RESULTS, "w") as f:
         json.dump(rows, f, indent=2, default=str)
 
+    all_sims = best.get("all_sims", {})
     genes_out = [
         {
             "rank":         i,
             "gene":         g,
             "score":        round(s, 4),
+            "gold_sim":     round(all_sims.get(g, 0.0), 4),
             "hit":          g in d.GOLD_GENE_SET,
             "disease_area": d.ORPHAN_GENES.get(g, {}).get("disease_area", ""),
             "disease_name": d.ORPHAN_GENES.get(g, {}).get("disease_name", ""),
@@ -223,16 +225,14 @@ def save_outputs(rows: list, best: dict):
 
 
 def log_row(rows, exp_num, result, desc, status):
+    top_genes = result.get("top_genes") or list(result.get("all_scores", {}).keys())
     row = {
         "experiment":  exp_num,
         "timestamp":   datetime.now().isoformat(timespec="seconds"),
-        "recall_at_k": result["recall_at_k"],
-        "K":           result["K"],
-        "n_hits":      result["n_hits"],
+        "spearman_r":  result["spearman_r"],
         "n_gold":      result["n_gold"],
         "n_orphan":    result["n_orphan"],
-        "top_gene":    result["top_k_genes"][0] if result["top_k_genes"] else "",
-        "hit_genes":   "|".join(result.get("hit_genes", [])),
+        "top_gene":    top_genes[0] if top_genes else "",
         "status":      status,
         "description": desc,
     }
@@ -256,13 +256,12 @@ def main():
     args = parser.parse_args()
 
     import data as d
-    K = len(d.GOLD_GENE_SET)
     print("=" * 60)
     print("RepurposeAgent — Autoresearch Loop")
     print("=" * 60)
     print(f"Gold standard (curated):    {len(d.GOLD_STANDARD)} genes")
     print(f"Scored pool (orphan+gold):  {len(d.ORPHAN_GENES)} genes")
-    print(f"Metric: recall@{K} (gold genes in top {K})")
+    print(f"Metric: spearman_r (scorer vs cosine-sim-to-gold-centroid ranking)")
     print(f"Experiments: {min(args.max, len(EXPERIMENTS))}")
     print(f"Auto-push: {'off' if args.no_push else 'on → github.com/RitataLU/repurpose-agent'}\n")
 
@@ -275,21 +274,21 @@ def main():
     shutil.copy(SCORER_FILE, SCORER_BAK)
 
     base = run_evaluation()
-    best_recall = base["recall_at_k"]
-    best_result = base
+    best_spearman = base["spearman_r"]
+    best_result   = base
     log_row(rows, 0, base, "baseline: equal weights", "keep")
     save_outputs(rows, best_result)
-    git_push(0, best_recall, args.no_push)
-    print(f"[0] Baseline  recall@{K}={best_recall:.4f}  hits={base['n_hits']}/{K}")
+    git_push(0, best_spearman, args.no_push)
+    print(f"[0] Baseline  spearman_r={best_spearman:+.4f}")
 
     for i, exp in enumerate(EXPERIMENTS[:args.max], 1):
         shutil.copy(SCORER_FILE, SCORER_BAK)
         write_scorer(exp)
         try:
             result = run_evaluation()
-            recall = result["recall_at_k"]
-            if recall > best_recall:
-                best_recall, best_result = recall, result
+            spearman = result["spearman_r"]
+            if spearman > best_spearman:
+                best_spearman, best_result = spearman, result
                 status, marker = "keep", "✓ IMPROVED"
             else:
                 shutil.copy(SCORER_BAK, SCORER_FILE)
@@ -297,26 +296,27 @@ def main():
 
             log_row(rows, i, result, exp["desc"], status)
             save_outputs(rows, best_result)
-            git_push(i, recall, args.no_push)
+            git_push(i, spearman, args.no_push)
             print(
-                f"[{i}] {marker}  recall@{K}={recall:.4f}  "
-                f"hits={result['n_hits']}/{K}  | {exp['desc'][:50]}"
+                f"[{i}] {marker}  spearman_r={spearman:+.4f}"
+                f"  | {exp['desc'][:55]}"
             )
         except Exception as e:
             shutil.copy(SCORER_BAK, SCORER_FILE)
             empty = {
-                "recall_at_k": 0.0, "K": K, "n_hits": 0,
-                "n_gold": len(d.GOLD_GENE_SET), "n_orphan": len(d.ORPHAN_GENES),
-                "top_k_genes": [], "hit_genes": [], "all_scores": {},
+                "spearman_r": 0.0,
+                "n_gold": len(d.GOLD_STANDARD), "n_orphan": len(d.ORPHAN_GENES),
+                "top_genes": [], "all_scores": {}, "all_sims": {},
+                "weights_snapshot": {},
             }
             log_row(rows, i, empty, f"crash: {str(e)[:60]}", "crash")
             print(f"[{i}] CRASH: {e}")
 
     print(f"\n{'='*60}")
-    print(f"Best recall@{K}: {best_recall:.4f}  ({int(best_recall*K)}/{K} hits)")
-    if best_result["all_scores"]:
-        print(f"Top gene: {list(best_result['all_scores'].keys())[0]}")
-        print(f"Hit genes: {', '.join(best_result.get('hit_genes', []))}")
+    top_genes = best_result.get("top_genes") or list(best_result.get("all_scores", {}).keys())
+    print(f"Best spearman_r: {best_spearman:+.4f}")
+    if top_genes:
+        print(f"Top 3 orphan genes: {', '.join(top_genes[:3])}")
     print(f"Dashboard: https://ritataLU.github.io/repurpose-agent/")
 
 
