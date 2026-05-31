@@ -3,3 +3,4 @@ experiment	timestamp	spearman_r	n_gold	n_orphan	top_scorer	top_by_sim	status	des
 1	2026-05-31T03:29:43	0.0	18	169	KCNQ1	APOE	discard	upweight causal features: MR + druggability
 2	2026-05-31T03:29:43	0.0	18	169	KCNQ1	APOE	discard	MR × druggability interaction term
 3	2026-05-31T03:29:43	0.0	18	169	KCNQ1	APOE	discard	zero pubmed — remove popularity bias
+4	2026-05-31T03:29:43	0.0	18	169	KCNQ1	APOE	discard	add disease burden multiplier
