@@ -281,20 +281,6 @@
   },
   {
     "rank": 21,
-    "gene": "HNF1B",
-    "score": 4.3,
-    "hit": false,
-    "disease_area": "metabolic",
-    "disease_name": "type 2 diabetes",
-    "druggability": 0.35,
-    "mr_z": 7.75,
-    "ot_score": 0.85,
-    "gwas_p": 50,
-    "pubmed": 391,
-    "source": "live_api"
-  },
-  {
-    "rank": 22,
     "gene": "RELB",
     "score": 4.2701,
     "hit": false,
@@ -308,7 +294,7 @@
     "source": "live_api"
   },
   {
-    "rank": 23,
+    "rank": 22,
     "gene": "INTERGENIC",
     "score": 4.2667,
     "hit": false,
@@ -322,7 +308,7 @@
     "source": "live_api"
   },
   {
-    "rank": 24,
+    "rank": 23,
     "gene": "B",
     "score": 4.2055,
     "hit": false,
@@ -336,7 +322,7 @@
     "source": "live_api"
   },
   {
-    "rank": 25,
+    "rank": 24,
     "gene": "CCND2",
     "score": 4.1776,
     "hit": false,
@@ -350,7 +336,7 @@
     "source": "live_api"
   },
   {
-    "rank": 26,
+    "rank": 25,
     "gene": "IL13",
     "score": 4.1285,
     "hit": false,
@@ -364,7 +350,7 @@
     "source": "live_api"
   },
   {
-    "rank": 27,
+    "rank": 26,
     "gene": "TCF7L2",
     "score": 4.0952,
     "hit": false,
@@ -378,7 +364,7 @@
     "source": "live_api"
   },
   {
-    "rank": 28,
+    "rank": 27,
     "gene": "CEACAM16",
     "score": 4.0935,
     "hit": false,
@@ -392,7 +378,7 @@
     "source": "live_api"
   },
   {
-    "rank": 29,
+    "rank": 28,
     "gene": "EXOC3L2",
     "score": 3.9712,
     "hit": false,
@@ -406,21 +392,7 @@
     "source": "live_api"
   },
   {
-    "rank": 30,
-    "gene": "EDNRA",
-    "score": 3.9641,
-    "hit": false,
-    "disease_area": "cardiovascular",
-    "disease_name": "coronary artery disease",
-    "druggability": 0.9,
-    "mr_z": 5.51,
-    "ot_score": 0.76,
-    "gwas_p": 38.0,
-    "pubmed": 128,
-    "source": "live_api"
-  },
-  {
-    "rank": 31,
+    "rank": 29,
     "gene": "APOC1",
     "score": 3.9436,
     "hit": false,
@@ -434,7 +406,7 @@
     "source": "live_api"
   },
   {
-    "rank": 32,
+    "rank": 30,
     "gene": "TMEM175",
     "score": 3.9301,
     "hit": false,
@@ -448,7 +420,7 @@
     "source": "live_api"
   },
   {
-    "rank": 33,
+    "rank": 31,
     "gene": "IGF2BP2",
     "score": 3.9299,
     "hit": false,
@@ -462,7 +434,7 @@
     "source": "live_api"
   },
   {
-    "rank": 34,
+    "rank": 32,
     "gene": "BCL3",
     "score": 3.9075,
     "hit": false,
@@ -476,7 +448,7 @@
     "source": "live_api"
   },
   {
-    "rank": 35,
+    "rank": 33,
     "gene": "MTNR1B",
     "score": 3.9023,
     "hit": false,
@@ -490,7 +462,7 @@
     "source": "live_api"
   },
   {
-    "rank": 36,
+    "rank": 34,
     "gene": "IL5",
     "score": 3.8815,
     "hit": false,
@@ -504,7 +476,7 @@
     "source": "live_api"
   },
   {
-    "rank": 37,
+    "rank": 35,
     "gene": "MARK4",
     "score": 3.8345,
     "hit": false,
@@ -518,7 +490,7 @@
     "source": "live_api"
   },
   {
-    "rank": 38,
+    "rank": 36,
     "gene": "PHACTR1",
     "score": 3.8168,
     "hit": false,
@@ -532,7 +504,7 @@
     "source": "live_api"
   },
   {
-    "rank": 39,
+    "rank": 37,
     "gene": "LEP",
     "score": 3.8099,
     "hit": false,
@@ -546,7 +518,7 @@
     "source": "live_api"
   },
   {
-    "rank": 40,
+    "rank": 38,
     "gene": "IDE",
     "score": 3.7919,
     "hit": false,
@@ -560,7 +532,7 @@
     "source": "live_api"
   },
   {
-    "rank": 41,
+    "rank": 39,
     "gene": "SLC30A8",
     "score": 3.7828,
     "hit": false,
@@ -574,7 +546,7 @@
     "source": "live_api"
   },
   {
-    "rank": 42,
+    "rank": 40,
     "gene": "TOMM40",
     "score": 3.707,
     "hit": false,
@@ -588,7 +560,7 @@
     "source": "live_api"
   },
   {
-    "rank": 43,
+    "rank": 41,
     "gene": "GEMIN7",
     "score": 3.6757,
     "hit": false,
@@ -602,7 +574,7 @@
     "source": "live_api"
   },
   {
-    "rank": 44,
+    "rank": 42,
     "gene": "CKM",
     "score": 3.6605,
     "hit": false,
@@ -616,7 +588,7 @@
     "source": "live_api"
   },
   {
-    "rank": 45,
+    "rank": 43,
     "gene": "IGSF23",
     "score": 3.6519,
     "hit": false,
@@ -630,7 +602,7 @@
     "source": "live_api"
   },
   {
-    "rank": 46,
+    "rank": 44,
     "gene": "FLT1",
     "score": 3.6494,
     "hit": false,
@@ -644,7 +616,7 @@
     "source": "live_api"
   },
   {
-    "rank": 47,
+    "rank": 45,
     "gene": "APOB",
     "score": 3.6373,
     "hit": false,
@@ -658,7 +630,7 @@
     "source": "live_api"
   },
   {
-    "rank": 48,
+    "rank": 46,
     "gene": "CDKAL1",
     "score": 3.6275,
     "hit": false,
@@ -672,7 +644,7 @@
     "source": "live_api"
   },
   {
-    "rank": 49,
+    "rank": 47,
     "gene": "ALDH2",
     "score": 3.6211,
     "hit": false,
@@ -686,7 +658,7 @@
     "source": "live_api"
   },
   {
-    "rank": 50,
+    "rank": 48,
     "gene": "PAX4",
     "score": 3.6142,
     "hit": false,
@@ -700,7 +672,7 @@
     "source": "live_api"
   },
   {
-    "rank": 51,
+    "rank": 49,
     "gene": "CDKN2B",
     "score": 3.6129,
     "hit": false,
@@ -714,7 +686,7 @@
     "source": "live_api"
   },
   {
-    "rank": 52,
+    "rank": 50,
     "gene": "ARHGAP27",
     "score": 3.5935,
     "hit": false,
@@ -728,7 +700,7 @@
     "source": "live_api"
   },
   {
-    "rank": 53,
+    "rank": 51,
     "gene": "PVRL2",
     "score": 3.5786,
     "hit": false,
@@ -742,7 +714,7 @@
     "source": "live_api"
   },
   {
-    "rank": 54,
+    "rank": 52,
     "gene": "SLC22A5",
     "score": 3.5368,
     "hit": false,
@@ -756,7 +728,7 @@
     "source": "live_api"
   },
   {
-    "rank": 55,
+    "rank": 53,
     "gene": "MCCC1",
     "score": 3.5361,
     "hit": false,
@@ -770,7 +742,7 @@
     "source": "live_api"
   },
   {
-    "rank": 56,
+    "rank": 54,
     "gene": "BCAM",
     "score": 3.5305,
     "hit": false,
@@ -784,7 +756,7 @@
     "source": "live_api"
   },
   {
-    "rank": 57,
+    "rank": 55,
     "gene": "STH",
     "score": 3.5259,
     "hit": false,
@@ -798,7 +770,7 @@
     "source": "live_api"
   },
   {
-    "rank": 58,
+    "rank": 56,
     "gene": "CBLC",
     "score": 3.4994,
     "hit": false,
@@ -812,7 +784,7 @@
     "source": "live_api"
   },
   {
-    "rank": 59,
+    "rank": 57,
     "gene": "CLPTM1",
     "score": 3.4499,
     "hit": false,
@@ -826,7 +798,7 @@
     "source": "live_api"
   },
   {
-    "rank": 60,
+    "rank": 58,
     "gene": "INPP5E",
     "score": 3.4413,
     "hit": false,
@@ -840,7 +812,7 @@
     "source": "live_api"
   },
   {
-    "rank": 61,
+    "rank": 59,
     "gene": "DGKQ",
     "score": 3.4411,
     "hit": false,
@@ -854,7 +826,7 @@
     "source": "live_api"
   },
   {
-    "rank": 62,
+    "rank": 60,
     "gene": "IRF1",
     "score": 3.437,
     "hit": false,
@@ -868,7 +840,7 @@
     "source": "live_api"
   },
   {
-    "rank": 63,
+    "rank": 61,
     "gene": "IRS1",
     "score": 3.4143,
     "hit": false,
@@ -882,7 +854,7 @@
     "source": "live_api"
   },
   {
-    "rank": 64,
+    "rank": 62,
     "gene": "DYNC2H1",
     "score": 3.3772,
     "hit": false,
@@ -896,7 +868,7 @@
     "source": "live_api"
   },
   {
-    "rank": 65,
+    "rank": 63,
     "gene": "PPP1R37",
     "score": 3.376,
     "hit": false,
@@ -910,7 +882,7 @@
     "source": "live_api"
   },
   {
-    "rank": 66,
+    "rank": 64,
     "gene": "PTGER4",
     "score": 3.3726,
     "hit": false,
@@ -924,7 +896,7 @@
     "source": "live_api"
   },
   {
-    "rank": 67,
+    "rank": 65,
     "gene": "APOC1P1",
     "score": 3.3513,
     "hit": false,
@@ -938,7 +910,7 @@
     "source": "live_api"
   },
   {
-    "rank": 68,
+    "rank": 66,
     "gene": "SLC35D1",
     "score": 3.3127,
     "hit": false,
@@ -952,7 +924,7 @@
     "source": "live_api"
   },
   {
-    "rank": 69,
+    "rank": 67,
     "gene": "HHEX",
     "score": 3.3093,
     "hit": false,
@@ -966,7 +938,7 @@
     "source": "live_api"
   },
   {
-    "rank": 70,
+    "rank": 68,
     "gene": "APOC4",
     "score": 3.302,
     "hit": false,
@@ -980,7 +952,7 @@
     "source": "live_api"
   },
   {
-    "rank": 71,
+    "rank": 69,
     "gene": "CELSR2",
     "score": 3.281,
     "hit": false,
@@ -994,7 +966,7 @@
     "source": "live_api"
   },
   {
-    "rank": 72,
+    "rank": 70,
     "gene": "JAZF1",
     "score": 3.2771,
     "hit": false,
@@ -1008,7 +980,7 @@
     "source": "live_api"
   },
   {
-    "rank": 73,
+    "rank": 71,
     "gene": "IL23R",
     "score": 3.2557,
     "hit": false,
@@ -1022,7 +994,7 @@
     "source": "live_api"
   },
   {
-    "rank": 74,
+    "rank": 72,
     "gene": "CARD9",
     "score": 3.2529,
     "hit": false,
@@ -1036,7 +1008,7 @@
     "source": "live_api"
   },
   {
-    "rank": 75,
+    "rank": 73,
     "gene": "CLASRP",
     "score": 3.2527,
     "hit": false,
@@ -1050,21 +1022,7 @@
     "source": "live_api"
   },
   {
-    "rank": 76,
-    "gene": "PTPN22",
-    "score": 3.2165,
-    "hit": false,
-    "disease_area": "metabolic",
-    "disease_name": "type 2 diabetes",
-    "druggability": 0.35,
-    "mr_z": 5.75,
-    "ot_score": 0.68,
-    "gwas_p": 50,
-    "pubmed": 266,
-    "source": "live_api"
-  },
-  {
-    "rank": 77,
+    "rank": 74,
     "gene": "PMPCA",
     "score": 3.2129,
     "hit": false,
@@ -1078,7 +1036,7 @@
     "source": "live_api"
   },
   {
-    "rank": 78,
+    "rank": 75,
     "gene": "IL4",
     "score": 3.1876,
     "hit": false,
@@ -1092,7 +1050,7 @@
     "source": "live_api"
   },
   {
-    "rank": 79,
+    "rank": 76,
     "gene": "CDC123",
     "score": 3.1793,
     "hit": false,
@@ -1106,7 +1064,7 @@
     "source": "live_api"
   },
   {
-    "rank": 80,
+    "rank": 77,
     "gene": "NKPD1",
     "score": 3.1541,
     "hit": false,
@@ -1120,7 +1078,7 @@
     "source": "live_api"
   },
   {
-    "rank": 81,
+    "rank": 78,
     "gene": "SLC22A3",
     "score": 3.1429,
     "hit": false,
@@ -1134,7 +1092,7 @@
     "source": "live_api"
   },
   {
-    "rank": 82,
+    "rank": 79,
     "gene": "GAK",
     "score": 3.1059,
     "hit": false,
@@ -1148,7 +1106,7 @@
     "source": "live_api"
   },
   {
-    "rank": 83,
+    "rank": 80,
     "gene": "TRAPPC6A",
     "score": 3.1048,
     "hit": false,
@@ -1162,7 +1120,7 @@
     "source": "live_api"
   },
   {
-    "rank": 84,
+    "rank": 81,
     "gene": "SPPL2C",
     "score": 3.1026,
     "hit": false,
@@ -1176,7 +1134,7 @@
     "source": "live_api"
   },
   {
-    "rank": 85,
+    "rank": 82,
     "gene": "MIA3",
     "score": 3.1002,
     "hit": false,
@@ -1190,7 +1148,7 @@
     "source": "live_api"
   },
   {
-    "rank": 86,
+    "rank": 83,
     "gene": "GPRIN3",
     "score": 3.098,
     "hit": false,
@@ -1204,7 +1162,7 @@
     "source": "live_api"
   },
   {
-    "rank": 87,
+    "rank": 84,
     "gene": "TDRD10",
     "score": 3.0955,
     "hit": false,
@@ -1218,7 +1176,7 @@
     "source": "live_api"
   },
   {
-    "rank": 88,
+    "rank": 85,
     "gene": "FES",
     "score": 3.0806,
     "hit": false,
@@ -1232,7 +1190,7 @@
     "source": "live_api"
   },
   {
-    "rank": 89,
+    "rank": 86,
     "gene": "PSRC1",
     "score": 3.0768,
     "hit": false,
@@ -1246,7 +1204,21 @@
     "source": "live_api"
   },
   {
-    "rank": 90,
+    "rank": 87,
+    "gene": "SMARCA4",
+    "score": 3.0334,
+    "hit": false,
+    "disease_area": "cardiovascular",
+    "disease_name": "coronary artery disease",
+    "druggability": 0.35,
+    "mr_z": 4.13,
+    "ot_score": 0.8,
+    "gwas_p": 33.0,
+    "pubmed": 1258,
+    "source": "live_api"
+  },
+  {
+    "rank": 88,
     "gene": "GBA",
     "score": 3.0093,
     "hit": false,
@@ -1260,7 +1232,7 @@
     "source": "live_api"
   },
   {
-    "rank": 91,
+    "rank": 89,
     "gene": "UBE2Q1",
     "score": 2.9857,
     "hit": false,
@@ -1274,7 +1246,7 @@
     "source": "live_api"
   },
   {
-    "rank": 92,
+    "rank": 90,
     "gene": "KRTCAP2",
     "score": 2.957,
     "hit": false,
@@ -1288,7 +1260,7 @@
     "source": "live_api"
   },
   {
-    "rank": 93,
+    "rank": 91,
     "gene": "ADAMTS7",
     "score": 2.9274,
     "hit": false,
@@ -1302,7 +1274,7 @@
     "source": "live_api"
   },
   {
-    "rank": 94,
+    "rank": 92,
     "gene": "DUSP9",
     "score": 2.8968,
     "hit": false,
@@ -1316,7 +1288,7 @@
     "source": "live_api"
   },
   {
-    "rank": 95,
+    "rank": 93,
     "gene": "MST1R",
     "score": 2.8645,
     "hit": false,
@@ -1330,7 +1302,7 @@
     "source": "live_api"
   },
   {
-    "rank": 96,
+    "rank": 94,
     "gene": "STK39",
     "score": 2.8639,
     "hit": false,
@@ -1344,7 +1316,7 @@
     "source": "live_api"
   },
   {
-    "rank": 97,
+    "rank": 95,
     "gene": "CDKN2B-AS1",
     "score": 2.8582,
     "hit": false,
@@ -1358,7 +1330,7 @@
     "source": "live_api"
   },
   {
-    "rank": 98,
+    "rank": 96,
     "gene": "SND1",
     "score": 2.8542,
     "hit": false,
@@ -1372,7 +1344,21 @@
     "source": "live_api"
   },
   {
-    "rank": 99,
+    "rank": 97,
+    "gene": "HNF1B",
+    "score": 2.8075,
+    "hit": false,
+    "disease_area": "metabolic",
+    "disease_name": "type 2 diabetes",
+    "druggability": 0.35,
+    "mr_z": 7.75,
+    "ot_score": 0.3,
+    "gwas_p": 50,
+    "pubmed": 391,
+    "source": "live_api"
+  },
+  {
+    "rank": 98,
     "gene": "CAMK1D",
     "score": 2.775,
     "hit": false,
@@ -1386,7 +1372,7 @@
     "source": "live_api"
   },
   {
-    "rank": 100,
+    "rank": 99,
     "gene": "CSF2",
     "score": 2.728,
     "hit": false,
@@ -1400,7 +1386,7 @@
     "source": "live_api"
   },
   {
-    "rank": 101,
+    "rank": 100,
     "gene": "HLA-DQB1",
     "score": 2.7244,
     "hit": false,
@@ -1414,7 +1400,7 @@
     "source": "live_api"
   },
   {
-    "rank": 102,
+    "rank": 101,
     "gene": "NKX2-3",
     "score": 2.6321,
     "hit": false,
@@ -1428,7 +1414,7 @@
     "source": "live_api"
   },
   {
-    "rank": 103,
+    "rank": 102,
     "gene": "HIP1R",
     "score": 2.5885,
     "hit": false,
@@ -1442,7 +1428,7 @@
     "source": "live_api"
   },
   {
-    "rank": 104,
+    "rank": 103,
     "gene": "ACAD10",
     "score": 2.5522,
     "hit": false,
@@ -1456,7 +1442,7 @@
     "source": "live_api"
   },
   {
-    "rank": 105,
+    "rank": 104,
     "gene": "SERBP1",
     "score": 2.5488,
     "hit": false,
@@ -1470,7 +1456,7 @@
     "source": "live_api"
   },
   {
-    "rank": 106,
+    "rank": 105,
     "gene": "LPAL2",
     "score": 2.5464,
     "hit": false,
@@ -1484,7 +1470,7 @@
     "source": "live_api"
   },
   {
-    "rank": 107,
+    "rank": 106,
     "gene": "IL12RB2",
     "score": 2.5314,
     "hit": false,
@@ -1498,7 +1484,7 @@
     "source": "live_api"
   },
   {
-    "rank": 108,
+    "rank": 107,
     "gene": "C1ORF141",
     "score": 2.4964,
     "hit": false,
@@ -1512,7 +1498,7 @@
     "source": "live_api"
   },
   {
-    "rank": 109,
+    "rank": 108,
     "gene": "CDKN2BAS",
     "score": 2.4549,
     "hit": false,
@@ -1526,7 +1512,7 @@
     "source": "live_api"
   },
   {
-    "rank": 110,
+    "rank": 109,
     "gene": "PDLIM4",
     "score": 2.4001,
     "hit": false,
@@ -1540,7 +1526,7 @@
     "source": "live_api"
   },
   {
-    "rank": 111,
+    "rank": 110,
     "gene": "SLC22A4",
     "score": 2.3911,
     "hit": false,
@@ -1554,21 +1540,7 @@
     "source": "live_api"
   },
   {
-    "rank": 112,
-    "gene": "GCC1",
-    "score": 2.3853,
-    "hit": false,
-    "disease_area": "metabolic",
-    "disease_name": "type 2 diabetes",
-    "druggability": 0.35,
-    "mr_z": 5.75,
-    "ot_score": 0.37,
-    "gwas_p": 50,
-    "pubmed": 6,
-    "source": "live_api"
-  },
-  {
-    "rank": 113,
+    "rank": 111,
     "gene": "XMHC",
     "score": 2.3083,
     "hit": false,
@@ -1582,7 +1554,7 @@
     "source": "live_api"
   },
   {
-    "rank": 114,
+    "rank": 112,
     "gene": "9P21",
     "score": 2.3075,
     "hit": false,
@@ -1596,7 +1568,7 @@
     "source": "live_api"
   },
   {
-    "rank": 115,
+    "rank": 113,
     "gene": "SGIP1",
     "score": 2.277,
     "hit": false,
@@ -1610,7 +1582,7 @@
     "source": "live_api"
   },
   {
-    "rank": 116,
+    "rank": 114,
     "gene": "MORF4L1",
     "score": 2.2639,
     "hit": false,
@@ -1624,7 +1596,7 @@
     "source": "live_api"
   },
   {
-    "rank": 117,
+    "rank": 115,
     "gene": "IL3",
     "score": 2.2142,
     "hit": false,
@@ -1638,7 +1610,21 @@
     "source": "live_api"
   },
   {
-    "rank": 118,
+    "rank": 116,
+    "gene": "PTPN22",
+    "score": 2.206,
+    "hit": false,
+    "disease_area": "metabolic",
+    "disease_name": "type 2 diabetes",
+    "druggability": 0.35,
+    "mr_z": 5.75,
+    "ot_score": 0.3,
+    "gwas_p": 50,
+    "pubmed": 266,
+    "source": "live_api"
+  },
+  {
+    "rank": 117,
     "gene": "CDKN2A/2B",
     "score": 2.2057,
     "hit": false,
@@ -1649,6 +1635,20 @@
     "ot_score": 0.3,
     "gwas_p": 50,
     "pubmed": 67,
+    "source": "live_api"
+  },
+  {
+    "rank": 118,
+    "gene": "GCC1",
+    "score": 2.2055,
+    "hit": false,
+    "disease_area": "metabolic",
+    "disease_name": "type 2 diabetes",
+    "druggability": 0.35,
+    "mr_z": 5.75,
+    "ot_score": 0.3,
+    "gwas_p": 50,
+    "pubmed": 6,
     "source": "live_api"
   },
   {
