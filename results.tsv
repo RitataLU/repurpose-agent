@@ -6,3 +6,4 @@ experiment	timestamp	spearman_r	n_gold	n_orphan	top_scorer	top_by_sim	status	des
 4	2026-05-31T03:29:43	0.0	18	169	KCNQ1	APOE	discard	add disease burden multiplier
 5	2026-05-31T03:29:43	0.0	18	169	KCNQ1	APOE	discard	eQTL × tissue_specificity interaction
 6	2026-05-31T03:29:43	0.0	18	169	KCNQ1	APOE	discard	zero PPI — network degree is noise
+7	2026-05-31T03:29:43	0.0	18	169	KCNQ1	APOE	discard	dominant MR — pure causal genetics
