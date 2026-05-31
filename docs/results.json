@@ -102,5 +102,18 @@
     "hit_genes": "APOE|LRRK2|DRD2",
     "status": "discard",
     "description": "dominant MR \u2014 pure causal genetics"
+  },
+  {
+    "experiment": 8,
+    "timestamp": "2026-05-31T10:29:57",
+    "recall_at_k": 0.3846,
+    "K": 13,
+    "n_hits": 5,
+    "n_gold": 13,
+    "n_orphan": 179,
+    "top_gene": "KCNQ1",
+    "hit_genes": "APOE|DRD2|LRRK2|TNF|PCSK9",
+    "status": "discard",
+    "description": "causal triad: MR + eQTL + OT"
   }
 ]
