@@ -2,456 +2,455 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RepurposeAgent — Autonomous Drug Repurposing</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RepurposeAgent — Finding the next drug targets in human genetics</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,700&family=DM+Sans:wght@300;400;500;600&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #f7f4ef;
-    --bg2: #f0ebe3;
-    --ink: #0e1520;
-    --ink2: #2d3748;
-    --muted: #718096;
-    --green: #00966d;
-    --green2: #007a58;
-    --accent: #e8f5f0;
-    --border: #ddd6ca;
-    --font-head: 'Fraunces', Georgia, serif;
-    --font-body: 'DM Sans', system-ui, sans-serif;
-  }
-  html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.6; }
-
-  /* Header */
-  header {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(247,244,239,.95); backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 2rem; height: 60px;
-  }
-  .logo { font-family: var(--font-head); font-weight: 600; font-size: 1.1rem; color: var(--ink); }
-  .logo em { color: var(--green); font-style: normal; }
-  nav { display: flex; align-items: center; gap: 1rem; }
-  nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color .2s; }
-  nav a:hover { color: var(--green); }
-  nav .cta-btn {
-    background: var(--green); color: #fff; border-radius: 6px;
-    padding: 7px 18px; font-size: 0.85rem; font-weight: 500;
-    transition: background .2s;
-  }
-  nav .cta-btn:hover { background: var(--green2); color: #fff; }
-
-  /* Sections */
-  section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
-  section.wide { max-width: 100%; padding: 5rem 0; }
-  section.wide .inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-
-  .tag {
-    display: inline-block; font-size: 0.7rem; font-weight: 600;
-    text-transform: uppercase; letter-spacing: .12em;
-    color: var(--green); background: var(--accent);
-    border: 1px solid rgba(0,150,109,.2);
-    border-radius: 20px; padding: 4px 14px; margin-bottom: 1.2rem;
-  }
-  h1 { font-family: var(--font-head); font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 600; line-height: 1.15; color: var(--ink); }
-  h2 { font-family: var(--font-head); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 600; line-height: 1.2; margin-bottom: 1rem; }
-  h3 { font-family: var(--font-head); font-size: 1.3rem; font-weight: 600; margin-bottom: .6rem; }
-  p { color: var(--ink2); }
-
-  /* Hero */
-  #hero { padding-top: 6rem; padding-bottom: 5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-  .hero-text .sub { font-size: 1.05rem; color: var(--ink2); margin: 1.2rem 0 2rem; max-width: 480px; }
-  .hero-stat {
-    display: inline-flex; align-items: baseline; gap: 6px;
-    background: var(--accent); border: 1px solid rgba(0,150,109,.25);
-    border-radius: 10px; padding: 1.5rem 2rem; margin-bottom: 1.5rem;
-  }
-  .hero-stat .num { font-family: var(--font-head); font-size: 3.5rem; font-weight: 700; color: var(--green); line-height: 1; }
-  .hero-stat .label { font-size: 0.9rem; color: var(--muted); max-width: 120px; line-height: 1.3; }
-  .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
-  .btn-primary {
-    background: var(--green); color: #fff; border-radius: 8px;
-    padding: 12px 26px; font-size: 0.95rem; font-weight: 500; text-decoration: none;
-    transition: background .2s; display: inline-block;
-  }
-  .btn-primary:hover { background: var(--green2); }
-  .btn-outline {
-    background: transparent; color: var(--ink); border: 1.5px solid var(--border);
-    border-radius: 8px; padding: 12px 26px; font-size: 0.95rem; font-weight: 500;
-    text-decoration: none; transition: all .2s; display: inline-block;
-  }
-  .btn-outline:hover { border-color: var(--green); color: var(--green); }
-
-  /* Gap visual */
-  #gap { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  #gap .inner { display: flex; flex-direction: column; align-items: center; text-align: center; }
-  #gap h2 { margin-bottom: .5rem; }
-  #gap p { max-width: 560px; margin: 0 auto 2.5rem; }
-  .gap-svg { width: 100%; max-width: 700px; }
-
-  /* Method cards */
-  #method .cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 2rem; }
-  .method-card {
-    background: #fff; border: 1px solid var(--border);
-    border-radius: 12px; padding: 1.8rem;
-    transition: box-shadow .2s, transform .2s;
-  }
-  .method-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.08); transform: translateY(-2px); }
-  .method-icon {
-    width: 44px; height: 44px; border-radius: 10px;
-    background: var(--accent); display: flex; align-items: center; justify-content: center;
-    font-size: 1.3rem; margin-bottom: 1rem;
-  }
-  .method-card p { font-size: 0.9rem; color: var(--muted); }
-
-  /* Loop SVG section */
-  #loop { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  #loop .inner { display: flex; flex-direction: column; align-items: center; text-align: center; }
-  .loop-svg { max-width: 800px; width: 100%; margin-top: 2rem; }
-
-  /* Gold standard */
-  #gold-section table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; font-size: 0.9rem; }
-  #gold-section thead th {
-    background: var(--bg2); text-align: left; padding: 10px 14px;
-    font-weight: 600; font-size: 0.75rem; text-transform: uppercase;
-    letter-spacing: .08em; color: var(--muted); border-bottom: 1px solid var(--border);
-  }
-  #gold-section tbody tr { border-bottom: 1px solid var(--border); }
-  #gold-section tbody tr:last-child { border-bottom: none; }
-  #gold-section tbody tr:hover { background: var(--accent); }
-  #gold-section td { padding: 10px 14px; }
-  .gene-name { font-weight: 600; color: var(--green); }
-  .area-chip {
-    display: inline-block; font-size: 0.68rem; padding: 2px 9px;
-    border-radius: 20px; font-weight: 500;
-    text-transform: uppercase; letter-spacing: .06em;
-    background: var(--accent); color: var(--green); border: 1px solid rgba(0,150,109,.2);
-  }
-  .score-mini { font-size: 0.8rem; color: var(--muted); }
-
-  /* Results chart */
-  #results-section .chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem; align-items: start; }
-  .chart-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; }
-  .chart-title { font-family: var(--font-head); font-size: 1rem; font-weight: 600; margin-bottom: 1rem; }
-  .chart-wrap { height: 220px; position: relative; }
-  .top-genes { list-style: none; }
-  .top-genes li {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 10px 0; border-bottom: 1px solid var(--border);
-  }
-  .top-genes li:last-child { border-bottom: none; }
-  .top-gene-name { font-weight: 600; color: var(--green); font-size: 1rem; }
-  .top-gene-meta { font-size: 0.8rem; color: var(--muted); }
-  .top-gene-score { font-weight: 600; font-size: 0.85rem; color: var(--ink); }
-
-  /* Implications */
-  #implications { background: var(--ink); color: #f7f4ef; border-radius: 0; }
-  #implications h2 { color: #f7f4ef; }
-  #implications .tag { background: rgba(0,212,170,.1); border-color: rgba(0,212,170,.3); color: #00d4aa; }
-  #implications .impl-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin-top: 2rem; }
-  .impl-card { padding: 1.5rem; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1); border-radius: 10px; }
-  .impl-card h3 { font-size: 1rem; margin-bottom: .5rem; color: #f7f4ef; }
-  .impl-card p { font-size: 0.88rem; color: rgba(247,244,239,.6); }
-  .impl-icon { font-size: 1.5rem; margin-bottom: .8rem; }
-
-  /* CTA */
-  #cta { text-align: center; }
-  #cta h2 { margin-bottom: .75rem; }
-  #cta p { color: var(--muted); max-width: 460px; margin: 0 auto 2rem; }
-  #cta .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-
-  /* Responsive */
-  @media (max-width: 900px) {
-    #hero { grid-template-columns: 1fr; gap: 2.5rem; }
-    #method .cards { grid-template-columns: 1fr; }
-    #results-section .chart-row { grid-template-columns: 1fr; }
-    #implications .impl-grid { grid-template-columns: 1fr; }
-    nav a:not(.cta-btn) { display: none; }
-  }
-  @media (max-width: 600px) {
-    section { padding: 3rem 1.25rem; }
-    .hero-stat .num { font-size: 2.5rem; }
-    nav { gap: .5rem; }
-  }
-
-  footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--border); }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f4ef;--surf:#ffffff;--surf2:#f0ede6;--border:#e0dbd0;
+  --green:#00966d;--green2:#007a58;--green-pale:#e8f5f0;
+  --text:#1a1a1a;--muted:#6b6b6b;--sub:#999;
+  --serif:"Fraunces",Georgia,serif;--sans:"DM Sans",system-ui,sans-serif;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.65}
+a{color:var(--green);text-decoration:none}
+a:hover{text-decoration:underline}
+header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(247,244,239,.93);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+  padding:.75rem 2rem;display:flex;align-items:center;justify-content:space-between;
+}
+.logo{font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--text)}
+nav{display:flex;align-items:center;gap:1rem}
+nav a{color:var(--muted);font-size:.9rem;transition:color .2s}
+nav a:hover{color:var(--green)}
+.cta-btn{background:var(--green);color:#fff!important;padding:.45rem 1rem;border-radius:6px;font-size:.85rem;font-weight:500;transition:background .2s}
+.cta-btn:hover{background:var(--green2);text-decoration:none!important}
+section{padding:5rem 1.5rem}
+.inner{max-width:1040px;margin:0 auto}
+h2{font-family:var(--serif);font-size:2rem;font-weight:700;line-height:1.2;margin-bottom:.75rem}
+h3{font-size:1.05rem;font-weight:600;margin-bottom:.4rem}
+.lead{font-size:1.05rem;color:var(--muted);max-width:620px;line-height:1.75;margin-bottom:2rem}
+.tag{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:.6rem}
+#hero{background:var(--bg);border-bottom:1px solid var(--border)}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.hero-text h1{font-family:var(--serif);font-size:2.6rem;font-weight:700;line-height:1.18;margin-bottom:1rem}
+.hero-text p{color:var(--muted);font-size:1rem;max-width:460px;line-height:1.75;margin-bottom:1.75rem}
+.hero-btns{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn-primary{background:var(--green);color:#fff;padding:.7rem 1.4rem;border-radius:7px;font-weight:500;font-size:.95rem;transition:background .2s}
+.btn-primary:hover{background:var(--green2);text-decoration:none}
+.btn-secondary{background:transparent;color:var(--text);padding:.7rem 1.4rem;border:1.5px solid var(--border);border-radius:7px;font-weight:500;font-size:.95rem;transition:border-color .2s}
+.btn-secondary:hover{border-color:var(--green);text-decoration:none}
+.hero-stats{display:flex;flex-direction:column;gap:1rem}
+.hero-stat{background:var(--surf);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.5rem}
+.hero-stat-val{font-family:var(--serif);font-size:2.2rem;font-weight:700;color:var(--green)}
+.hero-stat-label{font-size:.85rem;color:var(--muted);margin-top:.15rem}
+.hero-stat-sub{font-size:.78rem;color:var(--sub);margin-top:.1rem}
+#problem{background:var(--surf)}
+.gap-row{display:flex;gap:1rem;align-items:stretch;margin-top:2rem}
+.gap-box{flex:1;border-radius:10px;padding:2rem;display:flex;flex-direction:column;justify-content:space-between}
+.gap-box.orphan{background:#1a1a2e;color:#e0e0f0}
+.gap-box.drugged{background:var(--green-pale);color:var(--text)}
+.gap-pct{font-family:var(--serif);font-size:4rem;font-weight:700;line-height:1;margin-bottom:.5rem}
+.gap-pct.orphan-pct{color:#7dd3fc}
+.gap-pct.drug-pct{color:var(--green)}
+.gap-label{font-size:1rem;font-weight:600;margin-bottom:.35rem}
+.gap-desc{font-size:.85rem;opacity:.7;line-height:1.6}
+.gap-bar-track{background:rgba(255,255,255,.15);border-radius:4px;height:8px;margin-top:1.5rem}
+.gap-bar-fill{height:8px;border-radius:4px}
+.orphan-fill{background:#7dd3fc;width:88%}
+.drug-fill{background:var(--green);width:12%}
+.insight-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:2rem}
+.insight{background:var(--surf2);border:1px solid var(--border);border-radius:8px;padding:1.1rem}
+.insight h4{font-size:.9rem;font-weight:600;margin-bottom:.35rem}
+.insight p{font-size:.82rem;color:var(--muted);line-height:1.6}
+#how{background:var(--bg)}
+.phase-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.25rem;margin-top:2rem}
+.phase-card{background:var(--surf);border:1px solid var(--border);border-radius:10px;padding:1.5rem}
+.phase-num{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem}
+.phase-card p{font-size:.85rem;color:var(--muted);line-height:1.65}
+.phase-card ul{margin-top:.5rem;padding-left:1.1rem}
+.phase-card li{font-size:.83rem;color:var(--muted);line-height:1.7}
+#loop{background:var(--surf);border-top:1px solid var(--border)}
+.loop-diagram{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.5rem;margin:2rem 0;padding:2rem;background:var(--surf2);border-radius:12px;border:1px solid var(--border)}
+.loop-box{background:var(--surf);border:1.5px solid var(--border);border-radius:8px;padding:.75rem 1.1rem;font-weight:600;font-size:.9rem;text-align:center;min-width:120px}
+.loop-box.accent{border-color:var(--green);color:var(--green)}
+.loop-arrow{font-size:1.2rem;color:var(--muted)}
+.axis-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:2rem}
+.axis-card{background:var(--surf2);border:1px solid var(--border);border-radius:8px;padding:1.1rem}
+.axis-card h4{font-size:.9rem;font-weight:600;margin-bottom:.35rem;color:var(--green)}
+.axis-card p{font-size:.82rem;color:var(--muted);line-height:1.6}
+#metric{background:var(--bg)}
+.metric-box{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:2rem;max-width:720px}
+.metric-steps{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}
+.ms{background:var(--surf2);border:1px solid var(--border);border-radius:8px;padding:1rem}
+.ms-num{font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.3rem}
+.ms h4{font-size:.88rem;font-weight:600;margin-bottom:.3rem}
+.ms p{font-size:.8rem;color:var(--muted);line-height:1.6}
+.spearman-scale{margin-top:1.5rem}
+.scale-label{font-size:.8rem;color:var(--muted);margin-bottom:.4rem}
+.scale-bar{height:14px;border-radius:7px;background:linear-gradient(90deg,#f87171 0%,#fcd34d 35%,#86efac 60%,#00966d 100%);position:relative;margin-bottom:.35rem}
+.scale-ticks{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted)}
+#gold-section{background:var(--surf)}
+.gold-table{width:100%;border-collapse:collapse;font-size:.875rem}
+.gold-table th{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid var(--border);padding:.5rem .75rem;text-align:left}
+.gold-table td{padding:.65rem .75rem;border-bottom:1px solid var(--border)}
+.gold-table tr:last-child td{border-bottom:none}
+.gold-table tr:hover td{background:var(--surf2)}
+.gene-tag{font-weight:700}
+.drug-tag{color:var(--green);font-weight:500}
+.area-chip{display:inline-block;font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:.15rem .5rem;border-radius:3px}
+.area-neurological{background:#dbeafe;color:#1d4ed8}
+.area-cardiovascular{background:#fee2e2;color:#b91c1c}
+.area-metabolic{background:#dcfce7;color:#166534}
+.area-psychiatric{background:#fef3c7;color:#92400e}
+.area-immune{background:#e0f2fe;color:#075985}
+#live-results{background:var(--bg)}
+.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.results-chart-card{background:var(--surf);border:1px solid var(--border);border-radius:10px;padding:1.5rem}
+.results-chart-card h3{font-size:.95rem;font-weight:600;margin-bottom:1rem}
+#showcase-chart-wrap{height:220px;position:relative}
+.top-genes-list{background:var(--surf);border:1px solid var(--border);border-radius:10px;padding:1.5rem}
+.top-genes-list h3{font-size:.95rem;font-weight:600;margin-bottom:1rem}
+.tg-item{display:flex;align-items:center;gap:.75rem;padding:.55rem 0;border-bottom:1px solid var(--border)}
+.tg-item:last-child{border-bottom:none}
+.tg-rank{font-size:.75rem;font-weight:700;color:var(--muted);width:1.5rem;text-align:right;flex-shrink:0}
+.tg-gene{font-weight:700;font-size:.92rem;flex:1}
+.tg-area{font-size:.75rem;color:var(--muted)}
+.tg-sim{font-size:.78rem;color:var(--green);font-weight:600;margin-left:auto}
+.see-all{display:block;margin-top:1rem;text-align:center;font-size:.85rem;font-weight:500;background:var(--surf2);border:1px solid var(--border);border-radius:6px;padding:.55rem;transition:border-color .2s}
+.see-all:hover{border-color:var(--green);text-decoration:none}
+#implications{background:#0e1520;color:#cdd6f4;border-top:none}
+#implications h2{color:#cdd6f4;font-family:var(--serif)}
+#implications .lead{color:#7f8ea3}
+.impl-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.25rem;margin-top:2rem}
+.impl-card{background:#121c2e;border:1px solid #1e2a3a;border-radius:10px;padding:1.5rem}
+.impl-card h3{font-size:.95rem;font-weight:600;margin-bottom:.5rem;color:#cdd6f4}
+.impl-card p{font-size:.85rem;color:#7f8ea3;line-height:1.65}
+.impl-icon{font-size:1.3rem;margin-bottom:.5rem}
+#cta{background:var(--bg);border-top:1px solid var(--border);text-align:center}
+.cta-title{font-family:var(--serif);font-size:1.9rem;font-weight:700;margin-bottom:.75rem}
+.cta-lead{color:var(--muted);margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto}
+.cta-links{display:flex;justify-content:center;flex-wrap:wrap;gap:.75rem;margin-bottom:2rem}
+.code-block{background:#1a1a2e;color:#a5b4fc;font-family:"IBM Plex Mono",monospace;font-size:.85rem;padding:1rem 1.5rem;border-radius:8px;display:inline-block;border:1px solid #2d3a5e;margin-top:1rem}
+@media(max-width:768px){
+  .hero-inner,.results-grid,.metric-steps{grid-template-columns:1fr}
+  h2{font-size:1.6rem}
+  .hero-text h1{font-size:2rem}
+  nav a:not(.cta-btn){display:none}
+  section{padding:3rem 1rem}
+  .gap-row{flex-direction:column}
+}
 </style>
 </head>
 <body>
-
 <header>
-  <div class="logo">Repurpose<em>Agent</em></div>
+  <span class="logo">RepurposeAgent</span>
   <nav>
-    <a href="#method">Method</a>
-    <a href="#gold-section">Gold Standard</a>
-    <a href="#results-section">Results</a>
     <a href="results.html">Results ↗</a>
-    <a href="index.html" class="cta-btn">Live Dashboard →</a>
+    <a href="index.html">Dashboard</a>
+    <a href="https://github.com/RitataLU/repurpose-agent" target="_blank">GitHub</a>
+    <a href="results.html" class="cta-btn">View Results →</a>
   </nav>
 </header>
 
-<!-- Hero -->
 <section id="hero">
-  <div class="hero-text">
-    <div class="tag">Autonomous Research Agent</div>
-    <h1>Drug repurposing, end-to-end from public APIs</h1>
-    <p class="sub">
-      RepurposeAgent discovers a gold standard, finds orphan genes, enriches with
-      biological features, then iterates a scoring formula — all without touching a spreadsheet.
-    </p>
-    <div class="hero-cta">
-      <a href="index.html" class="btn-primary">View Live Dashboard</a>
-      <a href="https://github.com/RitataLU/repurpose-agent" target="_blank" class="btn-outline">GitHub →</a>
+  <div class="inner hero-inner">
+    <div class="hero-text">
+      <span class="tag">Autonomous drug repurposing</span>
+      <h1>Finding the next drug targets in human genetics</h1>
+      <p>Most genes implicated by GWAS studies have no approved drug. An autonomous agent searches for which of these "orphan" genes most closely resemble proven drug targets — using only public APIs and 9 biological features.</p>
+      <div class="hero-btns">
+        <a href="results.html" class="btn-primary">Explore results →</a>
+        <a href="index.html" class="btn-secondary">Live dashboard</a>
+        <a href="https://github.com/RitataLU/repurpose-agent" target="_blank" class="btn-secondary">GitHub</a>
+      </div>
     </div>
-  </div>
-  <div>
-    <div class="hero-stat">
-      <span class="num" id="hero-orphan">—</span>
-      <span class="label">orphan gene<br>candidates ranked</span>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-val" id="h-orphan">169</div>
+        <div class="hero-stat-label">Orphan GWAS genes analysed</div>
+        <div class="hero-stat-sub">across 6 diseases, no approved drug</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val" id="h-spearman">—</div>
+        <div class="hero-stat-label">Best Spearman r achieved</div>
+        <div class="hero-stat-sub">scorer ranking vs gold-centroid similarity</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">13</div>
+        <div class="hero-stat-label">Gold standard gene-drug pairs</div>
+        <div class="hero-stat-sub">GWAS-confirmed, same-disease approval</div>
+      </div>
     </div>
-    <p style="font-size:.85rem;color:var(--muted);margin-top:1rem;">
-      Across 6 diseases · 3 public APIs · 0 hardcoded genes
-    </p>
   </div>
 </section>
 
-<!-- Gap visual -->
-<section id="gap" class="wide">
+<section id="problem">
   <div class="inner">
-    <div class="tag">The Problem</div>
-    <h2>Most GWAS hits have no approved drug</h2>
-    <p>Genome-wide studies identify hundreds of disease-associated genes. Only a small fraction become drug targets. The rest are orphans — biologically compelling, commercially untested.</p>
-    <svg class="gap-svg" viewBox="0 0 700 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="40" width="700" height="40" rx="4" fill="#e8e0d4"/>
-      <rect x="0" y="40" width="80" height="40" rx="4" fill="#00966d"/>
-      <text x="40" y="66" text-anchor="middle" fill="white" font-family="DM Sans" font-size="11" font-weight="600">Drugged</text>
-      <text x="390" y="66" text-anchor="middle" fill="#718096" font-family="DM Sans" font-size="11">Orphan GWAS genes — no approved drug</text>
-      <text x="40" y="105" text-anchor="middle" fill="#00966d" font-family="DM Sans" font-size="10">~12%</text>
-      <text x="390" y="105" text-anchor="middle" fill="#a0aec0" font-family="DM Sans" font-size="10">~88% unexplored repurposing opportunity</text>
-    </svg>
-  </div>
-</section>
-
-<!-- Method -->
-<section id="method">
-  <div class="tag">How It Works</div>
-  <h2>Three phases, fully automated</h2>
-  <div class="cards">
-    <div class="method-card">
-      <div class="method-icon">🎯</div>
-      <h3>Phase 1 — Gold Standard</h3>
-      <p>Open Targets GraphQL API identifies genes with approved drugs AND GWAS genetics evidence per disease. These become the evaluation ground truth — discovered, never hardcoded.</p>
+    <span class="tag">The problem</span>
+    <h2>Most genetic associations never reach a drug</h2>
+    <p class="lead">GWAS studies have identified thousands of gene variants linked to disease. But the vast majority of the genes they implicate have no approved therapeutic. The bottleneck is prioritisation: which genes are worth investing in?</p>
+    <div class="gap-row">
+      <div class="gap-box orphan">
+        <div>
+          <div class="gap-pct orphan-pct">88%</div>
+          <div class="gap-label">Orphan genes</div>
+          <div class="gap-desc">GWAS-implicated genes with genome-wide significant associations but no approved drug for that disease. These are the candidates this agent analyses.</div>
+        </div>
+        <div class="gap-bar-track"><div class="gap-bar-fill orphan-fill"></div></div>
+      </div>
+      <div class="gap-box drugged">
+        <div>
+          <div class="gap-pct drug-pct">12%</div>
+          <div class="gap-label">Drug targets</div>
+          <div class="gap-desc">Genes with both GWAS evidence and an approved drug for the same disease. Our 13 curated gold-standard pairs define what a successful drug target looks like biologically.</div>
+        </div>
+        <div class="gap-bar-track"><div class="gap-bar-fill drug-fill"></div></div>
+      </div>
     </div>
-    <div class="method-card">
-      <div class="method-icon">🔍</div>
-      <h3>Phase 2 — Orphan Genes</h3>
-      <p>GWAS Catalog REST API yields genome-wide significant associations (p &lt; 5×10⁻⁸) per disease. Genes with GWAS signal but no approved drug are the repurposing candidates.</p>
-    </div>
-    <div class="method-card">
-      <div class="method-icon">⚗️</div>
-      <h3>Phase 3 — Feature Enrichment</h3>
-      <p>Each orphan gene is enriched with Open Targets druggability, PubMed activity, and proxy features for eQTL effect, Mendelian randomization z-score, tissue specificity, and PPI degree.</p>
+    <div class="insight-row">
+      <div class="insight"><h4>Why GWAS genes?</h4><p>Genetic associations are causal evidence. Genes identified by GWAS have been directly implicated in disease biology by human variation — stronger prior evidence than expression or network data alone.</p></div>
+      <div class="insight"><h4>Why no approved drug?</h4><p>Genes with approved drugs are already "solved." The value lies in the 88% that remain unapproached — especially those that biologically resemble proven targets.</p></div>
+      <div class="insight"><h4>Why these 6 diseases?</h4><p>Alzheimer's, Parkinson's, CAD, type 2 diabetes, schizophrenia, and IBD span neurological, cardiovascular, metabolic, psychiatric, and immune biology with rich GWAS datasets.</p></div>
     </div>
   </div>
 </section>
 
-<!-- Loop -->
-<section id="loop" class="wide">
+<section id="how">
   <div class="inner">
-    <div class="tag">Autoresearch Loop</div>
-    <h2>Agent iterates the scoring formula</h2>
-    <p style="max-width:540px;color:var(--muted);margin:0 auto .5rem">agent.py runs 10 pre-defined experiments, keeping changes that improve recall@K and discarding the rest — then pushes results to GitHub.</p>
-    <svg class="loop-svg" viewBox="0 0 800 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- boxes -->
-      <rect x="20"  y="55" width="130" height="50" rx="8" fill="#e8f5f0" stroke="#00966d" stroke-width="1.5"/>
-      <rect x="200" y="55" width="130" height="50" rx="8" fill="#e8f5f0" stroke="#00966d" stroke-width="1.5"/>
-      <rect x="380" y="55" width="130" height="50" rx="8" fill="#e8f5f0" stroke="#00966d" stroke-width="1.5"/>
-      <rect x="560" y="55" width="140" height="50" rx="8" fill="#e8f5f0" stroke="#00966d" stroke-width="1.5"/>
-      <!-- labels -->
-      <text x="85"  y="77" text-anchor="middle" fill="#0e1520" font-family="DM Sans" font-size="11" font-weight="600">Modify</text>
-      <text x="85"  y="93" text-anchor="middle" fill="#0e1520" font-family="DM Sans" font-size="11">scorer.py</text>
-      <text x="265" y="77" text-anchor="middle" fill="#0e1520" font-family="DM Sans" font-size="11" font-weight="600">Score</text>
-      <text x="265" y="93" text-anchor="middle" fill="#0e1520" font-family="DM Sans" font-size="11">orphan genes</text>
-      <text x="445" y="77" text-anchor="middle" fill="#0e1520" font-family="DM Sans" font-size="11" font-weight="600">Measure</text>
-      <text x="445" y="93" text-anchor="middle" fill="#0e1520" font-family="DM Sans" font-size="11">recall@K</text>
-      <text x="630" y="77" text-anchor="middle" fill="#0e1520" font-family="DM Sans" font-size="11" font-weight="600">Keep / Discard</text>
-      <text x="630" y="93" text-anchor="middle" fill="#0e1520" font-family="DM Sans" font-size="11">+ git push</text>
-      <!-- arrows -->
-      <path d="M150 80 L200 80" stroke="#00966d" stroke-width="1.5" marker-end="url(#arr)"/>
-      <path d="M330 80 L380 80" stroke="#00966d" stroke-width="1.5" marker-end="url(#arr)"/>
-      <path d="M510 80 L560 80" stroke="#00966d" stroke-width="1.5" marker-end="url(#arr)"/>
-      <!-- feedback loop -->
-      <path d="M700 105 Q700 140 400 140 Q100 140 85 105" stroke="#00966d" stroke-width="1.5" stroke-dasharray="5,4" fill="none" marker-end="url(#arr)"/>
-      <text x="400" y="155" text-anchor="middle" fill="#718096" font-family="DM Sans" font-size="10">loop back if improved</text>
-      <defs>
-        <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-          <path d="M0,0 L0,6 L8,3 z" fill="#00966d"/>
-        </marker>
-      </defs>
-    </svg>
+    <span class="tag">How it works</span>
+    <h2>Three phases of discovery</h2>
+    <p class="lead">The pipeline runs entirely from public APIs — no hardcoded gene lists, no proprietary databases. Everything from the gold standard to the candidate features is discovered programmatically.</p>
+    <div class="phase-cards">
+      <div class="phase-card">
+        <div class="phase-num">Phase 1 — Gold standard</div>
+        <h3>Curate the template</h3>
+        <p>13 gene-drug pairs are curated where the gene has genome-wide significant GWAS associations and an approved drug for the same disease. These 13 genes are enriched with real biological features from Open Targets and PubMed APIs to define a reference centroid in 9-dimensional feature space.</p>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">Phase 2 — GWAS discovery</div>
+        <h3>Find orphan candidates</h3>
+        <p>The GWAS Catalog is queried for each disease. Associations with p &lt; 5×10⁻⁸ are extracted. Genes in the gold standard are separated. The top 30 orphan genes per disease by GWAS significance are taken forward.</p>
+        <ul><li>GWAS Catalog REST API</li><li>p-value threshold: 5×10⁻⁸</li><li>Up to 30 genes per disease</li></ul>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">Phase 3 — Feature enrichment</div>
+        <h3>Build biological profiles</h3>
+        <p>Each orphan gene gets 9 features: Open Targets association score and druggability tractability, PubMed publication count (5 years), plus proxy features for eQTL effect size and Mendelian randomization z-score derived from GWAS evidence depth.</p>
+        <ul><li>Open Targets GraphQL v4</li><li>PubMed E-utilities esearch</li><li>9 biological features per gene</li></ul>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- Gold standard -->
+<section id="loop">
+  <div class="inner">
+    <span class="tag">The autoresearch loop</span>
+    <h2>An agent that iterates its own formula</h2>
+    <p class="lead">After data collection, <code style="background:#f0ede6;padding:.15em .4em;border-radius:3px;font-size:.9em">agent.py</code> runs 10 pre-defined experiments. Each modifies the scoring weights, measures Spearman r, and decides whether to keep or discard the change — then auto-commits results to GitHub.</p>
+    <div class="loop-diagram">
+      <div class="loop-box accent">Modify scorer.py</div>
+      <span class="loop-arrow">→</span>
+      <div class="loop-box">Score all genes</div>
+      <span class="loop-arrow">→</span>
+      <div class="loop-box">Measure Spearman r</div>
+      <span class="loop-arrow">→</span>
+      <div class="loop-box accent">Keep if improved</div>
+      <span class="loop-arrow" style="color:var(--green)">↺ 10×</span>
+    </div>
+    <p style="font-size:.85rem;color:var(--muted);text-align:center;margin-bottom:2rem">Each iteration auto-commits and pushes results to GitHub — the full experiment trail is in git history</p>
+    <div class="axis-cards">
+      <div class="axis-card">
+        <h4>Axis 1 — Which features matter</h4>
+        <p>Early experiments up-weight causal features (MR z-score, druggability) and down-weight popularity proxies (PubMed count, PPI degree) to test whether the gold centroid is driven by causal biology or citation count.</p>
+      </div>
+      <div class="axis-card">
+        <h4>Axis 2 — Do interactions help</h4>
+        <p>Mid experiments add multiplicative interaction terms — MR × druggability, eQTL × tissue specificity — testing whether combining causal and functional signals predicts drug-likeness better than either alone.</p>
+      </div>
+      <div class="axis-card">
+        <h4>Axis 3 — Does disease burden matter</h4>
+        <p>Late experiments add a disease-burden multiplier (DALYs from GBD 2021) to test whether genes in higher-burden diseases should rank higher even with identical biological profiles.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="metric">
+  <div class="inner">
+    <span class="tag">The metric</span>
+    <h2>Spearman r — what it measures</h2>
+    <div class="metric-box">
+      <p style="color:var(--muted);font-size:.92rem;line-height:1.75;margin-bottom:1.25rem">
+        The metric is the <strong style="color:var(--text)">Spearman rank correlation</strong> between two rankings of orphan genes: (1) the scorer's ranking from the weighted formula, and (2) the cosine similarity ranking to the gold standard centroid. A perfect scorer would rank orphan genes in exactly the same order as their biological distance to proven drug targets.
+      </p>
+      <div class="metric-steps">
+        <div class="ms"><div class="ms-num">Step 1</div><h4>Normalize features</h4><p>Orphan + gold gene features are min-max normalized together so all genes share the same scale across all 9 features.</p></div>
+        <div class="ms"><div class="ms-num">Step 2</div><h4>Compute gold centroid</h4><p>The 13 normalized gold gene vectors are averaged to one centroid — the "ideal drug target profile" in feature space.</p></div>
+        <div class="ms"><div class="ms-num">Step 3</div><h4>Cosine similarity</h4><p>Each orphan gene's similarity to the centroid is computed. This is the ground truth the agent tries to reproduce.</p></div>
+        <div class="ms"><div class="ms-num">Step 4</div><h4>Spearman correlation</h4><p>Spearman r measures whether the scorer ranking agrees with the cosine-similarity ranking. Higher r = better formula.</p></div>
+      </div>
+      <div class="spearman-scale">
+        <div class="scale-label">Spearman r interpretation scale</div>
+        <div class="scale-bar"></div>
+        <div class="scale-ticks"><span>−1 anti-correlated</span><span>0 random</span><span>+0.5 good</span><span>+1 perfect</span></div>
+        <p style="font-size:.8rem;color:var(--muted);margin-top:.75rem">Our baseline equal-weight formula achieves r ≈ 0.87, meaning even before optimisation the biological features naturally align with the gold standard. The agent's job is to find which features to emphasise to push this higher.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="gold-section">
-  <div class="tag">Ground Truth</div>
-  <h2>Gold standard discovered by API</h2>
-  <p style="max-width:540px;color:var(--muted)">The evaluation ground truth is not hardcoded. Open Targets identifies these gene–drug pairs at runtime, ensuring the benchmark evolves with the literature.</p>
-  <div id="gold-table-wrap" style="margin-top:1.5rem;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;">
-    <div style="text-align:center;padding:3rem;color:var(--muted);font-size:.9rem">Loading gold standard…</div>
-  </div>
-</section>
-
-<!-- Results -->
-<section id="results-section">
-  <div class="tag">Live Results</div>
-  <h2>Experiment outcomes</h2>
-  <p style="color:var(--muted);max-width:540px">Each experiment tests a different weighting of biological features. The best-performing configuration is retained.</p>
-  <div class="chart-row">
-    <div class="chart-card">
-      <div class="chart-title">Recall@K across experiments</div>
-      <div class="chart-wrap"><canvas id="show-chart"></canvas></div>
-    </div>
-    <div class="chart-card">
-      <div class="chart-title">Top 5 candidate genes</div>
-      <ul class="top-genes" id="top-genes-list">
-        <li style="color:var(--muted);font-size:.9rem">Loading…</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- Implications -->
-<section id="implications" class="wide" style="padding:5rem 0;background:var(--ink);">
   <div class="inner">
-    <div class="tag">Implications</div>
-    <h2 style="color:#f7f4ef">Who this is for</h2>
-    <div class="impl-grid">
+    <span class="tag">Gold standard</span>
+    <h2>13 curated gene-drug pairs</h2>
+    <p class="lead">Each pair requires: (1) genome-wide significant GWAS association for the disease, and (2) an approved drug targeting the gene for that specific indication. These 13 genes define what a successful drug target looks like in our 9-dimensional feature space.</p>
+    <div style="overflow-x:auto;border-radius:10px;border:1px solid var(--border)">
+      <table class="gold-table">
+        <thead><tr><th>Gene</th><th>Disease</th><th>Approved Drug</th><th>Area</th><th>Genetics score</th></tr></thead>
+        <tbody id="gold-table-body"><tr><td colspan="5" style="padding:1.5rem;color:var(--muted);font-size:.875rem">Loading…</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="live-results">
+  <div class="inner">
+    <span class="tag">Live results</span>
+    <h2>How the experiments played out</h2>
+    <p class="lead">Results update after every experiment run. The agent commits each outcome to GitHub, so the full trail is public.</p>
+    <div class="results-grid">
+      <div class="results-chart-card">
+        <h3>Spearman r across 10 experiments</h3>
+        <div id="showcase-chart-wrap"><canvas id="showcase-chart"></canvas></div>
+      </div>
+      <div class="top-genes-list">
+        <h3>Top 5 orphan gene predictions</h3>
+        <div id="top-genes-showcase"><p style="color:var(--muted);font-size:.85rem">Loading…</p></div>
+        <a href="results.html" class="see-all">See all 20 predictions + full analysis →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="implications">
+  <div class="inner">
+    <span class="tag">Implications</span>
+    <h2>What this means</h2>
+    <p class="lead">Autonomous prioritisation of GWAS candidates sits at the intersection of genomics, AI, and drug discovery. The pipeline demonstrates several things at once.</p>
+    <div class="impl-cards">
       <div class="impl-card">
         <div class="impl-icon">💊</div>
-        <h3>Drug developers</h3>
-        <p>Prioritize repurposing candidates with strong causal genetics evidence and existing druggability — before committing to de novo synthesis.</p>
-      </div>
-      <div class="impl-card">
-        <div class="impl-icon">🔬</div>
-        <h3>Researchers</h3>
-        <p>Identify GWAS-backed orphan genes that warrant functional follow-up. The pipeline is fully reproducible and auditable from source.</p>
+        <h3>For drug discovery</h3>
+        <p>Public GWAS data contains most of the signal needed to rank orphan candidates by drug-likeness. This pipeline can run daily as new GWAS results are published, continuously updating the priority list without manual curation.</p>
       </div>
       <div class="impl-card">
         <div class="impl-icon">🤖</div>
-        <h3>AI/ML teams</h3>
-        <p>A working end-to-end autoresearch loop — data discovery, feature engineering, iterative optimization — as a template for agentic science.</p>
+        <h3>For AI research</h3>
+        <p>The agent shows that a simple autoresearch loop — modify, evaluate, keep/discard — can systematically explore a feature-weight search space. No LLM reasoning required; the metric provides the signal. This pattern generalises to any ranking problem with a defined ground truth.</p>
+      </div>
+      <div class="impl-card">
+        <div class="impl-icon">🌍</div>
+        <h3>For open science</h3>
+        <p>The entire pipeline — data, features, scoring, results — runs on free public APIs and is published on GitHub. Any lab can fork it, change the disease scope, and run it in an afternoon. The barrier to genomics-informed drug target prioritisation is now near zero.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
 <section id="cta">
-  <div class="tag">Get Started</div>
-  <h2>Run it yourself in minutes</h2>
-  <p>All data from public APIs. No API keys. No cloud infrastructure. Just Python and a terminal.</p>
-  <div class="cta-row">
-    <a href="index.html" class="btn-primary">Open Dashboard</a>
-    <a href="https://github.com/RitataLU/repurpose-agent" target="_blank" class="btn-outline">View Source on GitHub</a>
+  <div class="inner">
+    <div class="cta-title">Run it yourself</div>
+    <p class="cta-lead">The full pipeline is open source. Runs on any machine with Python 3 and internet access. No API keys, no subscriptions.</p>
+    <div class="cta-links">
+      <a href="results.html" class="btn-primary">View results →</a>
+      <a href="index.html" class="btn-secondary">Dashboard</a>
+      <a href="https://github.com/RitataLU/repurpose-agent" target="_blank" class="btn-secondary">GitHub ↗</a>
+    </div>
+    <div class="code-block">python discover.py &amp;&amp; python agent.py</div>
+    <p style="font-size:.8rem;color:var(--muted);margin-top:1rem">~8 minutes to build data · 10 experiments · auto-pushes results to GitHub Pages</p>
   </div>
-  <p style="margin-top:2rem;font-size:.85rem;color:var(--muted);font-family:monospace;background:var(--bg2);display:inline-block;padding:12px 20px;border-radius:8px;border:1px solid var(--border);">
-    python discover.py &amp;&amp; python agent.py
-  </p>
 </section>
 
-<footer>
-  RepurposeAgent · Data: GWAS Catalog (EMBL-EBI), Open Targets Platform, PubMed E-utilities ·
-  <a href="https://github.com/RitataLU/repurpose-agent" target="_blank" style="color:var(--green)">GitHub</a>
-</footer>
-
 <script>
-async function load(path) {
-  try { const r = await fetch(path); return r.ok ? await r.json() : null; }
-  catch { return null; }
-}
-
-function areaChip(area) {
-  return `<span class="area-chip">${area||''}</span>`;
-}
-
-function renderGold(gold) {
-  const wrap = document.getElementById('gold-table-wrap');
-  if (!gold || !gold.length) {
-    wrap.innerHTML = '<div style="text-align:center;padding:3rem;color:var(--muted);font-size:.9rem">No gold standard data — run discover.py</div>';
-    return;
+async function load() {
+  let results=[], genes=[], gold=[];
+  try { results = await fetch('./results.json').then(r=>r.json()); } catch(e){}
+  try { genes   = await fetch('./genes.json').then(r=>r.json()); }   catch(e){}
+  try { gold    = await fetch('./gold.json').then(r=>r.json()); }    catch(e){}
+  if (results.length) {
+    const best = Math.max(...results.map(r=>r.spearman_r??0));
+    const el = document.getElementById('h-spearman');
+    if (el) el.textContent = best.toFixed(4);
+    const orphanEl = document.getElementById('h-orphan');
+    if (orphanEl && results[0]?.n_orphan) orphanEl.textContent = results[0].n_orphan;
+    renderChart(results);
   }
-  const rows = gold.map(g => `
-    <tr>
-      <td><span class="gene-name">${g.gene}</span></td>
-      <td>${g.disease||''}</td>
-      <td>${g.drug||''}</td>
-      <td>${areaChip(g.area)}</td>
-      <td class="score-mini">${(g.genetics_score||0).toFixed(3)}</td>
-    </tr>`).join('');
-  wrap.innerHTML = `<table><thead><tr><th>Gene</th><th>Disease</th><th>Drug</th><th>Area</th><th>Genetics Score</th></tr></thead><tbody>${rows}</tbody></table>`;
+  if (genes.length) renderTopGenes(genes.slice(0,5));
+  if (gold.length) renderGoldTable(gold);
 }
-
 function renderChart(results) {
-  const ctx = document.getElementById('show-chart').getContext('2d');
-  if (!results || !results.length) {
-    ctx.fillStyle = '#a0aec0'; ctx.font = '13px DM Sans'; ctx.textAlign = 'center';
-    ctx.fillText('No data — run agent.py', ctx.canvas.width/2, 110); return;
-  }
-  new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: results.map(r => `Exp ${r.experiment}`),
-      datasets: [{
-        data: results.map(r => r.recall_at_k),
-        borderColor: '#00966d', borderWidth: 2,
-        pointBackgroundColor: results.map(r => r.status === 'keep' ? '#00966d' : '#e53e3e'),
-        pointRadius: 5, tension: 0.3,
-        fill: true, backgroundColor: 'rgba(0,150,109,0.08)',
-      }]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { display: false }, tooltip: {
-        callbacks: { label: (i) => `recall: ${results[i.dataIndex].recall_at_k}` }
-      }},
-      scales: {
-        x: { grid: { color: '#e2d9ce' }, ticks: { color: '#a0aec0', font: { size: 10 } } },
-        y: { min: 0, max: 1, grid: { color: '#e2d9ce' }, ticks: { color: '#a0aec0', font: { size: 10 }, callback: v => (v*100).toFixed(0)+'%' } }
+  const labels = results.map(r=>`Exp ${r.experiment}`);
+  const vals   = results.map(r=>r.spearman_r??0);
+  const base   = vals[0]??0;
+  const ptBg   = results.map((r,i)=>i===0?'#00966d':(r.status==='keep'?'#00966d':'transparent'));
+  const ptBdr  = results.map((r,i)=>i===0?'#00966d':(r.status==='keep'?'#00966d':'#f87171'));
+  new Chart(document.getElementById('showcase-chart').getContext('2d'),{
+    type:'line',
+    data:{labels,datasets:[
+      {label:'spearman_r',data:vals,borderColor:'#00966d',backgroundColor:'rgba(0,150,109,.08)',
+       fill:true,tension:.3,pointBackgroundColor:ptBg,pointBorderColor:ptBdr,
+       pointBorderWidth:2,pointRadius:6,pointHoverRadius:8},
+      {label:'baseline',data:Array(labels.length).fill(base),borderColor:'#ccc',
+       borderDash:[5,4],borderWidth:1,pointRadius:0,fill:false}
+    ]},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{
+        title:i=>`Experiment ${results[i[0].dataIndex].experiment}`,
+        label:i=>{if(i.datasetIndex===1) return ` baseline: ${base.toFixed(4)}`;
+                  const r=results[i.dataIndex];
+                  return [` r = ${(r.spearman_r??0).toFixed(4)}`,` ${r.status}`];}
+      }}},
+      scales:{
+        x:{grid:{display:false},ticks:{font:{size:10},maxRotation:0}},
+        y:{min:Math.min(...vals)-.015,max:Math.min(1,Math.max(...vals)+.015),
+           grid:{color:'rgba(0,0,0,.06)'},ticks:{callback:v=>v.toFixed(3),font:{size:10}}}
       }
     }
   });
 }
-
 function renderTopGenes(genes) {
-  const ul = document.getElementById('top-genes-list');
-  if (!genes || !genes.length) { ul.innerHTML = '<li style="color:var(--muted)">No data</li>'; return; }
-  const top5 = genes.slice(0, 5);
-  ul.innerHTML = top5.map(g => `
-    <li>
-      <div>
-        <div class="top-gene-name">${g.gene}</div>
-        <div class="top-gene-meta">${g.disease_name||''}</div>
-      </div>
-      <span class="top-gene-score">${(g.score||0).toFixed(3)}</span>
-    </li>`).join('');
+  const el = document.getElementById('top-genes-showcase');
+  if (!el||!genes.length) return;
+  const AREA_COL={neurological:'#1d4ed8',cardiovascular:'#b91c1c',metabolic:'#166534',psychiatric:'#92400e',immune:'#075985'};
+  el.innerHTML = genes.map((g,i)=>`
+    <div class="tg-item">
+      <span class="tg-rank">${i+1}</span>
+      <div><div class="tg-gene">${g.gene}</div>
+      <div class="tg-area" style="color:${AREA_COL[g.disease_area]||'#6b6b6b'}">${g.disease_area||'—'}</div></div>
+      <span class="tg-sim">${((g.gold_sim??0)*100).toFixed(0)}% sim</span>
+    </div>`).join('');
 }
-
-(async () => {
-  const [results, genes, gold] = await Promise.all([
-    load('./results.json'), load('./genes.json'), load('./gold.json')
-  ]);
-  if (genes && genes.length) {
-    document.getElementById('hero-orphan').textContent = genes.length;
-  }
-  renderGold(gold);
-  renderChart(results);
-  renderTopGenes(genes ? genes.sort((a,b)=>a.rank-b.rank) : null);
-})();
+function renderGoldTable(gold) {
+  const tbody = document.getElementById('gold-table-body');
+  if (!tbody||!gold.length) return;
+  tbody.innerHTML = gold.map(g=>`
+    <tr>
+      <td class="gene-tag">${g.gene}</td>
+      <td>${g.disease||'—'}</td>
+      <td class="drug-tag">${g.drug||'—'}</td>
+      <td><span class="area-chip area-${g.area||''}">${g.area||'—'}</span></td>
+      <td style="color:var(--muted);font-size:.85rem">${g.genetics_score??'—'}</td>
+    </tr>`).join('');
+}
+load();
 </script>
 </body>
 </html>

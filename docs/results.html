@@ -9,124 +9,149 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080c18;--surf:#0e1520;--surf2:#121c2e;--border:#1e2a3a;
+  --teal:#00d4aa;--amber:#f59e0b;--red:#f87171;--blue:#60a5fa;
+  --text:#cdd6f4;--muted:#7f8ea3;--sub:#4a5a6e;
+  --mono:"IBM Plex Mono",monospace;--sans:"IBM Plex Sans",sans-serif;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.65}
+a{color:var(--teal);text-decoration:none}
+a:hover{text-decoration:underline}
 
-  :root {
-    --bg:      #080c18;
-    --surface: #0e1520;
-    --border:  #1e2a3a;
-    --teal:    #00d4aa;
-    --amber:   #f59e0b;
-    --red:     #f87171;
-    --text:    #cdd6f4;
-    --muted:   #7f8ea3;
-    --mono:    "IBM Plex Mono", monospace;
-    --sans:    "IBM Plex Sans", sans-serif;
-  }
+/* ── Header ─────────────────────────────────────── */
+header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(8,12,24,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+  padding:.75rem 2rem;display:flex;align-items:center;justify-content:space-between;
+}
+.logo{font-family:var(--mono);font-size:.85rem;color:var(--teal)}
+nav a{font-family:var(--mono);font-size:.75rem;color:var(--muted);margin-left:1.5rem;transition:color .2s}
+nav a:hover{color:var(--teal)}
 
-  body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 15px; line-height: 1.6; }
+/* ── Layout ─────────────────────────────────────── */
+main{max-width:1080px;margin:0 auto;padding:3rem 1.5rem 6rem}
 
-  header {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(8,12,24,.92); backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border);
-    padding: .75rem 2rem;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  header .logo { font-family: var(--mono); font-size: .9rem; color: var(--teal); letter-spacing: .04em; }
-  header nav a {
-    font-family: var(--mono); font-size: .75rem; color: var(--muted);
-    text-decoration: none; margin-left: 1.5rem; transition: color .2s;
-  }
-  header nav a:hover { color: var(--teal); }
+/* ── Hero ───────────────────────────────────────── */
+.hero{margin-bottom:3.5rem}
+.hero h1{font-size:2.1rem;font-weight:600;margin-bottom:.6rem}
+.hero-lead{color:var(--muted);max-width:680px;font-size:.95rem;line-height:1.75;margin-bottom:1.75rem}
+.stat-chips{display:flex;flex-wrap:wrap;gap:.75rem}
+.chip{
+  background:var(--surf2);border:1px solid var(--border);border-radius:6px;
+  padding:.5rem 1rem;display:flex;flex-direction:column;align-items:flex-start;min-width:130px;
+}
+.chip-val{font-family:var(--mono);font-size:1.3rem;font-weight:600;color:var(--teal)}
+.chip-label{font-size:.7rem;color:var(--muted);margin-top:.15rem;letter-spacing:.04em}
+.chip.hi .chip-val{color:var(--teal)}
+.chip.base .chip-val{color:var(--blue)}
+.chip.imp .chip-val{color:var(--amber)}
 
-  main { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
+/* ── Section layout ─────────────────────────────── */
+.section{margin-bottom:4rem}
+.section-tag{
+  font-family:var(--mono);font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:.6rem;display:block;
+}
+.section h2{font-size:1.25rem;font-weight:600;margin-bottom:.5rem}
+.section-desc{color:var(--muted);font-size:.9rem;max-width:680px;line-height:1.7;margin-bottom:1.5rem}
 
-  h1 { font-size: 1.9rem; font-weight: 600; color: var(--text); margin-bottom: .4rem; }
-  .subtitle { color: var(--muted); font-size: .95rem; margin-bottom: 3rem; }
+/* ── Cards ──────────────────────────────────────── */
+.card{background:var(--surf);border:1px solid var(--border);border-radius:10px;padding:1.5rem}
+.card+.card{margin-top:1rem}
 
-  .section { margin-bottom: 3.5rem; }
-  .section-title {
-    font-family: var(--mono); font-size: .7rem; letter-spacing: .12em;
-    text-transform: uppercase; color: var(--teal);
-    border-bottom: 1px solid var(--border); padding-bottom: .5rem; margin-bottom: 1.5rem;
-  }
-  .section-subtitle { font-size: .9rem; color: var(--muted); margin-bottom: 1.25rem; }
+/* ── Explainer boxes ────────────────────────────── */
+.explainer-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem;margin-bottom:1.5rem}
+.explainer{background:var(--surf2);border:1px solid var(--border);border-radius:8px;padding:1.25rem}
+.explainer-icon{font-size:1.3rem;margin-bottom:.5rem}
+.explainer h3{font-size:.9rem;font-weight:600;margin-bottom:.4rem;color:var(--text)}
+.explainer p{font-size:.82rem;color:var(--muted);line-height:1.65}
+.explainer code{background:var(--border);padding:.1em .35em;border-radius:3px;font-family:var(--mono);font-size:.8em}
 
-  .card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 8px; padding: 1.5rem;
-  }
+/* ── Charts ─────────────────────────────────────── */
+.chart-wrap{position:relative}
+#trace-wrap{height:300px}
+#weights-wrap{height:260px}
+#hist-wrap{height:200px}
 
-  /* Chart containers */
-  .chart-wrap { position: relative; }
-  #trace-wrap  { height: 320px; }
-  #weights-wrap { height: 280px; }
+/* ── Experiments table ──────────────────────────── */
+.exp-table{width:100%;border-collapse:collapse;font-size:.84rem}
+.exp-table th{
+  font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--border);padding:.55rem .75rem;text-align:left;
+}
+.exp-table td{padding:.6rem .75rem;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:top}
+.exp-table tr:hover td{background:rgba(255,255,255,.02)}
+.exp-table tr.best-row td{background:rgba(0,212,170,.05);border-left:2px solid var(--teal)}
+.exp-table tr.best-row td:first-child{border-radius:4px 0 0 4px}
+.badge{display:inline-block;font-family:var(--mono);font-size:.68rem;padding:.15rem .45rem;border-radius:3px;font-weight:600}
+.badge-keep{background:rgba(0,212,170,.15);color:var(--teal)}
+.badge-discard{background:rgba(248,113,113,.1);color:var(--red)}
+.badge-baseline{background:rgba(96,165,250,.1);color:var(--blue)}
+.delta-pos{color:var(--teal);font-family:var(--mono)}
+.delta-neg{color:var(--red);font-family:var(--mono)}
+.delta-zero{color:var(--muted);font-family:var(--mono)}
 
-  /* Annotation badge */
-  .best-badge {
-    display: inline-block; background: var(--teal); color: var(--bg);
-    font-family: var(--mono); font-size: .7rem; font-weight: 600;
-    padding: .2rem .55rem; border-radius: 3px; margin-left: .5rem;
-    vertical-align: middle;
-  }
+/* ── Gene cards ─────────────────────────────────── */
+.gene-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:.85rem}
+.gene-card{
+  background:var(--surf);border:1px solid var(--border);border-radius:8px;padding:1rem;
+  transition:transform .15s,border-color .15s;
+}
+.gene-card:hover{transform:translateY(-2px);border-color:var(--muted)}
+.gene-rank{font-family:var(--mono);font-size:.65rem;color:var(--sub);margin-bottom:.3rem}
+.gene-name{font-family:var(--mono);font-size:1.1rem;font-weight:600;margin-bottom:.4rem}
+.area-pill{
+  display:inline-block;font-size:.62rem;font-family:var(--mono);
+  text-transform:uppercase;letter-spacing:.07em;padding:.15rem .45rem;border-radius:3px;margin-bottom:.6rem;
+}
+.area-neurological{background:#1e2860;color:#a5b4fc}
+.area-cardiovascular{background:#2d1a1a;color:#f87171}
+.area-metabolic{background:#1a2d1a;color:#86efac}
+.area-psychiatric{background:#2d2018;color:#fcd34d}
+.area-immune{background:#1a2830;color:#7dd3fc}
+.sim-label{font-size:.7rem;color:var(--muted);margin-bottom:.2rem}
+.sim-track{background:var(--border);border-radius:2px;height:5px;margin-bottom:.6rem}
+.sim-fill{height:5px;border-radius:2px;background:var(--teal)}
+.gene-stats{display:flex;gap:.6rem;flex-wrap:wrap}
+.gs{font-size:.7rem;color:var(--muted)}
+.gs span{color:var(--text);font-family:var(--mono);font-size:.72rem}
 
-  /* Gene cards */
-  .gene-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-    gap: 1rem;
-  }
-  .gene-card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 8px; padding: 1rem;
-    transition: border-color .2s, transform .2s;
-  }
-  .gene-card:hover { transform: translateY(-2px); border-color: var(--muted); }
-  .gene-card.gold-hit { border-color: var(--teal); }
-  .gene-name { font-family: var(--mono); font-size: 1.05rem; font-weight: 600; color: var(--text); margin-bottom: .35rem; }
-  .gene-area { display: inline-block; font-size: .65rem; font-family: var(--mono); letter-spacing: .07em; text-transform: uppercase; padding: .15rem .5rem; border-radius: 3px; margin-bottom: .6rem; }
-  .area-neurological   { background: #1e2860; color: #a5b4fc; }
-  .area-cardiovascular { background: #2d1a1a; color: #f87171; }
-  .area-metabolic      { background: #1a2d1a; color: #86efac; }
-  .area-psychiatric    { background: #2d2018; color: #fcd34d; }
-  .area-immune         { background: #1a2830; color: #7dd3fc; }
-  .gene-badge { font-size: .65rem; font-family: var(--mono); color: var(--teal); margin-bottom: .5rem; }
-  .mini-bar-label { font-size: .7rem; color: var(--muted); margin-bottom: .2rem; }
-  .mini-bar-track { background: var(--border); border-radius: 2px; height: 5px; margin-bottom: .5rem; }
-  .mini-bar-fill  { height: 5px; border-radius: 2px; background: var(--teal); }
-  .gene-stats { display: flex; gap: .75rem; margin-top: .5rem; }
-  .gene-stat  { font-size: .7rem; color: var(--muted); }
-  .gene-stat span { color: var(--text); font-family: var(--mono); }
+/* ── Gold table ─────────────────────────────────── */
+.gold-table{width:100%;border-collapse:collapse;font-size:.84rem}
+.gold-table th{
+  font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);border-bottom:1px solid var(--border);padding:.55rem .75rem;text-align:left;
+}
+.gold-table td{padding:.65rem .75rem;border-bottom:1px solid rgba(255,255,255,.04)}
+.gold-table tr:last-child td{border-bottom:none}
+.gold-table tr:hover td{background:rgba(255,255,255,.02)}
+.gene-mono{font-family:var(--mono);font-weight:600;color:var(--text)}
+.drug-mono{font-family:var(--mono);color:var(--teal)}
 
-  /* Gold standard table */
-  table { width: 100%; border-collapse: collapse; font-size: .85rem; }
-  th {
-    font-family: var(--mono); font-size: .65rem; letter-spacing: .1em;
-    text-transform: uppercase; color: var(--muted);
-    border-bottom: 1px solid var(--border); padding: .5rem .75rem; text-align: left;
-  }
-  td { padding: .6rem .75rem; border-bottom: 1px solid var(--border); }
-  tr:last-child td { border-bottom: none; }
-  tr:hover td { background: rgba(255,255,255,.02); }
-  .pill {
-    display: inline-block; font-size: .65rem; font-family: var(--mono);
-    text-transform: uppercase; letter-spacing: .07em; padding: .15rem .45rem;
-    border-radius: 3px;
-  }
+/* ── Feature legend ─────────────────────────────── */
+.feat-legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.85rem;margin-top:1.25rem}
+.feat-box{background:var(--surf2);border:1px solid var(--border);border-radius:8px;padding:1rem}
+.feat-box h4{font-size:.85rem;font-weight:600;color:var(--teal);margin-bottom:.35rem;font-family:var(--mono)}
+.feat-box p{font-size:.79rem;color:var(--muted);line-height:1.6}
 
-  /* Methodology */
-  .method-text { color: var(--muted); font-size: .9rem; line-height: 1.75; }
-  .method-text + .method-text { margin-top: 1rem; }
-  .method-text strong { color: var(--text); }
+/* ── Methodology ────────────────────────────────── */
+.method-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:1.5rem}
+.step{background:var(--surf2);border:1px solid var(--border);border-radius:8px;padding:1rem}
+.step-num{font-family:var(--mono);font-size:.65rem;color:var(--teal);margin-bottom:.35rem}
+.step h4{font-size:.88rem;font-weight:600;margin-bottom:.35rem}
+.step p{font-size:.8rem;color:var(--muted);line-height:1.6}
 
-  /* Loading / empty state */
-  .loading { color: var(--muted); font-family: var(--mono); font-size: .85rem; padding: 2rem 0; }
+/* ── Loading ────────────────────────────────────── */
+.empty{color:var(--muted);font-family:var(--mono);font-size:.85rem;padding:2rem 0}
 
-  @media (max-width: 600px) {
-    main { padding: 1.5rem 1rem 4rem; }
-    .gene-grid { grid-template-columns: 1fr 1fr; }
-  }
+@media(max-width:640px){
+  main{padding:1.5rem 1rem 4rem}
+  .gene-grid{grid-template-columns:1fr 1fr}
+  .stat-chips{gap:.5rem}
+}
 </style>
 </head>
 <body>
@@ -141,228 +166,300 @@
 </header>
 
 <main>
-  <h1>Experiment Results <span id="best-badge"></span></h1>
-  <p class="subtitle">10 scoring experiments · Spearman correlation metric · 179 genes scored · 13 gold standard pairs</p>
 
-  <!-- Section 1 — Experiment Trace -->
-  <div class="section">
-    <div class="section-title">01 — Experiment Trace</div>
-    <p class="section-subtitle">Spearman r across iterations — green filled = kept, red hollow = discarded. Dashed line = baseline.</p>
-    <div class="card">
-      <div class="chart-wrap" id="trace-wrap">
-        <canvas id="trace-chart"></canvas>
-      </div>
+<!-- Hero -->
+<div class="hero">
+  <h1>Experiment Results</h1>
+  <p class="hero-lead" id="hero-lead">
+    An autonomous agent ran 10 scoring experiments on orphan GWAS genes across 6 diseases,
+    searching for the formula that best predicts which genes resemble known drug targets.
+    Each experiment rewrote <code style="background:var(--border);padding:.1em .35em;border-radius:3px;font-family:var(--mono);font-size:.85em">scorer.py</code>
+    with a different weight vector, measured Spearman correlation against the gold standard centroid,
+    and kept or discarded the change.
+  </p>
+  <div class="stat-chips" id="stat-chips">
+    <div class="chip hi"><span class="chip-val" id="c-best">—</span><span class="chip-label">Best Spearman r</span></div>
+    <div class="chip base"><span class="chip-val" id="c-base">—</span><span class="chip-label">Baseline r</span></div>
+    <div class="chip imp"><span class="chip-val" id="c-delta">—</span><span class="chip-label">Improvement</span></div>
+    <div class="chip"><span class="chip-val" id="c-kept">—</span><span class="chip-label">Experiments kept</span></div>
+    <div class="chip"><span class="chip-val" id="c-orphan">—</span><span class="chip-label">Orphan genes</span></div>
+    <div class="chip"><span class="chip-val" id="c-gold">—</span><span class="chip-label">Gold standard pairs</span></div>
+  </div>
+</div>
+
+<!-- Section 00 — What this experiment does -->
+<div class="section">
+  <span class="section-tag">00 — What this experiment does</span>
+  <h2>The question, method, and metric</h2>
+  <p class="section-desc">
+    Which GWAS-implicated genes — currently without any approved drug — are most likely to
+    become drug targets? We use 13 curated gene-drug pairs as a biological template and
+    ask: can a scoring formula rank the 169 orphan genes in the same order that their
+    feature similarity to known drug targets would suggest?
+  </p>
+  <div class="explainer-row">
+    <div class="explainer">
+      <div class="explainer-icon">🎯</div>
+      <h3>The question</h3>
+      <p>Out of hundreds of genes implicated by GWAS but lacking approved drugs, which have biological profiles most similar to proven drug targets? Answering this prioritises the most tractable candidates for drug discovery.</p>
+    </div>
+    <div class="explainer">
+      <div class="explainer-icon">⚙️</div>
+      <h3>The method</h3>
+      <p>13 gold-standard gene-drug pairs (GWAS-confirmed + approved drug for the same disease) define a reference centroid in 9-dimensional feature space. Each orphan gene's cosine similarity to that centroid is its "ground-truth" score. The agent optimises a weighted linear formula to reproduce that ordering.</p>
+    </div>
+    <div class="explainer">
+      <div class="explainer-icon">📐</div>
+      <h3>The metric — Spearman r</h3>
+      <p>Spearman correlation measures whether the scorer's ranking matches the cosine-similarity ranking. Range: −1 (inverted) to +1 (perfect). A value above 0.85 means the scorer reproduces the gold-centroid ordering very well — experiment-to-experiment changes reveal which features matter most.</p>
     </div>
   </div>
+  <div class="method-steps">
+    <div class="step"><div class="step-num">STEP 1</div><h4>Feature enrichment</h4><p>Each gene gets 9 features from Open Targets (OT score, druggability, tractability), GWAS Catalog (p-value, study count), and PubMed (publication count). Gold genes use the same pipeline.</p></div>
+    <div class="step"><div class="step-num">STEP 2</div><h4>Gold centroid</h4><p>The 13 gold genes are normalized together with orphan genes and averaged to a centroid vector. This centroid encodes what "approved drug target" looks like biologically.</p></div>
+    <div class="step"><div class="step-num">STEP 3</div><h4>Cosine similarity</h4><p>Each orphan gene's normalized vector is compared to the centroid. The resulting similarity score is the ground-truth ranking the agent tries to reproduce.</p></div>
+    <div class="step"><div class="step-num">STEP 4</div><h4>Agent loop</h4><p>The agent tries 10 weight configurations. After each, Spearman r is measured between the scorer ranking and cosine-similarity ranking. Better formulas are kept.</p></div>
+  </div>
+</div>
 
-  <!-- Section 2 — Winning Weights -->
-  <div class="section">
-    <div class="section-title">02 — What the Agent Learned</div>
-    <p class="section-subtitle">Feature weights from the best-performing scorer formula, sorted by importance.</p>
-    <div class="card">
-      <div class="chart-wrap" id="weights-wrap">
-        <canvas id="weights-chart"></canvas>
-      </div>
+<!-- Section 01 — Experiment trace -->
+<div class="section">
+  <span class="section-tag">01 — Experiment trace</span>
+  <h2>Spearman r over 10 iterations</h2>
+  <p class="section-desc">Green filled dots = formula kept (improved). Red hollow dots = discarded. Dashed line = baseline equal-weight formula.</p>
+  <div class="card">
+    <div class="chart-wrap" id="trace-wrap"><canvas id="trace-chart"></canvas></div>
+  </div>
+</div>
+
+<!-- Section 02 — All experiments table -->
+<div class="section">
+  <span class="section-tag">02 — All experiments</span>
+  <h2>What the agent tried</h2>
+  <p class="section-desc">Every experiment, its description, Spearman r, delta from baseline, and outcome. Best row highlighted.</p>
+  <div class="card" style="overflow-x:auto">
+    <table class="exp-table" id="exp-table">
+      <thead><tr>
+        <th>#</th><th>What the agent tried</th><th>Spearman r</th><th>vs baseline</th><th>Result</th>
+      </tr></thead>
+      <tbody id="exp-tbody"><tr><td colspan="5" class="empty">Loading…</td></tr></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Section 03 — What the agent learned -->
+<div class="section">
+  <span class="section-tag">03 — What the agent learned</span>
+  <h2>The winning scoring formula</h2>
+  <p class="section-desc">Feature weights from the best-performing experiment, sorted by importance. Higher weight = feature was more useful for reproducing the gold-centroid ordering.</p>
+  <div class="card">
+    <div class="chart-wrap" id="weights-wrap"><canvas id="weights-chart"></canvas></div>
+  </div>
+  <div class="feat-legend" id="feat-legend">
+    <div class="feat-box">
+      <h4>mr_z_score</h4>
+      <p>Mendelian randomization z-score — evidence that the gene is causally upstream of the disease, not just correlated. Higher = stronger causal signal. Derived from GWAS p-value and study count.</p>
+    </div>
+    <div class="feat-box">
+      <h4>druggability_score</h4>
+      <p>Open Targets small-molecule tractability: does this gene's protein have a druggable binding pocket? Ranges 0.35 (no evidence) to 0.90 (approved SM drug). Genes with an approved drug score 0.90.</p>
+    </div>
+    <div class="feat-box">
+      <h4>open_targets_score</h4>
+      <p>Composite evidence score from Open Targets aggregating genetic, literature, and functional evidence across all diseases. Higher = more established biology, easier to publish on and fund.</p>
     </div>
   </div>
+</div>
 
-  <!-- Section 3 — Top 20 Genes -->
-  <div class="section">
-    <div class="section-title">03 — Top 20 Predicted Orphan Genes</div>
-    <p class="section-subtitle">Ranked by the best scoring formula. Teal border = also in gold standard.</p>
-    <div id="gene-grid" class="gene-grid">
-      <p class="loading">Loading gene rankings…</p>
-    </div>
+<!-- Section 04 — Top 20 genes -->
+<div class="section">
+  <span class="section-tag">04 — Top predicted orphan genes</span>
+  <h2>The agent's top 20 candidates</h2>
+  <p class="section-desc">Ranked by the best scoring formula. Similarity bar shows cosine distance to the gold centroid — how "drug-target-like" the gene's biological profile is.</p>
+  <div class="gene-grid" id="gene-grid">
+    <p class="empty">Loading…</p>
   </div>
+</div>
 
-  <!-- Section 4 — Gold Standard -->
-  <div class="section">
-    <div class="section-title">04 — Gold Standard Reference</div>
-    <p class="section-subtitle">13 curated gene-drug pairs where GWAS evidence and approval are confirmed for the same disease.</p>
-    <div class="card">
-      <div id="gold-table-wrap"><p class="loading">Loading…</p></div>
-    </div>
+<!-- Section 05 — Gold standard -->
+<div class="section">
+  <span class="section-tag">05 — Gold standard reference</span>
+  <h2>The 13 curated gene-drug pairs</h2>
+  <p class="section-desc">Each pair was selected because: (1) the gene has genome-wide significant GWAS associations for that specific disease, and (2) an approved drug targets the same gene for the same indication. These genes define what a successful drug target looks like in our feature space.</p>
+  <div class="card" style="overflow-x:auto">
+    <table class="gold-table" id="gold-table">
+      <thead><tr><th>Gene</th><th>Disease</th><th>Approved Drug</th><th>Area</th><th>Genetics score</th></tr></thead>
+      <tbody id="gold-tbody"><tr><td colspan="5" class="empty">Loading…</td></tr></tbody>
+    </table>
   </div>
+</div>
 
-  <!-- Section 5 — Methodology -->
-  <div class="section">
-    <div class="section-title">05 — Methodology</div>
-    <div class="card">
-      <p class="method-text">
-        <strong>Spearman correlation metric.</strong> Each gene in the 179-gene scored pool receives two rankings: one from the scorer formula (which the agent optimizes) and one from its cosine similarity to the gold standard centroid (the mean normalized feature vector of the 13 curated drug targets). Spearman r measures how closely these two rankings agree — a value of +1 means the scorer ranks genes in exactly the same order as their biological similarity to known drug targets, and 0 means the ranking is random. This metric is meaningful even when no gold gene appears in the top K, because it measures ordering quality over all 179 genes simultaneously.
-      </p>
-      <p class="method-text" style="margin-top:1rem;">
-        <strong>What the agent does.</strong> For each of 10 pre-defined experiments, the agent rewrites <code style="background:var(--border);padding:.1em .3em;border-radius:3px;font-size:.85em;">scorer.py</code> with a different weight vector and optional interaction terms, evaluates Spearman r, and keeps the change only if it improves. The search space spans causal features (Mendelian randomization z-score, eQTL effect size), druggability signals (Open Targets tractability), and GWAS replication strength. Experiment 5 — adding an eQTL × tissue-specificity interaction term plus a disease burden multiplier — produced the best improvement (+0.0087 above baseline).
-      </p>
-    </div>
+<!-- Section 06 — Similarity distribution -->
+<div class="section">
+  <span class="section-tag">06 — Similarity distribution</span>
+  <h2>How orphan genes distribute against the gold centroid</h2>
+  <p class="section-desc">Histogram of cosine similarity scores across all orphan genes. Genes far right are biologically most similar to the gold standard drug targets.</p>
+  <div class="card">
+    <div class="chart-wrap" id="hist-wrap"><canvas id="hist-chart"></canvas></div>
   </div>
+</div>
+
 </main>
 
 <script>
-const TEAL  = '#00d4aa';
-const AMBER = '#f59e0b';
-const RED   = '#f87171';
-const MUTED = '#7f8ea3';
-const BG    = '#080c18';
-const SURF  = '#0e1520';
-const TEXT  = '#cdd6f4';
-
-Chart.defaults.color = MUTED;
-Chart.defaults.borderColor = '#1e2a3a';
+const C = {teal:'#00d4aa',amber:'#f59e0b',red:'#f87171',blue:'#60a5fa',muted:'#7f8ea3',surf:'#0e1520',text:'#cdd6f4',border:'#1e2a3a'};
+Chart.defaults.color = C.muted;
+Chart.defaults.borderColor = C.border;
 Chart.defaults.font.family = '"IBM Plex Mono", monospace';
 Chart.defaults.font.size = 11;
 
+const AREA_COLORS = {
+  neurological:{bg:'#1e2860',fg:'#a5b4fc'},
+  cardiovascular:{bg:'#2d1a1a',fg:'#f87171'},
+  metabolic:{bg:'#1a2d1a',fg:'#86efac'},
+  psychiatric:{bg:'#2d2018',fg:'#fcd34d'},
+  immune:{bg:'#1a2830',fg:'#7dd3fc'},
+};
+
 async function load() {
-  let results = [], genes = [], gold = [];
-  try { results = await fetch('./results.json').then(r => r.json()); } catch(e) {}
-  try { genes   = await fetch('./genes.json').then(r => r.json()); }   catch(e) {}
-  try { gold    = await fetch('./gold.json').then(r => r.json()); }    catch(e) {}
+  let results=[], genes=[], gold=[];
+  try { results = await fetch('./results.json').then(r=>r.json()); } catch(e){}
+  try { genes   = await fetch('./genes.json').then(r=>r.json()); }   catch(e){}
+  try { gold    = await fetch('./gold.json').then(r=>r.json()); }    catch(e){}
 
   if (!results.length) {
-    document.querySelectorAll('.loading').forEach(el => el.textContent = 'No data yet — run agent.py first.');
+    document.querySelectorAll('.empty').forEach(el=>el.textContent='No data yet — run agent.py first.');
     return;
   }
 
+  fillHero(results, genes, gold);
   renderTrace(results);
+  renderExpTable(results);
   renderWeights(results);
-  renderGenes(genes.slice(0, 20));
+  renderGenes(genes.slice(0,20));
   renderGoldTable(gold);
-  renderBadge(results);
+  renderHist(genes);
 }
 
-function renderBadge(results) {
-  const best = results.reduce((b, r) => (r.spearman_r ?? 0) > (b.spearman_r ?? 0) ? r : b, results[0]);
-  const el = document.getElementById('best-badge');
-  if (best) el.innerHTML = `<span class="best-badge">best r=${(best.spearman_r ?? 0).toFixed(4)} exp${best.experiment}</span>`;
+function fillHero(results, genes, gold) {
+  const base = results[0]?.spearman_r ?? 0;
+  const best = Math.max(...results.map(r=>r.spearman_r??0));
+  const kept = results.filter(r=>r.status==='keep').length;
+  document.getElementById('c-best').textContent   = best.toFixed(4);
+  document.getElementById('c-base').textContent   = base.toFixed(4);
+  document.getElementById('c-delta').textContent  = (best-base>=0?'+':'')+(best-base).toFixed(4);
+  document.getElementById('c-kept').textContent   = kept;
+  document.getElementById('c-orphan').textContent = results[0]?.n_orphan ?? genes.length;
+  document.getElementById('c-gold').textContent   = results[0]?.n_gold ?? gold.length;
+
+  // Update hero lead with real numbers
+  const lead = document.getElementById('hero-lead');
+  const n_orphan = results[0]?.n_orphan ?? genes.length;
+  lead.innerHTML = `An autonomous agent ran <strong style="color:var(--text)">${results.length-1} scoring experiments</strong>
+    on <strong style="color:var(--text)">${n_orphan} orphan GWAS genes</strong> across 6 diseases,
+    searching for the formula that best predicts which genes resemble known drug targets.
+    Each experiment rewrote <code style="background:var(--border);padding:.1em .35em;border-radius:3px;font-family:var(--mono);font-size:.85em">scorer.py</code>
+    with a different weight vector, measured Spearman r against the gold centroid,
+    and kept or discarded the change. Best result: Spearman r = <strong style="color:var(--teal)">${best.toFixed(4)}</strong>
+    (+${(best-base).toFixed(4)} over baseline).`;
 }
 
 function renderTrace(results) {
-  const labels = results.map(r => `Exp ${r.experiment}`);
-  const vals   = results.map(r => r.spearman_r ?? 0);
-  const baseline = vals[0] ?? 0;
-  const kept    = results.map(r => r.status === 'keep');
+  const labels = results.map(r=>`Exp ${r.experiment}`);
+  const vals   = results.map(r=>r.spearman_r??0);
+  const base   = vals[0]??0;
+  const ptBg   = results.map((r,i)=>i===0?C.teal:(r.status==='keep'?C.teal:'transparent'));
+  const ptBdr  = results.map((r,i)=>i===0?C.teal:(r.status==='keep'?C.teal:C.red));
 
-  const pointBg    = results.map((r, i) => i === 0 ? TEAL : (r.status === 'keep' ? TEAL : 'transparent'));
-  const pointBorder = results.map((r, i) => i === 0 ? TEAL : (r.status === 'keep' ? TEAL : RED));
-  const pointRadius = results.map(() => 7);
-
-  const ctx = document.getElementById('trace-chart').getContext('2d');
-  new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels,
-      datasets: [
-        {
-          label: 'spearman_r',
-          data: vals,
-          borderColor: TEAL,
-          backgroundColor: 'rgba(0,212,170,.08)',
-          fill: true,
-          tension: 0.3,
-          pointBackgroundColor: pointBg,
-          pointBorderColor: pointBorder,
-          pointBorderWidth: 2,
-          pointRadius,
-          pointHoverRadius: 9,
-        },
-        {
-          label: 'baseline',
-          data: Array(labels.length).fill(baseline),
-          borderColor: MUTED,
-          borderDash: [6, 4],
-          borderWidth: 1,
-          pointRadius: 0,
-          fill: false,
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      interaction: { mode: 'index', intersect: false },
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          backgroundColor: SURF,
-          borderColor: '#1e2a3a',
-          borderWidth: 1,
-          titleColor: TEXT,
-          bodyColor: MUTED,
-          callbacks: {
-            title: (items) => `Experiment ${results[items[0].dataIndex].experiment}`,
-            label: (item) => {
-              if (item.datasetIndex === 1) return `baseline: ${baseline.toFixed(4)}`;
-              const r = results[item.dataIndex];
-              return [
-                `spearman_r: ${(r.spearman_r ?? 0).toFixed(4)}`,
-                `status: ${r.status}`,
-                r.description ? r.description.slice(0, 55) : '',
-              ].filter(Boolean);
+  new Chart(document.getElementById('trace-chart').getContext('2d'),{
+    type:'line',
+    data:{labels,datasets:[
+      {label:'spearman_r',data:vals,borderColor:C.teal,backgroundColor:'rgba(0,212,170,.07)',
+       fill:true,tension:.3,pointBackgroundColor:ptBg,pointBorderColor:ptBdr,
+       pointBorderWidth:2,pointRadius:7,pointHoverRadius:9},
+      {label:'baseline',data:Array(labels.length).fill(base),borderColor:C.muted,
+       borderDash:[6,4],borderWidth:1,pointRadius:0,fill:false}
+    ]},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      interaction:{mode:'index',intersect:false},
+      plugins:{
+        legend:{display:false},
+        tooltip:{
+          backgroundColor:C.surf,borderColor:C.border,borderWidth:1,
+          titleColor:C.text,bodyColor:C.muted,
+          callbacks:{
+            title:items=>`Experiment ${results[items[0].dataIndex].experiment}`,
+            label:item=>{
+              if(item.datasetIndex===1) return ` baseline: ${base.toFixed(4)}`;
+              const r=results[item.dataIndex];
+              const delta = (r.spearman_r-base);
+              return [` spearman_r: ${(r.spearman_r??0).toFixed(4)}`,
+                      ` delta: ${delta>=0?'+':''}${delta.toFixed(4)}`,
+                      ` status: ${r.status}`,
+                      r.description?` ${r.description.slice(0,55)}`:''
+                     ].filter(Boolean);
             }
           }
         }
       },
-      scales: {
-        x: { grid: { color: 'rgba(255,255,255,.04)' }, ticks: { maxRotation: 0 } },
-        y: {
-          min: Math.min(...vals) - 0.02,
-          max: Math.min(1, Math.max(...vals) + 0.02),
-          grid: { color: 'rgba(255,255,255,.04)' },
-          ticks: { callback: v => v.toFixed(3) }
-        }
+      scales:{
+        x:{grid:{color:'rgba(255,255,255,.04)'},ticks:{maxRotation:0}},
+        y:{min:Math.min(...vals)-.015,max:Math.min(1,Math.max(...vals)+.015),
+           grid:{color:'rgba(255,255,255,.04)'},ticks:{callback:v=>v.toFixed(3)}}
       }
     }
   });
 }
 
+function renderExpTable(results) {
+  const base = results[0]?.spearman_r??0;
+  const bestSr = Math.max(...results.map(r=>r.spearman_r??0));
+  const tbody = document.getElementById('exp-tbody');
+  tbody.innerHTML = results.map(r=>{
+    const sr = r.spearman_r??0;
+    const delta = sr - base;
+    const deltaStr = r.experiment===0?'—':(delta>=0?'+':'')+delta.toFixed(4);
+    const deltaClass = r.experiment===0?'delta-zero':(delta>0?'delta-pos':'delta-neg');
+    const badgeClass = r.status==='keep'&&r.experiment===0?'badge-baseline':(r.status==='keep'?'badge-keep':'badge-discard');
+    const badgeText  = r.experiment===0?'baseline':(r.status==='keep'?'✓ kept':'✗ discarded');
+    const isBest = sr===bestSr && r.experiment>0;
+    return `<tr class="${isBest?'best-row':''}">
+      <td style="font-family:var(--mono);color:var(--muted)">${r.experiment}</td>
+      <td>${r.description||'—'}</td>
+      <td style="font-family:var(--mono)">${sr.toFixed(4)}</td>
+      <td class="${deltaClass}">${deltaStr}</td>
+      <td><span class="badge ${badgeClass}">${badgeText}</span></td>
+    </tr>`;
+  }).join('');
+}
+
 function renderWeights(results) {
-  // Find best kept result with weights_snapshot
-  const best = [...results].sort((a, b) => (b.spearman_r ?? 0) - (a.spearman_r ?? 0))[0];
+  const best = [...results].sort((a,b)=>(b.spearman_r??0)-(a.spearman_r??0))[0];
   const ws = best?.weights_snapshot;
-  if (!ws || !Object.keys(ws).length) return;
-
-  const entries = Object.entries(ws).sort((a, b) => b[1] - a[1]);
-  const labels = entries.map(([k]) => k.replace(/_/g, ' '));
-  const vals   = entries.map(([, v]) => v);
-  const maxW   = Math.max(...vals);
-
-  const colors = vals.map(v => {
-    const t = v / maxW;
-    const r = Math.round(0 + t * 245);
-    const g = Math.round(212 + (1-t) * (158-212));
-    const b = Math.round(170 + (1-t) * (11-170));
-    return `rgb(${r},${g},${b})`;
+  if (!ws || !Object.keys(ws).length) {
+    document.getElementById('weights-wrap').innerHTML='<p class="empty" style="padding:1rem">Weight data not available — re-run agent.py to regenerate results.json</p>';
+    return;
+  }
+  const entries = Object.entries(ws).sort((a,b)=>b[1]-a[1]);
+  const labels  = entries.map(([k])=>k.replace(/_/g,' '));
+  const vals    = entries.map(([,v])=>v);
+  const maxW    = Math.max(...vals);
+  const colors  = vals.map(v=>{
+    const t=v/maxW;
+    return `rgba(${Math.round(t*0+(1-t)*96)},${Math.round(t*212+(1-t)*165)},${Math.round(t*170+(1-t)*250)},.85)`;
   });
-
-  const ctx = document.getElementById('weights-chart').getContext('2d');
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels,
-      datasets: [{
-        label: 'weight',
-        data: vals,
-        backgroundColor: colors,
-        borderRadius: 3,
-        barThickness: 22,
-      }]
-    },
-    options: {
-      indexAxis: 'y',
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          backgroundColor: SURF,
-          borderColor: '#1e2a3a',
-          borderWidth: 1,
-          callbacks: { label: (i) => ` weight: ${i.raw}` }
-        }
-      },
-      scales: {
-        x: { grid: { color: 'rgba(255,255,255,.04)' }, ticks: { callback: v => v } },
-        y: { grid: { display: false }, ticks: { font: { size: 11 } } }
+  new Chart(document.getElementById('weights-chart').getContext('2d'),{
+    type:'bar',
+    data:{labels,datasets:[{label:'weight',data:vals,backgroundColor:colors,borderRadius:4,barThickness:20}]},
+    options:{
+      indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},
+        tooltip:{backgroundColor:C.surf,borderColor:C.border,borderWidth:1,
+          callbacks:{label:i=>` weight: ${i.raw}`}}},
+      scales:{
+        x:{grid:{color:'rgba(255,255,255,.04)'},ticks:{callback:v=>v}},
+        y:{grid:{display:false}}
       }
     }
   });
@@ -370,63 +467,73 @@ function renderWeights(results) {
 
 function renderGenes(genes) {
   const el = document.getElementById('gene-grid');
-  if (!genes.length) { el.innerHTML = '<p class="loading">No gene data.</p>'; return; }
-
-  el.innerHTML = genes.map(g => {
-    const areaClass = `area-${(g.disease_area || 'metabolic').toLowerCase()}`;
-    const simPct = Math.round((g.gold_sim ?? 0) * 100);
-    const isGold = g.hit;
-    return `
-      <div class="gene-card ${isGold ? 'gold-hit' : ''}">
-        <div class="gene-name">${g.gene}</div>
-        <span class="gene-area ${areaClass}">${g.disease_area || '—'}</span>
-        ${isGold ? '<div class="gene-badge">▸ gold standard</div>' : ''}
-        <div class="mini-bar-label">gold similarity ${simPct}%</div>
-        <div class="mini-bar-track"><div class="mini-bar-fill" style="width:${simPct}%"></div></div>
-        <div class="gene-stats">
-          <div class="gene-stat">drug <span>${g.druggability ?? '—'}</span></div>
-          <div class="gene-stat">MR-z <span>${g.mr_z ?? '—'}</span></div>
-          <div class="gene-stat">OT <span>${g.ot_score ?? '—'}</span></div>
-        </div>
-      </div>`;
+  if (!genes.length) {el.innerHTML='<p class="empty">No gene data.</p>';return;}
+  el.innerHTML = genes.map((g,i)=>{
+    const area=(g.disease_area||'metabolic').toLowerCase();
+    const ac=AREA_COLORS[area]||{bg:'#1e2a3a',fg:C.muted};
+    const sim=g.gold_sim??0;
+    const simPct=Math.round(sim*100);
+    return `<div class="gene-card">
+      <div class="gene-rank">#${i+1}</div>
+      <div class="gene-name">${g.gene}</div>
+      <span class="area-pill area-${area}">${area}</span>
+      <div class="sim-label">gold similarity ${simPct}%</div>
+      <div class="sim-track"><div class="sim-fill" style="width:${Math.min(100,simPct)}%"></div></div>
+      <div class="gene-stats">
+        <div class="gs">drug<span>${g.druggability??'—'}</span></div>
+        <div class="gs">MR-z<span>${g.mr_z??'—'}</span></div>
+        <div class="gs">OT<span>${g.ot_score??'—'}</span></div>
+        <div class="gs">pub<span>${g.pubmed??'—'}</span></div>
+      </div>
+    </div>`;
   }).join('');
 }
 
 function renderGoldTable(gold) {
-  const el = document.getElementById('gold-table-wrap');
-  if (!gold.length) { el.innerHTML = '<p class="loading">No gold standard data.</p>'; return; }
-
-  const areaColors = {
-    neurological: '#a5b4fc', cardiovascular: '#f87171',
-    metabolic: '#86efac', psychiatric: '#fcd34d', immune: '#7dd3fc'
-  };
-  const areaBgs = {
-    neurological: '#1e2860', cardiovascular: '#2d1a1a',
-    metabolic: '#1a2d1a', psychiatric: '#2d2018', immune: '#1a2830'
-  };
-
-  const rows = gold.map(g => {
-    const area = g.area || '';
-    const color = areaColors[area] || TEXT;
-    const bg    = areaBgs[area]    || '#1e2a3a';
+  const tbody=document.getElementById('gold-tbody');
+  if(!gold.length){tbody.innerHTML='<tr><td colspan="5" class="empty">No gold data.</td></tr>';return;}
+  const AREA_COL={neurological:'#a5b4fc',cardiovascular:'#f87171',metabolic:'#86efac',psychiatric:'#fcd34d',immune:'#7dd3fc'};
+  const AREA_BG ={neurological:'#1e2860',cardiovascular:'#2d1a1a',metabolic:'#1a2d1a',psychiatric:'#2d2018',immune:'#1a2830'};
+  tbody.innerHTML=gold.map(g=>{
+    const area=g.area||'';
     return `<tr>
-      <td><strong style="font-family:var(--mono)">${g.gene}</strong></td>
-      <td>${g.disease || '—'}</td>
-      <td style="font-family:var(--mono);color:var(--teal)">${g.drug || '—'}</td>
-      <td><span class="pill" style="background:${bg};color:${color}">${area}</span></td>
-      <td style="font-family:var(--mono)">${(g.genetics_score ?? '—')}</td>
+      <td class="gene-mono">${g.gene}</td>
+      <td>${g.disease||'—'}</td>
+      <td class="drug-mono">${g.drug||'—'}</td>
+      <td><span style="background:${AREA_BG[area]||'#1e2a3a'};color:${AREA_COL[area]||C.muted};
+        font-size:.65rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.07em;
+        padding:.15rem .45rem;border-radius:3px;display:inline-block">${area}</span></td>
+      <td style="font-family:var(--mono)">${(g.genetics_score??'—')}</td>
     </tr>`;
   }).join('');
+}
 
-  el.innerHTML = `
-    <table>
-      <thead>
-        <tr>
-          <th>Gene</th><th>Disease</th><th>Drug</th><th>Area</th><th>Genetics score</th>
-        </tr>
-      </thead>
-      <tbody>${rows}</tbody>
-    </table>`;
+function renderHist(genes) {
+  if (!genes.length) return;
+  const sims = genes.map(g=>g.gold_sim??0).filter(v=>v>0);
+  if (!sims.length) return;
+  const bins=12, mn=0, mx=1, bw=(mx-mn)/bins;
+  const counts=Array(bins).fill(0);
+  sims.forEach(v=>{const i=Math.min(bins-1,Math.floor((v-mn)/bw));counts[i]++;});
+  const labels=counts.map((_,i)=>(mn+i*bw).toFixed(2)+'–'+(mn+(i+1)*bw).toFixed(2));
+  const colors=counts.map((_,i)=>{
+    const t=i/(bins-1);
+    return `rgba(${Math.round((1-t)*248+t*0)},${Math.round((1-t)*113+t*212)},${Math.round((1-t)*113+t*170)},.75)`;
+  });
+  new Chart(document.getElementById('hist-chart').getContext('2d'),{
+    type:'bar',
+    data:{labels,datasets:[{label:'genes',data:counts,backgroundColor:colors,borderRadius:3,borderSkipped:false}]},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},
+        tooltip:{backgroundColor:C.surf,borderColor:C.border,borderWidth:1,
+          callbacks:{label:i=>`${i.raw} genes`}}},
+      scales:{
+        x:{grid:{display:false},title:{display:true,text:'Cosine similarity to gold centroid',color:C.muted,font:{size:10}}},
+        y:{grid:{color:'rgba(255,255,255,.04)'},title:{display:true,text:'# genes',color:C.muted,font:{size:10}}}
+      }
+    }
+  });
 }
 
 load();

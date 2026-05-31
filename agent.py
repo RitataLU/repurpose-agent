@@ -183,8 +183,23 @@ def save_outputs(rows: list, best: dict):
     import data as d
     os.makedirs("docs", exist_ok=True)
 
+    # Every row gets spearman_r; the best row also gets the winning weights_snapshot
+    best_sr  = best.get("spearman_r", -99)
+    best_ws  = best.get("weights_snapshot", {})
+    best_it  = best.get("interaction_snapshot", [])
+    best_bm  = best.get("burden_mul", False)
+    best_marked = False
+    rows_out = []
+    for row in rows:
+        r2 = dict(row)
+        if not best_marked and r2.get("spearman_r") == best_sr:
+            r2["weights_snapshot"]     = best_ws
+            r2["interaction_snapshot"] = best_it
+            r2["burden_mul"]           = best_bm
+            best_marked = True
+        rows_out.append(r2)
     with open(DOCS_RESULTS, "w") as f:
-        json.dump(rows, f, indent=2, default=str)
+        json.dump(rows_out, f, indent=2, default=str)
 
     all_sims = best.get("all_sims", {})
     genes_out = [
