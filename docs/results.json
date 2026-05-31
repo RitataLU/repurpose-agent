@@ -1,112 +1,36 @@
 [
   {
     "experiment": 0,
-    "timestamp": "2026-05-31T10:45:23",
-    "spearman_r": 0.8712,
+    "timestamp": "2026-05-31T11:50:03",
+    "spearman_r": 0.4659,
     "n_gold": 13,
-    "n_orphan": 179,
+    "n_orphan": 169,
     "top_gene": "KCNQ1",
     "status": "keep",
-    "description": "baseline: equal weights"
-  },
-  {
-    "experiment": 1,
-    "timestamp": "2026-05-31T10:45:23",
-    "spearman_r": 0.8695,
-    "n_gold": 13,
-    "n_orphan": 179,
-    "top_gene": "KCNQ1",
-    "status": "discard",
-    "description": "upweight causal features: MR + druggability"
-  },
-  {
-    "experiment": 2,
-    "timestamp": "2026-05-31T10:45:23",
-    "spearman_r": 0.8721,
-    "n_gold": 13,
-    "n_orphan": 179,
-    "top_gene": "KCNQ1",
-    "status": "keep",
-    "description": "MR \u00d7 druggability interaction term"
-  },
-  {
-    "experiment": 3,
-    "timestamp": "2026-05-31T10:45:23",
-    "spearman_r": 0.872,
-    "n_gold": 13,
-    "n_orphan": 179,
-    "top_gene": "KCNQ1",
-    "status": "discard",
-    "description": "zero pubmed \u2014 remove popularity bias"
-  },
-  {
-    "experiment": 4,
-    "timestamp": "2026-05-31T10:45:23",
-    "spearman_r": 0.8722,
-    "n_gold": 13,
-    "n_orphan": 179,
-    "top_gene": "KCNQ1",
-    "status": "keep",
-    "description": "add disease burden multiplier"
-  },
-  {
-    "experiment": 5,
-    "timestamp": "2026-05-31T10:45:23",
-    "spearman_r": 0.8799,
-    "n_gold": 13,
-    "n_orphan": 179,
-    "top_gene": "KCNQ1",
-    "status": "keep",
-    "description": "eQTL \u00d7 tissue_specificity interaction"
-  },
-  {
-    "experiment": 6,
-    "timestamp": "2026-05-31T10:45:23",
-    "spearman_r": 0.8712,
-    "n_gold": 13,
-    "n_orphan": 179,
-    "top_gene": "KCNQ1",
-    "status": "discard",
-    "description": "zero PPI \u2014 network degree is noise"
-  },
-  {
-    "experiment": 7,
-    "timestamp": "2026-05-31T10:45:23",
-    "spearman_r": 0.8125,
-    "n_gold": 13,
-    "n_orphan": 179,
-    "top_gene": "KCNQ1",
-    "status": "discard",
-    "description": "dominant MR \u2014 pure causal genetics"
-  },
-  {
-    "experiment": 8,
-    "timestamp": "2026-05-31T10:45:23",
-    "spearman_r": 0.8554,
-    "n_gold": 13,
-    "n_orphan": 179,
-    "top_gene": "KCNQ1",
-    "status": "discard",
-    "description": "causal triad: MR + eQTL + OT"
-  },
-  {
-    "experiment": 9,
-    "timestamp": "2026-05-31T10:45:23",
-    "spearman_r": 0.8587,
-    "n_gold": 13,
-    "n_orphan": 179,
-    "top_gene": "KCNQ1",
-    "status": "discard",
-    "description": "boost GWAS replication signal"
-  },
-  {
-    "experiment": 10,
-    "timestamp": "2026-05-31T10:45:23",
-    "spearman_r": 0.8531,
-    "n_gold": 13,
-    "n_orphan": 179,
-    "top_gene": "KCNQ1",
-    "status": "discard",
-    "description": "fine-tune: OT score boost"
+    "description": "baseline: equal weights",
+    "weights_snapshot": {
+      "mr_z_score": 2.5,
+      "druggability_score": 2.5,
+      "open_targets_score": 2.0,
+      "gwas_pval_log10": 1.5,
+      "n_gwas_studies": 1.2,
+      "tissue_specificity": 1.0,
+      "ppi_degree": 0.5,
+      "pubmed_count_5yr": 0.0,
+      "eqtl_effect": 1.0
+    },
+    "interaction_snapshot": [
+      [
+        "mr_z_score",
+        "druggability_score",
+        4.0
+      ],
+      [
+        "eqtl_effect",
+        "tissue_specificity",
+        2.5
+      ]
+    ],
+    "burden_mul": true
   }
 ]
