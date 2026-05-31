@@ -75,5 +75,16 @@
     "top_by_sim": "CRHR1",
     "status": "keep",
     "description": "zero PPI \u2014 network degree is noise"
+  },
+  {
+    "experiment": 7,
+    "timestamp": "2026-05-31T03:31:00",
+    "spearman_r": 0.367164,
+    "n_gold": 18,
+    "n_orphan": 169,
+    "top_scorer": "KCNQ1",
+    "top_by_sim": "CRHR1",
+    "status": "discard",
+    "description": "dominant MR \u2014 pure causal genetics"
   }
 ]
