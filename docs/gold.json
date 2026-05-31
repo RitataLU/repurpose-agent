@@ -48,6 +48,30 @@
     "genetics_score": 0.1824
   },
   {
+    "gene": "PCSK9",
+    "disease": "coronary artery disease",
+    "area": "cardiovascular",
+    "drug": "INCLISIRAN SODIUM",
+    "ot_score": 0.5558,
+    "genetics_score": 0.9048
+  },
+  {
+    "gene": "COL4A1",
+    "disease": "coronary artery disease",
+    "area": "cardiovascular",
+    "drug": "COLLAGENASE CLOSTRIDIUM HISTOLYTICUM",
+    "ot_score": 0.528,
+    "genetics_score": 0.8685
+  },
+  {
+    "gene": "EDNRA",
+    "disease": "coronary artery disease",
+    "area": "cardiovascular",
+    "drug": "APROCITENTAN",
+    "ot_score": 0.5214,
+    "genetics_score": 0.8542
+  },
+  {
     "gene": "GCK",
     "disease": "type 2 diabetes",
     "area": "metabolic",
@@ -70,5 +94,53 @@
     "drug": "TOLBUTAMIDE",
     "ot_score": 0.8648,
     "genetics_score": 0.9342
+  },
+  {
+    "gene": "CACNA1I",
+    "disease": "schizophrenia",
+    "area": "psychiatric",
+    "drug": "GABAPENTIN",
+    "ot_score": 0.5509,
+    "genetics_score": 0.8448
+  },
+  {
+    "gene": "CHRNA3",
+    "disease": "schizophrenia",
+    "area": "psychiatric",
+    "drug": "PENTOLINIUM",
+    "ot_score": 0.5002,
+    "genetics_score": 0.8149
+  },
+  {
+    "gene": "BCL11A",
+    "disease": "schizophrenia",
+    "area": "psychiatric",
+    "drug": "EXAGAMGLOGENE AUTOTEMCEL",
+    "ot_score": 0.4858,
+    "genetics_score": 0.7953
+  },
+  {
+    "gene": "NOD2",
+    "disease": "inflammatory bowel disease",
+    "area": "immune",
+    "drug": "MIFAMURTIDE",
+    "ot_score": 0.8747,
+    "genetics_score": 0.9615
+  },
+  {
+    "gene": "IL12B",
+    "disease": "inflammatory bowel disease",
+    "area": "immune",
+    "drug": "GUSELKUMAB",
+    "ot_score": 0.7549,
+    "genetics_score": 0.9228
+  },
+  {
+    "gene": "IFNGR2",
+    "disease": "inflammatory bowel disease",
+    "area": "immune",
+    "drug": "INTERFERON GAMMA-1B",
+    "ot_score": 0.5472,
+    "genetics_score": 0.8957
   }
 ]
