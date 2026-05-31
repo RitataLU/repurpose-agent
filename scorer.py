@@ -1,11 +1,11 @@
-"""scorer.py — causal triad: MR + eQTL + OT — auto-written by agent.py"""
+"""scorer.py — boost GWAS replication signal — auto-written by agent.py"""
 
 WEIGHTS = {
     "mr_z_score": 3.0,
     "druggability_score": 2.5,
-    "open_targets_score": 3.0,
+    "open_targets_score": 3.5,
     "gwas_pval_log10": 0.8,
-    "n_gwas_studies": 2.0,
+    "n_gwas_studies": 3.0,
     "tissue_specificity": 1.2,
     "ppi_degree": 0.0,
     "pubmed_count_5yr": 0.0,
