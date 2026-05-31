@@ -37,5 +37,18 @@
     "hit_genes": "DRD2|TNF|APOE|PCSK9|LRRK2",
     "status": "discard",
     "description": "MR \u00d7 druggability interaction term"
+  },
+  {
+    "experiment": 3,
+    "timestamp": "2026-05-31T10:29:57",
+    "recall_at_k": 0.3846,
+    "K": 13,
+    "n_hits": 5,
+    "n_gold": 13,
+    "n_orphan": 179,
+    "top_gene": "KCNQ1",
+    "hit_genes": "DRD2|TNF|APOE|PCSK9|LRRK2",
+    "status": "discard",
+    "description": "zero pubmed \u2014 remove popularity bias"
   }
 ]

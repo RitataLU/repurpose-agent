@@ -2,3 +2,4 @@ experiment	timestamp	recall_at_k	K	n_hits	n_gold	n_orphan	top_gene	hit_genes	sta
 0	2026-05-31T10:29:57	0.3846	13	5	13	179	KCNQ1	DRD2|APOE|TNF|LRRK2|PCSK9	keep	baseline: equal weights
 1	2026-05-31T10:29:57	0.3077	13	4	13	179	KCNQ1	APOE|LRRK2|DRD2|TNF	discard	upweight causal features: MR + druggability
 2	2026-05-31T10:29:57	0.3846	13	5	13	179	KCNQ1	DRD2|TNF|APOE|PCSK9|LRRK2	discard	MR × druggability interaction term
+3	2026-05-31T10:29:57	0.3846	13	5	13	179	KCNQ1	DRD2|TNF|APOE|PCSK9|LRRK2	discard	zero pubmed — remove popularity bias
