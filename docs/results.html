@@ -327,6 +327,10 @@ main{max-width:1080px;margin:0 auto;padding:3rem 1.5rem 6rem}
           <h4>open_targets_score</h4>
           <p><strong style="color:var(--text)">Open Targets composite score.</strong> A 0–1 aggregate combining genetic associations, somatic mutations, animal models, literature mining, and functional genomics across all diseases. The broadest single measure of how well-supported this gene is as a target.</p>
         </div>
+        <div class="feat-box">
+          <h4>burden_daly_m</h4>
+          <p><strong style="color:var(--text)">Disease burden (DALYs).</strong> DALYs from GBD 2021. Used in two ways: as a normalized feature in the linear formula, and as a post-hoc multiplier (<code style="font-family:var(--mono);font-size:.8em">score × (1 + DALYs/200)</code>) when BURDEN_MULTIPLIER is on. CAD = 182M DALYs; IBD = 3M. Genes in higher-burden diseases rank higher all else equal.</p>
+        </div>
       </div>
     </div>
   </div>

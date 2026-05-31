@@ -348,10 +348,10 @@ h3{font-size:1.05rem;font-weight:600;margin-bottom:.4rem}
           <h3>Open Targets composite score</h3>
           <p>A 0–1 aggregate score from Open Targets Platform, combining genetic association evidence, somatic mutations, animal models, literature mining, and functional genomics data across all diseases. <strong>Plain English:</strong> across all the evidence types Open Targets tracks, how well-supported is this gene as a disease target overall?</p>
         </div>
-        <div class="phase-card" style="background:var(--surf2);border-style:dashed">
+        <div class="phase-card">
           <div class="phase-num">burden_daly_m</div>
           <h3>Disease burden (DALYs)</h3>
-          <p>Not a gene feature — a disease-level weight. DALYs (disability-adjusted life years) from GBD 2021 measure how much suffering a disease causes globally. Used optionally as a score multiplier so genes in high-burden diseases rank higher all else equal. <strong>Plain English:</strong> how much does this disease matter to the world?</p>
+          <p>DALYs (disability-adjusted life years) from GBD 2021 — how much suffering this disease causes globally. Used in two ways: as a normalized feature in the scoring formula <em>and</em> as a post-hoc multiplier (<code>score × (1 + DALYs/200)</code>) when enabled. Cardiovascular disease scores 182M DALYs; immune diseases score 3M. <strong>Plain English:</strong> genes in higher-burden diseases get a larger score boost, all else equal.</p>
         </div>
       </div>
     </div>
