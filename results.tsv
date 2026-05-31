@@ -4,3 +4,4 @@ experiment	timestamp	spearman_r	n_gold	n_orphan	top_gene	status	description
 2	2026-05-31T11:50:03	0.429	13	169	KCNQ1	discard	MR × druggability interaction term
 3	2026-05-31T11:50:03	0.4402	13	169	KCNQ1	discard	zero pubmed — remove popularity bias
 4	2026-05-31T11:50:03	0.4398	13	169	KCNQ1	discard	add disease burden multiplier
+5	2026-05-31T11:50:03	0.4659	13	169	KCNQ1	discard	eQTL × tissue_specificity interaction
