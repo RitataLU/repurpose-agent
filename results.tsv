@@ -1,12 +1,2 @@
-experiment	timestamp	spearman_r	n_gold	n_orphan	top_scorer	top_by_sim	status	description
-0	2026-05-31T03:31:00	0.362788	18	169	APOE	CRHR1	keep	baseline: equal weights
-1	2026-05-31T03:31:00	0.393082	18	169	KCNQ1	CRHR1	keep	upweight causal features: MR + druggability
-2	2026-05-31T03:31:00	0.406437	18	169	KCNQ1	CRHR1	keep	MR × druggability interaction term
-3	2026-05-31T03:31:00	0.423344	18	169	KCNQ1	CRHR1	keep	zero pubmed — remove popularity bias
-4	2026-05-31T03:31:00	0.423921	18	169	KCNQ1	CRHR1	keep	add disease burden multiplier
-5	2026-05-31T03:31:00	0.523588	18	169	KCNQ1	CRHR1	keep	eQTL × tissue_specificity interaction
-6	2026-05-31T03:31:00	0.53049	18	169	KCNQ1	CRHR1	keep	zero PPI — network degree is noise
-7	2026-05-31T03:31:00	0.367164	18	169	KCNQ1	CRHR1	discard	dominant MR — pure causal genetics
-8	2026-05-31T03:31:00	0.424328	18	169	KCNQ1	CRHR1	discard	causal triad: MR + eQTL + OT
-9	2026-05-31T03:31:00	0.420539	18	169	KCNQ1	CRHR1	discard	boost GWAS replication signal
-10	2026-05-31T03:31:00	0.418726	18	169	KCNQ1	CRHR1	discard	fine-tune: OT score boost
+experiment	timestamp	recall_at_k	K	n_hits	n_gold	n_orphan	top_gene	hit_genes	status	description
+0	2026-05-31T10:29:57	0.3846	13	5	13	179	KCNQ1	DRD2|APOE|TNF|LRRK2|PCSK9	keep	baseline: equal weights
