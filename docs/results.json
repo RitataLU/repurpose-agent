@@ -89,5 +89,18 @@
     "hit_genes": "DRD2|APOE|TNF|LRRK2|PCSK9",
     "status": "discard",
     "description": "zero PPI \u2014 network degree is noise"
+  },
+  {
+    "experiment": 7,
+    "timestamp": "2026-05-31T10:29:57",
+    "recall_at_k": 0.2308,
+    "K": 13,
+    "n_hits": 3,
+    "n_gold": 13,
+    "n_orphan": 179,
+    "top_gene": "KCNQ1",
+    "hit_genes": "APOE|LRRK2|DRD2",
+    "status": "discard",
+    "description": "dominant MR \u2014 pure causal genetics"
   }
 ]
