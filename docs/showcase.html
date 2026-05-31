@@ -223,6 +223,20 @@ h3{font-size:1.05rem;font-weight:600;margin-bottom:.4rem}
   </div>
 </section>
 
+<section id="gold-section">
+  <div class="inner">
+    <span class="tag">Gold standard</span>
+    <h2>13 curated gene-drug pairs</h2>
+    <p class="lead">Each pair requires: (1) genome-wide significant GWAS association for the disease, and (2) an approved drug targeting the gene for that specific indication. These 13 genes define what a successful drug target looks like in our 9-dimensional feature space.</p>
+    <div style="overflow-x:auto;border-radius:10px;border:1px solid var(--border)">
+      <table class="gold-table">
+        <thead><tr><th>Gene</th><th>Disease</th><th>Approved Drug</th><th>Area</th><th>Genetics score</th></tr></thead>
+        <tbody id="gold-table-body"><tr><td colspan="5" style="padding:1.5rem;color:var(--muted);font-size:.875rem">Loading…</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
 <section id="how">
   <div class="inner">
     <span class="tag">How it works</span>
@@ -245,6 +259,30 @@ h3{font-size:1.05rem;font-weight:600;margin-bottom:.4rem}
         <h3>Build biological profiles</h3>
         <p>Each orphan gene gets 9 features: Open Targets association score and druggability tractability, PubMed publication count (5 years), plus proxy features for eQTL effect size and Mendelian randomization z-score derived from GWAS evidence depth.</p>
         <ul><li>Open Targets GraphQL v4</li><li>PubMed E-utilities esearch</li><li>9 biological features per gene</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="metric">
+  <div class="inner">
+    <span class="tag">The metric</span>
+    <h2>Spearman r — what it measures</h2>
+    <div class="metric-box">
+      <p style="color:var(--muted);font-size:.92rem;line-height:1.75;margin-bottom:1.25rem">
+        The metric is the <strong style="color:var(--text)">Spearman rank correlation</strong> between two rankings of orphan genes: (1) the scorer's ranking from the weighted formula, and (2) the cosine similarity ranking to the gold standard centroid. A perfect scorer would rank orphan genes in exactly the same order as their biological distance to proven drug targets.
+      </p>
+      <div class="metric-steps">
+        <div class="ms"><div class="ms-num">Step 1</div><h4>Normalize features</h4><p>Orphan + gold gene features are min-max normalized together so all genes share the same scale across all 9 features.</p></div>
+        <div class="ms"><div class="ms-num">Step 2</div><h4>Compute gold centroid</h4><p>The 13 normalized gold gene vectors are averaged to one centroid — the "ideal drug target profile" in feature space.</p></div>
+        <div class="ms"><div class="ms-num">Step 3</div><h4>Cosine similarity</h4><p>Each orphan gene's similarity to the centroid is computed. This is the ground truth the agent tries to reproduce.</p></div>
+        <div class="ms"><div class="ms-num">Step 4</div><h4>Spearman correlation</h4><p>Spearman r measures whether the scorer ranking agrees with the cosine-similarity ranking. Higher r = better formula.</p></div>
+      </div>
+      <div class="spearman-scale">
+        <div class="scale-label">Spearman r interpretation scale</div>
+        <div class="scale-bar"></div>
+        <div class="scale-ticks"><span>−1 anti-correlated</span><span>0 random</span><span>+0.5 good</span><span>+1 perfect</span></div>
+        <p style="font-size:.8rem;color:var(--muted);margin-top:.75rem">Our baseline equal-weight formula achieves r ≈ 0.87, meaning even before optimisation the biological features naturally align with the gold standard. The agent's job is to find which features to emphasise to push this higher.</p>
       </div>
     </div>
   </div>
@@ -279,44 +317,6 @@ h3{font-size:1.05rem;font-weight:600;margin-bottom:.4rem}
         <h4>Axis 3 — Does disease burden matter</h4>
         <p>Late experiments add a disease-burden multiplier (DALYs from GBD 2021) to test whether genes in higher-burden diseases should rank higher even with identical biological profiles.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="metric">
-  <div class="inner">
-    <span class="tag">The metric</span>
-    <h2>Spearman r — what it measures</h2>
-    <div class="metric-box">
-      <p style="color:var(--muted);font-size:.92rem;line-height:1.75;margin-bottom:1.25rem">
-        The metric is the <strong style="color:var(--text)">Spearman rank correlation</strong> between two rankings of orphan genes: (1) the scorer's ranking from the weighted formula, and (2) the cosine similarity ranking to the gold standard centroid. A perfect scorer would rank orphan genes in exactly the same order as their biological distance to proven drug targets.
-      </p>
-      <div class="metric-steps">
-        <div class="ms"><div class="ms-num">Step 1</div><h4>Normalize features</h4><p>Orphan + gold gene features are min-max normalized together so all genes share the same scale across all 9 features.</p></div>
-        <div class="ms"><div class="ms-num">Step 2</div><h4>Compute gold centroid</h4><p>The 13 normalized gold gene vectors are averaged to one centroid — the "ideal drug target profile" in feature space.</p></div>
-        <div class="ms"><div class="ms-num">Step 3</div><h4>Cosine similarity</h4><p>Each orphan gene's similarity to the centroid is computed. This is the ground truth the agent tries to reproduce.</p></div>
-        <div class="ms"><div class="ms-num">Step 4</div><h4>Spearman correlation</h4><p>Spearman r measures whether the scorer ranking agrees with the cosine-similarity ranking. Higher r = better formula.</p></div>
-      </div>
-      <div class="spearman-scale">
-        <div class="scale-label">Spearman r interpretation scale</div>
-        <div class="scale-bar"></div>
-        <div class="scale-ticks"><span>−1 anti-correlated</span><span>0 random</span><span>+0.5 good</span><span>+1 perfect</span></div>
-        <p style="font-size:.8rem;color:var(--muted);margin-top:.75rem">Our baseline equal-weight formula achieves r ≈ 0.87, meaning even before optimisation the biological features naturally align with the gold standard. The agent's job is to find which features to emphasise to push this higher.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="gold-section">
-  <div class="inner">
-    <span class="tag">Gold standard</span>
-    <h2>13 curated gene-drug pairs</h2>
-    <p class="lead">Each pair requires: (1) genome-wide significant GWAS association for the disease, and (2) an approved drug targeting the gene for that specific indication. These 13 genes define what a successful drug target looks like in our 9-dimensional feature space.</p>
-    <div style="overflow-x:auto;border-radius:10px;border:1px solid var(--border)">
-      <table class="gold-table">
-        <thead><tr><th>Gene</th><th>Disease</th><th>Approved Drug</th><th>Area</th><th>Genetics score</th></tr></thead>
-        <tbody id="gold-table-body"><tr><td colspan="5" style="padding:1.5rem;color:var(--muted);font-size:.875rem">Loading…</td></tr></tbody>
-      </table>
     </div>
   </div>
 </section>

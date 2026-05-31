@@ -178,14 +178,6 @@ main{max-width:1080px;margin:0 auto;padding:3rem 1.5rem 6rem}
     with a different weight vector, measured Spearman correlation against the gold standard centroid,
     and kept or discarded the change.
   </p>
-  <div class="stat-chips" id="stat-chips">
-    <div class="chip hi"><span class="chip-val" id="c-best">—</span><span class="chip-label">Best Spearman r</span></div>
-    <div class="chip base"><span class="chip-val" id="c-base">—</span><span class="chip-label">Baseline r</span></div>
-    <div class="chip imp"><span class="chip-val" id="c-delta">—</span><span class="chip-label">Improvement</span></div>
-    <div class="chip"><span class="chip-val" id="c-kept">—</span><span class="chip-label">Experiments kept</span></div>
-    <div class="chip"><span class="chip-val" id="c-orphan">—</span><span class="chip-label">Orphan genes</span></div>
-    <div class="chip"><span class="chip-val" id="c-gold">—</span><span class="chip-label">Gold standard pairs</span></div>
-  </div>
 </div>
 
 <!-- Section 00 — What this experiment does -->
@@ -221,6 +213,16 @@ main{max-width:1080px;margin:0 auto;padding:3rem 1.5rem 6rem}
     <div class="step"><div class="step-num">STEP 3</div><h4>Cosine similarity</h4><p>Each orphan gene's normalized vector is compared to the centroid. The resulting similarity score is the ground-truth ranking the agent tries to reproduce.</p></div>
     <div class="step"><div class="step-num">STEP 4</div><h4>Agent loop</h4><p>The agent tries 10 weight configurations. After each, Spearman r is measured between the scorer ranking and cosine-similarity ranking. Better formulas are kept.</p></div>
   </div>
+</div>
+
+<!-- Stat row -->
+<div class="stat-chips" id="stat-chips" style="margin-bottom:3rem">
+    <div class="chip hi"><span class="chip-val" id="c-best">—</span><span class="chip-label">Best Spearman r</span></div>
+    <div class="chip base"><span class="chip-val" id="c-base">—</span><span class="chip-label">Baseline r</span></div>
+    <div class="chip imp"><span class="chip-val" id="c-delta">—</span><span class="chip-label">Improvement</span></div>
+    <div class="chip"><span class="chip-val" id="c-kept">—</span><span class="chip-label">Experiments kept</span></div>
+    <div class="chip"><span class="chip-val" id="c-orphan">—</span><span class="chip-label">Orphan genes</span></div>
+    <div class="chip"><span class="chip-val" id="c-gold">—</span><span class="chip-label">Gold standard pairs</span></div>
 </div>
 
 <!-- Section 01 — Experiment trace -->
