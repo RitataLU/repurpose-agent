@@ -1,8 +1,8 @@
-"""scorer.py — upweight causal features: MR + druggability — auto-written by agent.py"""
+"""scorer.py — MR × druggability interaction term — auto-written by agent.py"""
 
 WEIGHTS = {
-    "mr_z_score": 3.0,
-    "druggability_score": 3.0,
+    "mr_z_score": 2.5,
+    "druggability_score": 2.5,
     "open_targets_score": 2.0,
     "gwas_pval_log10": 1.5,
     "n_gwas_studies": 1.0,
@@ -12,7 +12,7 @@ WEIGHTS = {
     "eqtl_effect": 1.5
 }
 BURDEN_MULTIPLIER = False
-INTERACTION_TERMS = []
+INTERACTION_TERMS = [('mr_z_score', 'druggability_score', 4.0)]
 
 def score_gene(features: dict) -> float:
     score = sum(WEIGHTS.get(k,0)*v for k,v in features.items()
