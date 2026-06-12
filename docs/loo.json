@@ -1,0 +1,72 @@
+{
+  "n_total": 13,
+  "recovered_top_20": 0,
+  "recovery_rate": 0.0,
+  "per_gene": [
+    {
+      "gene": "PCSK9",
+      "rank": 60,
+      "recovered": false
+    },
+    {
+      "gene": "HMGCR",
+      "rank": 46,
+      "recovered": false
+    },
+    {
+      "gene": "GLP1R",
+      "rank": 58,
+      "recovered": false
+    },
+    {
+      "gene": "KCNJ11",
+      "rank": 34,
+      "recovered": false
+    },
+    {
+      "gene": "DRD2",
+      "rank": 29,
+      "recovered": false
+    },
+    {
+      "gene": "HTR2A",
+      "rank": 49,
+      "recovered": false
+    },
+    {
+      "gene": "TNF",
+      "rank": 94,
+      "recovered": false
+    },
+    {
+      "gene": "IL23A",
+      "rank": 112,
+      "recovered": false
+    },
+    {
+      "gene": "LRRK2",
+      "rank": 61,
+      "recovered": false
+    },
+    {
+      "gene": "GBA",
+      "rank": 169,
+      "recovered": false
+    },
+    {
+      "gene": "PSEN1",
+      "rank": 41,
+      "recovered": false
+    },
+    {
+      "gene": "APP",
+      "rank": 49,
+      "recovered": false
+    },
+    {
+      "gene": "APOE",
+      "rank": 61,
+      "recovered": false
+    }
+  ]
+}

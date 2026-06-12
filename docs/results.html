@@ -148,6 +148,28 @@ main{max-width:1080px;margin:0 auto;padding:3rem 1.5rem 6rem}
 /* ── Loading ────────────────────────────────────── */
 .empty{color:var(--muted);font-family:var(--mono);font-size:.85rem;padding:2rem 0}
 
+/* ── Trials badge ───────────────────────────────── */
+.trials-badge{
+  display:inline-flex;align-items:center;gap:.3rem;
+  font-family:var(--mono);font-size:.63rem;
+  padding:.15rem .45rem;border-radius:3px;margin-top:.45rem;
+}
+.trials-active{background:rgba(0,212,170,.13);color:var(--teal)}
+.trials-none{background:rgba(127,142,163,.08);color:var(--muted)}
+
+/* ── Radar expand ───────────────────────────────── */
+.gene-card{cursor:pointer}
+.gene-card.expanded{border-color:var(--teal)}
+.radar-wrap{display:none;margin-top:.8rem;padding-top:.8rem;border-top:1px solid var(--border)}
+.gene-card.expanded .radar-wrap{display:block}
+.radar-label{font-family:var(--mono);font-size:.6rem;color:var(--muted);text-align:center;margin-bottom:.3rem}
+
+/* ── LOO section ────────────────────────────────── */
+.loo-hero{display:flex;align-items:baseline;gap:.75rem;margin-bottom:1.5rem}
+.loo-rate{font-family:var(--mono);font-size:3rem;font-weight:600;color:var(--teal);line-height:1}
+.loo-sub{color:var(--muted);font-size:.9rem;max-width:400px;line-height:1.55}
+#loo-wrap{height:220px}
+
 @media(max-width:640px){
   main{padding:1.5rem 1rem 4rem}
   .gene-grid{grid-template-columns:1fr 1fr}
@@ -336,6 +358,16 @@ main{max-width:1080px;margin:0 auto;padding:3rem 1.5rem 6rem}
   </div>
 </div>
 
+<!-- Section 03.5 — Leave-one-out validation -->
+<div class="section">
+  <span class="section-tag">03.5 — Method validation (leave-one-out)</span>
+  <h2>Leave-one-out cross-validation</h2>
+  <p class="section-desc">Each gold standard gene was temporarily removed from the reference set, added to the orphan candidate pool, and scored by the winning formula. Recovery rate = fraction of gold genes that rank in the top 20.</p>
+  <div class="card" id="loo-card">
+    <p class="empty">Loading loo.json…</p>
+  </div>
+</div>
+
 <!-- Section 04 — Top 20 genes -->
 <div class="section">
   <span class="section-tag">04 — Top predicted orphan genes</span>
@@ -389,10 +421,12 @@ const AREA_COLORS = {
 async function load() {
   // Try fetch first (works on GitHub Pages / any HTTP server).
   // Fall back to window._RA_* set by data.js (works when opened as file://).
-  let results=[], genes=[], gold=[];
+  let results=[], genes=[], gold=[], trials=[], loo=null;
   try { results = await fetch('./results.json').then(r=>r.json()); } catch(e){}
   try { genes   = await fetch('./genes.json').then(r=>r.json()); }   catch(e){}
   try { gold    = await fetch('./gold.json').then(r=>r.json()); }    catch(e){}
+  try { trials  = await fetch('./trials.json').then(r=>r.json()); }  catch(e){}
+  try { loo     = await fetch('./loo.json').then(r=>r.json()); }     catch(e){}
   if (!results.length && window._RA_RESULTS) results = window._RA_RESULTS;
   if (!genes.length   && window._RA_GENES)   genes   = window._RA_GENES;
   if (!gold.length    && window._RA_GOLD)    gold    = window._RA_GOLD;
@@ -406,7 +440,8 @@ async function load() {
   renderTrace(results);
   renderExpTable(results);
   renderWeights(results);
-  renderGenes(genes.slice(0,20));
+  renderLOO(loo);
+  renderGenes(genes.slice(0,20), trials, gold);
   renderGoldTable(gold);
   renderHist(genes);
 }
@@ -535,19 +570,92 @@ function renderWeights(results) {
   });
 }
 
-function renderGenes(genes) {
+const FEATURE_LABELS = [
+  'gwas_p','n_studies','tissue_spec','ppi_deg','pubmed',
+  'eqtl','drugability','mr_z','ot_score'
+];
+const FEATURE_KEYS_9 = [
+  'gwas_p','n_gwas_studies','tissue_specificity','ppi_degree','pubmed_count_5yr',
+  'eqtl_effect','druggability','mr_z','ot_score'
+];
+// Map genes.json field names → display labels
+const FEAT_MAP = {
+  gwas_p:'gwas_p', n_gwas_studies:'n_studies', tissue_specificity:'tissue_spec',
+  ppi_degree:'ppi_deg', pubmed_count_5yr:'pubmed', eqtl_effect:'eqtl',
+  druggability:'drugability', mr_z:'mr_z', ot_score:'ot_score'
+};
+const FEAT_KEYS_SRC = ['gwas_p','n_gwas_studies','tissue_specificity','ppi_degree',
+  'pubmed_count_5yr','eqtl_effect','druggability','mr_z','ot_score'];
+
+const _radarCharts = {};
+
+function buildGoldCentroid(genesAll, goldArr) {
+  // Prefer hit genes from genes array (normalized features already present)
+  const hitGenes = genesAll.filter(g=>g.hit);
+  if (!hitGenes.length) return null;
+  const keys = FEAT_KEYS_SRC;
+  const centroid = {};
+  keys.forEach(k=>{
+    const vals = hitGenes.map(g=>g[k]).filter(v=>typeof v==='number'&&isFinite(v));
+    centroid[k] = vals.length ? vals.reduce((a,b)=>a+b,0)/vals.length : 0;
+  });
+  // Normalize centroid to [0,1] using same min/max as the full gene set
+  const normed = {};
+  keys.forEach(k=>{
+    const vals = genesAll.map(g=>g[k]).filter(v=>typeof v==='number'&&isFinite(v));
+    const mn = Math.min(...vals), mx = Math.max(...vals);
+    const rng = mx-mn||1;
+    normed[k] = (centroid[k]-mn)/rng;
+  });
+  return normed;
+}
+
+function normGeneFeatures(g, genesAll) {
+  const keys = FEAT_KEYS_SRC;
+  const out = {};
+  keys.forEach(k=>{
+    const vals = genesAll.map(x=>x[k]).filter(v=>typeof v==='number'&&isFinite(v));
+    const mn = Math.min(...vals), mx = Math.max(...vals);
+    const rng = mx-mn||1;
+    const v = g[k];
+    out[k] = (typeof v==='number'&&isFinite(v)) ? (v-mn)/rng : 0;
+  });
+  return out;
+}
+
+function renderGenes(genes, trials, gold) {
   const el = document.getElementById('gene-grid');
   if (!genes.length) {el.innerHTML='<p class="empty">No gene data.</p>';return;}
+
+  // Build trials lookup
+  const trialsMap = {};
+  (trials||[]).forEach(t=>{ trialsMap[t.gene]=t; });
+
   el.innerHTML = genes.map((g,i)=>{
     const area=(g.disease_area||'metabolic').toLowerCase();
-    const ac=AREA_COLORS[area]||{bg:'#1e2a3a',fg:C.muted};
     const sim=g.gold_sim??0;
     const simPct=Math.round(sim*100);
-    return `<div class="gene-card">
+
+    // Trials badge
+    const t = trialsMap[g.gene];
+    let trialsBadge = '';
+    if (!t) {
+      trialsBadge = '';
+    } else if (t.n_active_trials === null) {
+      trialsBadge = `<span class="trials-badge trials-none">— trials data</span>`;
+    } else if (t.n_active_trials === 0) {
+      trialsBadge = `<span class="trials-badge trials-none">no active trials</span>`;
+    } else {
+      const ph = t.max_phase ? ' · '+t.max_phase.replace('PHASE','Ph') : '';
+      trialsBadge = `<span class="trials-badge trials-active">▶ ${t.n_active_trials} trial${t.n_active_trials!==1?'s':''}${ph}</span>`;
+    }
+
+    return `<div class="gene-card" data-idx="${i}" data-gene="${g.gene}">
       <div class="gene-rank">#${i+1}</div>
       <div class="gene-name">${g.gene}</div>
       <span class="area-pill area-${area}">${area}</span>
-      <div class="sim-label">gold similarity ${simPct}%</div>
+      ${trialsBadge}
+      <div class="sim-label" style="margin-top:.4rem">gold similarity ${simPct}%</div>
       <div class="sim-track"><div class="sim-fill" style="width:${Math.min(100,simPct)}%"></div></div>
       <div class="gene-stats">
         <div class="gs">drug<span>${g.druggability??'—'}</span></div>
@@ -555,8 +663,83 @@ function renderGenes(genes) {
         <div class="gs">OT<span>${g.ot_score??'—'}</span></div>
         <div class="gs">pub<span>${g.pubmed??'—'}</span></div>
       </div>
+      <div class="radar-wrap">
+        <div class="radar-label">feature profile vs gold centroid</div>
+        <canvas id="radar-${i}" width="220" height="220"></canvas>
+      </div>
     </div>`;
   }).join('');
+
+  // Pre-build centroid once
+  const centroid = buildGoldCentroid(genes, gold);
+
+  // Wire up click handlers
+  el.querySelectorAll('.gene-card').forEach(card=>{
+    card.addEventListener('click', ()=>{
+      const idx = parseInt(card.dataset.idx);
+      const g = genes[idx];
+      const wasExpanded = card.classList.contains('expanded');
+      // Close all other cards
+      el.querySelectorAll('.gene-card.expanded').forEach(c=>c.classList.remove('expanded'));
+      if (!wasExpanded) {
+        card.classList.add('expanded');
+        // Draw radar if not already drawn
+        if (!_radarCharts[idx]) {
+          const gNormed = normGeneFeatures(g, genes);
+          const cNormed = centroid || {};
+          const gVals = FEAT_KEYS_SRC.map(k=>+(gNormed[k]??0).toFixed(3));
+          const cVals = FEAT_KEYS_SRC.map(k=>+(cNormed[k]??0).toFixed(3));
+          const labels = ['gwas p','n studies','tissue','ppi deg','pubmed','eqtl','drugability','MR-z','OT score'];
+          const ctx = document.getElementById(`radar-${idx}`).getContext('2d');
+          _radarCharts[idx] = new Chart(ctx, {
+            type: 'radar',
+            data: {
+              labels,
+              datasets: [
+                {
+                  label: g.gene,
+                  data: gVals,
+                  borderColor: C.teal,
+                  backgroundColor: 'rgba(0,212,170,.15)',
+                  borderWidth: 2,
+                  pointBackgroundColor: C.teal,
+                  pointRadius: 3,
+                },
+                {
+                  label: 'gold centroid',
+                  data: cVals,
+                  borderColor: C.amber,
+                  backgroundColor: 'rgba(245,158,11,.3)',
+                  borderWidth: 1.5,
+                  pointBackgroundColor: C.amber,
+                  pointRadius: 2,
+                  borderDash: [4,3],
+                }
+              ]
+            },
+            options: {
+              responsive: false,
+              plugins: {
+                legend: {
+                  display: true,
+                  labels: { color: C.muted, boxWidth: 12, font: { size: 9 } }
+                }
+              },
+              scales: {
+                r: {
+                  min: 0, max: 1,
+                  ticks: { display: false },
+                  grid: { color: 'rgba(255,255,255,.08)' },
+                  angleLines: { color: 'rgba(255,255,255,.08)' },
+                  pointLabels: { color: C.muted, font: { size: 8 } }
+                }
+              }
+            }
+          });
+        }
+      }
+    });
+  });
 }
 
 function renderGoldTable(gold) {
@@ -604,6 +787,97 @@ function renderHist(genes) {
       }
     }
   });
+}
+
+function renderLOO(loo) {
+  const el = document.getElementById('loo-card');
+  if (!loo) {
+    el.innerHTML='<p class="empty">loo.json not found — run python3 validate_loo.py</p>';
+    return;
+  }
+  const ratePct = Math.round((loo.recovery_rate||0)*100);
+  const canvasId = 'loo-chart';
+  el.innerHTML = `
+    <div class="loo-hero">
+      <div class="loo-rate">${ratePct}%</div>
+      <div class="loo-sub">of held-out gold standard genes recovered in top 20<br>
+        <span style="font-family:var(--mono);font-size:.78rem;color:var(--sub)">${loo.recovered_top_20} of ${loo.n_total} genes · ranks capped at 50 in chart</span>
+      </div>
+    </div>
+    <div class="chart-wrap" id="loo-wrap"><canvas id="${canvasId}"></canvas></div>`;
+
+  const pg = loo.per_gene || [];
+  const labels = pg.map(p=>p.gene);
+  const ranks  = pg.map(p=>Math.min(p.rank, 50));
+  const colors = pg.map(p=>p.recovered ? 'rgba(0,212,170,.75)' : 'rgba(248,113,113,.75)');
+
+  new Chart(document.getElementById(canvasId).getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        label: 'rank (lower = better)',
+        data: ranks,
+        backgroundColor: colors,
+        borderRadius: 3,
+        barThickness: 20,
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: C.surf, borderColor: C.border, borderWidth: 1,
+          callbacks: {
+            label: item => {
+              const actual = pg[item.dataIndex].rank;
+              const rec = pg[item.dataIndex].recovered;
+              return ` rank ${actual}${actual>50?' (capped)':''} — ${rec?'✓ recovered':'✗ missed'}`;
+            }
+          }
+        }
+      },
+      scales: {
+        x: { grid: { display: false } },
+        y: {
+          min: 0, max: 55,
+          grid: { color: 'rgba(255,255,255,.04)' },
+          ticks: { callback: v=>v===50?'50+':v },
+          title: { display: true, text: 'rank in candidate pool', color: C.muted, font: { size: 10 } }
+        }
+      }
+    }
+  });
+
+  // Add top-20 threshold line annotation via plugin
+  const chart = Chart.getChart(canvasId);
+  if (chart) {
+    // Draw a horizontal reference line at rank=20 using afterDraw
+    const plugin = {
+      id: 'thresholdLine',
+      afterDraw(chart) {
+        const {ctx, scales:{y}} = chart;
+        const y20 = y.getPixelForValue(20);
+        ctx.save();
+        ctx.strokeStyle = 'rgba(0,212,170,.4)';
+        ctx.lineWidth = 1;
+        ctx.setLineDash([5,4]);
+        ctx.beginPath();
+        ctx.moveTo(chart.chartArea.left, y20);
+        ctx.lineTo(chart.chartArea.right, y20);
+        ctx.stroke();
+        ctx.fillStyle = 'rgba(0,212,170,.6)';
+        ctx.font = '9px IBM Plex Mono, monospace';
+        ctx.fillText('top 20 threshold', chart.chartArea.left+4, y20-4);
+        ctx.restore();
+      }
+    };
+    chart.options.plugins.thresholdLine = {};
+    chart.config.plugins = chart.config.plugins || [];
+    chart.config.plugins.push(plugin);
+    chart.update();
+  }
 }
 
 load();

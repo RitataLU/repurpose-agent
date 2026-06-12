@@ -1,0 +1,122 @@
+[
+  {
+    "gene": "KCNQ1",
+    "n_active_trials": 0,
+    "max_phase": null,
+    "latest_start": "2021-01-08"
+  },
+  {
+    "gene": "PLG",
+    "n_active_trials": 3,
+    "max_phase": "PHASE4",
+    "latest_start": "2026-05-01"
+  },
+  {
+    "gene": "FTO",
+    "n_active_trials": 1,
+    "max_phase": "PHASE2",
+    "latest_start": "2026-02-13"
+  },
+  {
+    "gene": "MTNR1B",
+    "n_active_trials": 1,
+    "max_phase": "PHASE3",
+    "latest_start": "2026-02-13"
+  },
+  {
+    "gene": "EDNRA",
+    "n_active_trials": 3,
+    "max_phase": "PHASE4",
+    "latest_start": "2023-01-03"
+  },
+  {
+    "gene": "SNCA",
+    "n_active_trials": 7,
+    "max_phase": "PHASE2",
+    "latest_start": "2026-05"
+  },
+  {
+    "gene": "BIN1",
+    "n_active_trials": 0,
+    "max_phase": "PHASE1",
+    "latest_start": "2004-06"
+  },
+  {
+    "gene": "HNF1B",
+    "n_active_trials": 2,
+    "max_phase": "PHASE4",
+    "latest_start": "2024-03"
+  },
+  {
+    "gene": "CDKN2A",
+    "n_active_trials": 9,
+    "max_phase": "PHASE3",
+    "latest_start": "2027-03-09"
+  },
+  {
+    "gene": "KANSL1",
+    "n_active_trials": 0,
+    "max_phase": null,
+    "latest_start": null
+  },
+  {
+    "gene": "MAPT",
+    "n_active_trials": 7,
+    "max_phase": "PHASE3",
+    "latest_start": "2026-08-03"
+  },
+  {
+    "gene": "APOC2",
+    "n_active_trials": 1,
+    "max_phase": null,
+    "latest_start": "2025-05-01"
+  },
+  {
+    "gene": "ADAR",
+    "n_active_trials": 1,
+    "max_phase": "PHASE2",
+    "latest_start": "2024-09-27"
+  },
+  {
+    "gene": "CCND2",
+    "n_active_trials": 1,
+    "max_phase": "PHASE2",
+    "latest_start": "2017-11-21"
+  },
+  {
+    "gene": "LDLR",
+    "n_active_trials": 4,
+    "max_phase": "PHASE3",
+    "latest_start": "2026-03-31"
+  },
+  {
+    "gene": "CRHR1",
+    "n_active_trials": 0,
+    "max_phase": "PHASE2",
+    "latest_start": "2018-07-23"
+  },
+  {
+    "gene": "SLC22A5",
+    "n_active_trials": 0,
+    "max_phase": "PHASE1",
+    "latest_start": "2025-11-20"
+  },
+  {
+    "gene": "TCF7L2",
+    "n_active_trials": 3,
+    "max_phase": "PHASE4",
+    "latest_start": "2026-10-01"
+  },
+  {
+    "gene": "INPP5E",
+    "n_active_trials": 0,
+    "max_phase": null,
+    "latest_start": null
+  },
+  {
+    "gene": "DYNC2H1",
+    "n_active_trials": 0,
+    "max_phase": null,
+    "latest_start": null
+  }
+]
